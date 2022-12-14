@@ -1,0 +1,101 @@
+---
+sidebar: sidebar 
+permalink: concept-resource-templates.html 
+keywords: templates, overview, conceptual, resource templates, application templates, volume templates 
+summary: 'El servicio AppTemplate le permite estandarizar la creación de recursos en sus entornos de trabajo en BlueXP. Por ejemplo, puede codificar los parámetros necesarios en una "plantilla de volumen" que se aplican más tarde cuando un administrador de almacenamiento crea un volumen utilizando la plantilla. Puede incluir el tipo de disco necesario, el tamaño, el protocolo, la política de Snapshot, el proveedor de cloud, y sigue. También puede activar determinados servicios, como Cloud Backup, para cada volumen creado.' 
+---
+= Más información sobre AppTemplate
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+El servicio AppTemplate le permite estandarizar la creación de recursos en sus entornos de trabajo en BlueXP (anteriormente Cloud Manager). Por ejemplo, puede codificar los parámetros necesarios en una "plantilla de volumen" que se aplican más tarde cuando un administrador de almacenamiento crea un volumen utilizando la plantilla. Puede incluir el tipo de disco necesario, el tamaño, el protocolo, la política de Snapshot, el proveedor de cloud, y sigue. También puede activar determinados servicios, como Cloud Backup, para cada volumen creado.
+
+Las plantillas facilitan que los administradores de almacenamiento creen volúmenes optimizados para los requisitos de carga de trabajo de cada aplicación puesta en marcha, como bases de datos, correo electrónico o servicios de streaming. Además, facilita la vida a los arquitectos de almacenamiento sabiendo que cada volumen se crea de forma óptima para cada aplicación.
+
+
+
+== Funciones
+
+AppTemplate ofrece las siguientes características y ventajas:
+
+* Automatiza y mejora el diseño y el desarrollo de su infraestructura
+* Ofrece una única ubicación para activar diferentes servicios de cloud de NetApp; como Cloud Backup y Cloud Data Sense
+* Identifica los recursos que se han modificado y que ya no cumplen con la plantilla (mediante la operación "drift")
++
+En este momento, deberá realizar ajustes manualmente para que el recurso vuelva a cumplir con la plantilla. link:task-check-template-compliance.html["Más información sobre la deriva"].
+
+
+
+
+
+== Acciones de plantilla disponibles
+
+Una plantilla es una cadena de "acciones" que tiene algunos valores predefinidos. Puede crear plantillas que incluyan las siguientes acciones:
+
+*Acciones de recursos:*
+
+* Crear un volumen de Cloud Volumes ONTAP (en AWS, Azure o GCP)
+* Cree un volumen de Azure NetApp Files
+* Crear un volumen de ONTAP en las instalaciones
+* Crear un entorno de trabajo Cloud Volumes ONTAP (sistema de un solo nodo o de alta disponibilidad en AWS)
+* Busque recursos existentes que cumplan ciertos criterios (de modo que pueda aplicar una acción «servicios» al salir de recursos).
+
+
+*Servicios:*
+
+* Activar https://docs.netapp.com/us-en/cloud-manager-backup-restore/concept-backup-to-cloud.html["Backup en el cloud"^] En los volúmenes (no aplicable para Azure NetApp Files)
+* Activar https://docs.netapp.com/us-en/cloud-manager-data-sense/concept-cloud-compliance.html["Cloud Data SENSE"^] en los volúmenes
+* Activar https://docs.netapp.com/us-en/cloud-manager-replication/concept-replication.html["Replicación"^] En los volúmenes (no aplicable para Azure NetApp Files)
+
+
+Por ejemplo, puede crear una plantilla que cree un volumen Cloud Volumes ONTAP. O que crea un volumen de Cloud Volumes ONTAP y, a continuación, habilita Cloud Backup en ese volumen. O que cree un volumen de Cloud Volumes ONTAP y, a continuación, habilita Cloud Backup _y_ Cloud Data Sense en ese volumen.
+
+NetApp agregará más acciones a lo largo del tiempo.
+
+
+
+== Cómo funciona AppTemplate
+
+El servicio AppTemplate consta de 3 partes. La plantilla disponible "acciones", la plantilla de aplicación personalizada y el recurso implementado como resultado de ejecutar la plantilla. La siguiente imagen muestra la relación entre cada componente:
+
+image:diagram_template_flow1.png["Un diagrama de los distintos usuarios implicados en la creación y utilización de plantillas de aplicación."]
+
+En un nivel superior, las plantillas funcionan de la siguiente manera:
+
+. NetApp define "acciones" la plantilla disponible.
++
+Por ejemplo, una "acción" para crear un volumen de Cloud Volumes ONTAP o un volumen de Azure NetApp Files.
+
+. Su arquitecto de almacenamiento selecciona las "acciones" que desea utilizar para crear una plantilla de aplicación y, a continuación, codifica ciertos valores para los parámetros mostrados.
++
+Por ejemplo, seleccionan discos de alta velocidad y una gran cantidad de RAM para volúmenes de Cloud Volumes ONTAP que se usarán para transportar las cargas de trabajo de las bases de datos de Oracle. Además, requieren que se realicen backups para cada volumen.
+
+. Sus administradores de almacenamiento utilizan las plantillas para crear recursos optimizados para las aplicaciones para las que se utilizarán.
++
+Por ejemplo, crean un volumen que se utilizará para una base de datos Oracle mediante la plantilla de volumen creada para las bases de datos.
+
+. El servicio realiza un seguimiento de determinados ajustes de recursos definidos en la plantilla mediante la función de «drift», tal y como determina su arquitecto de almacenamiento.
+
+
+
+
+== Precios y licencias
+
+La función AppTemplate no requiere licencia y es gratuita para todos los usuarios de BlueXP.
+
+
+NOTE: Las plantillas le permiten aplicar un servicio cloud a los recursos creados; por ejemplo, habilite Cloud Backup en cada volumen. En este caso, el uso del servicio de backup y el espacio de almacenamiento de objetos que utilizan los archivos de backup tienen un coste.
+
+
+
+== Limitaciones
+
+* El servicio AppTemplate no es compatible con ninguna de las regiones de Gov Cloud o en sitios sin acceso a Internet.
+* No puede usar una plantilla para crear un volumen de Cloud Volumes ONTAP en un agregado existente. Se crean nuevos volúmenes en un nuevo agregado.
+

@@ -1,0 +1,98 @@
+---
+settings:
+  name: AppTemplate
+  platform: cloud
+  internal:
+    pdf_enabled: true
+  prod:
+    pdf_enabled: true
+    harmony_enabled: false
+  rss_page: whats-new.html
+  langs: es-es,us-en,ja-jp,ko-kr,zh-cn,zh-tw,de-de,fr-fr
+sidebar:
+  entries:
+  - title: Documentos de AppTemplate
+    url: "/index.html"
+  - title: Notas de la versión
+    url: "/whats-new.html"
+  - title: Manos a la obra
+    entries:
+    - title: Más información sobre AppTemplate
+      url: "/concept-resource-templates.html"
+    - title: Más información sobre etiquetado
+      url: "/concept-tagging.html"
+  - title: Usar AppTemplate
+    entries:
+    - title: Utilizar plantillas para estandarizar la creación de recursos
+      entries:
+      - title: Cree plantillas para su organización
+        url: "/task-define-templates.html"
+      - title: Comprobar los recursos para garantizar el cumplimiento de las plantillas
+        url: "/task-check-template-compliance.html"
+      - title: Ejecute plantillas para crear recursos
+        url: "/task-run-templates.html"
+    - title: Organice sus recursos con etiquetas
+      entries:
+      - title: Gestione etiquetas para sus recursos
+        url: "/task-using-tags.html"
+  - title: Conceptos
+    entries:
+    - title: Bloques de creación de plantillas
+      url: "/reference-template-building-blocks.html"
+  - title: Conocimiento y apoyo
+    entries:
+    - title: Regístrese para recibir soporte
+      url: "/task-support-registration.html"
+    - title: Obtenga ayuda
+      url: "/task-get-help.html"
+  - title: Avisos legales
+    url: "/legal-notices.html"
+homepage:
+  tiles:
+  - title: Manos a la obra
+    links:
+    - title: Más información sobre AppTemplate
+      url: concept-resource-templates.html
+    - title: Obtenga más información sobre el etiquetado
+      url: concept-tagging.html
+    - title: Novedades
+      url: whats-new.html
+  - title: Crear plantillas
+    links:
+    - title: Entorno de trabajo Cloud Volumes ONTAP
+      url: task-define-templates.html#create-a-template-for-a-cloud-volumes-ontap-working-environment
+    - title: Volumen Cloud Volumes ONTAP
+      url: task-define-templates.html#create-a-template-for-a-cloud-volumes-ontap-volume
+    - title: Volumen Azure NetApp Files
+      url: task-define-templates.html#create-a-template-for-an-azure-netapp-files-volume
+    - title: Volumen ONTAP en las instalaciones
+      url: task-define-templates.html#create-a-template-for-an-on-premises-ontap-volume
+    - title: Añada la funcionalidad de backup, detección de datos o replicación a
+        un volumen
+      url: task-define-templates.html#examples-of-enabling-services-using-templates
+  - title: Crear recursos mediante plantillas
+    links:
+    - title: Entorno de trabajo Cloud Volumes ONTAP
+      url: task-run-templates.html#select-and-run-a-working-environment-template
+    - title: Volumen para CVO, on-prem y ANF
+      url: task-run-templates.html#select-and-run-a-volume-template
+  - title: Administrar recursos mediante plantillas y etiquetas
+    links:
+    - title: Compruebe los recursos para el cumplimiento de la plantilla (drift)
+      url: task-check-template-compliance.html
+    - title: Ejecute una plantilla que encuentre recursos existentes
+      url: task-run-templates.html#select-and-run-a-template-that-finds-existing-resources
+    - title: Gestione etiquetas para sus recursos
+      url: task-using-tags.html
+  - title: Blogs y comunidad
+    links:
+    - title: Comunidad de NetApp
+      url: https://community.netapp.com/t5/Cloud-Data-Services/ct-p/CDS
+    - title: Blog de BlueXP
+      url: https://cloud.netapp.com/blog
+    - title: Seminarios web sobre el cloud
+      url: https://cloud.netapp.com/events
+product-family:
+  name: BlueXP
+  repo: cloud-manager-family
+  sidebar_label: Toda la documentación de BlueXP

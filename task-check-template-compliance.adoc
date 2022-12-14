@@ -1,0 +1,96 @@
+---
+sidebar: sidebar 
+permalink: task-check-template-compliance.html 
+keywords: templates, resource templates, application templates, volume templates, drift, compliant 
+summary: 'BlueXP puede supervisar los valores de los parámetros utilizados cuando se creó un recurso con una plantilla utilizando la característica "drift". Drift identifica los recursos que se han modificado y que ya no cumplen con la configuración de la plantilla.' 
+---
+= Comprobar los recursos para garantizar el cumplimiento de las plantillas
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+BlueXP puede supervisar los valores de los parámetros utilizados cuando se creó un recurso con una plantilla utilizando la característica "drift". Drift identifica los recursos que se han modificado y que ya no cumplen con la configuración de la plantilla.
+
+En este momento, drift identifica los parámetros modificados en un recurso. Debe realizar ajustes manualmente en el recurso para volver a cumplir con la plantilla. En el futuro, podremos enviarle notificaciones cuando un recurso no cumpla con las normativas, o incluso invertir los cambios del usuario para que todos los recursos creados a partir de una plantilla vuelvan a cumplir las normativas automáticamente.
+
+
+
+== ¿Cómo funciona la deriva
+
+Drift identifica parámetros no conformes de este modo:
+
+. Al crear una plantilla, se activa la deriva para determinados parámetros que no desea que los usuarios cambien. Por ejemplo, puede que necesite que las copias Snapshot se creen con la política "predeterminada" para todos los volúmenes que se creen a partir de una plantilla.
++
+image:screenshot_template_drift_on_param.png["Una captura de pantalla que muestra cómo habilitar la desviación en un solo parámetro de una plantilla."]
+
+. Se activa la deriva para la plantilla y, a continuación, se guarda la plantilla.
++
+image:screenshot_template_drift_on_template.png["Una captura de pantalla que muestra cómo activar la deriva para la plantilla."]
+
+. Los administradores de almacenamiento ejecutan la plantilla para crear volúmenes.
+. Más adelante, un administrador de almacenamiento edita un volumen y deshabilita las copias Snapshot.
+. Ejecuta comprobaciones de deriva en todas las plantillas y el servicio AppTemplates compara la configuración de la plantilla de copias Snapshot con la configuración actual del volumen. Los valores que no sean compatibles se marcan para que pueda corregir la configuración incorrecta.
+
+
+
+
+== El tablero de mandos de desviación
+
+El Panel de deriva muestra el número total de recursos (por ejemplo, volúmenes) que se han creado utilizando sus plantillas, el número que todavía es compatible con la plantilla, el número que no es compatible (desviado) y el número que se creó con Desderiva.
+
+image:screenshot_template_drift_dashboard.png["Captura de pantalla del Panel de deriva del servicio AppTemplates."]
+
+* Los controles de la parte superior de cada columna permiten ordenar los resultados en orden numérico o alfabético.
+* La image:screenshot_plus_icon.gif[""] Permite filtrar los resultados por nombre de plantilla, directiva de deriva y estado y tipo de acción. Por ejemplo:
++
+image:screenshot_template_filter_drift_status.png["Captura de pantalla que muestra cómo utilizar el widget de filtro para refinar la lista de recursos."]
+
+* La barra de búsqueda permite buscar un nombre de volumen o un nombre de plantilla específicos.
+* Para obtener más información sobre el recurso real (o volumen), como el entorno de trabajo y la máquina virtual de almacenamiento, puede hacer clic en el image:screenshot_sync_status_icon.gif[""].
++
+image:screenshot_template_drift_vol_details.png["Captura de pantalla que muestra los detalles sobre un volumen en el panel de control de deriva."]
+
+
+
+
+
+== Rellene el panel de deriva
+
+Debe ejecutar la comprobación de deriva en una plantilla antes de rellenar los valores en el panel de deriva.
+
+Puede ejecutar la comprobación de deriva para todas las plantillas desde el Panel de plantillas:
+
+image:screenshot_template_drift_for_all.png["Una captura de pantalla que muestra cómo ejecutar la comprobación de deriva para todas las plantillas."]
+
+Puede ejecutar la comprobación de deriva en una sola plantilla desde el Panel de plantillas:
+
+image:screenshot_template_drift_for_one.png["Una captura de pantalla que muestra cómo ejecutar la comprobación de deriva para una sola plantilla."]
+
+
+
+== Cree un informe de deriva para recursos no conformes
+
+Puede ver un informe de deriva para un solo recurso o ejecutar un informe para descargar un informe para todos los recursos. Mediante este informe puede asignar acciones a administradores del sistema para realizar cambios que lleven los recursos de nuevo a la conformidad con la plantilla.
+
+Puede hacer clic en el icono de desviación de un recurso en el Panel de desviación para ver una lista de los parámetros de cada recurso que no es compatible.
+
+image:screenshot_template_drift_report_one_resource.png["Captura de pantalla de un informe de deriva para un solo recurso."]
+
+Para ver un informe de deriva de los recursos que se han creado a partir de las plantillas, haga clic en image:button_download.png[""] Para descargar un archivo .CSV. El informe de deriva refleja lo que se filtra actualmente en la página; no muestra todos los recursos a menos que no haya aplicado ningún filtro en la página.
+
+
+
+=== Detalles de la salud de la replicación en el informe de la deriva
+
+Cuando link:task-define-templates.html#add-replication-functionality-to-a-volume["Activación de la replicación en un volumen mediante plantillas"], Puede elegir mostrar información de replicación más detallada en el informe de deriva activando la deriva en el campo "Habilitar supervisión del estado de la replicación". Cuando se habilita esta opción, el informe sobre deriva muestra si el estado de la relación de replicación es bueno o no es correcto (a la deriva), así como el tiempo de retraso, el estado y la última transferencia de SnapMirror.
+
+Esta captura de pantalla muestra los detalles de la replicación de una relación de SnapMirror que no están en buen estado en el informe de drift.
+
+image:screenshot_template_drift_snapmirror_details.png["Una captura de pantalla del informe Drift donde se muestran los detalles de la replicación de una relación de SnapMirror no es saludable."]
+
+*Nota:* como la replicación se está aplicando inicialmente al volumen la salud será devuelta como "Falso", lo que significa que no es saludable. Transcurridos unos minutos, se mostrará el estado de replicación real.

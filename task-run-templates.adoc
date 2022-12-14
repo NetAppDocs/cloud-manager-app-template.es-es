@@ -1,0 +1,185 @@
+---
+sidebar: sidebar 
+permalink: task-run-templates.html 
+keywords: templates, resource templates, services templates, volume templates, working environment templates 
+summary: 'Seleccione una de las plantillas de aplicaciones que su organización ha creado para crear entornos de trabajo o volúmenes optimizados para cargas de trabajo y aplicaciones específicas. Las plantillas también le permiten activar Cloud Backup, Cloud Data Sense y Replication (SnapMirror) en los volúmenes o en los volúmenes existentes.' 
+---
+= Crear o modificar recursos mediante plantillas
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Seleccione una de las plantillas de aplicaciones que su organización ha creado para crear entornos de trabajo o volúmenes optimizados para cargas de trabajo y aplicaciones específicas. Las plantillas también le permiten activar https://docs.netapp.com/us-en/cloud-manager-backup-restore/concept-backup-to-cloud.html["Backup en el cloud"^], https://docs.netapp.com/us-en/cloud-manager-data-sense/concept-cloud-compliance.html["Cloud Data SENSE"^], y. https://docs.netapp.com/us-en/cloud-manager-replication/concept-replication.html["Replicación (SnapMirror)"^] en los volúmenes creados o en los volúmenes existentes.
+
+Las plantillas le permiten crear volúmenes para sistemas Cloud Volumes ONTAP, Azure NetApp Files y ONTAP en las instalaciones.
+
+
+
+== Inicio rápido
+
+Empiece rápidamente siguiendo estos pasos o desplácese hacia abajo hasta las secciones restantes para obtener todos los detalles.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Uno"] Verifique los requisitos previos necesarios
+[role="quick-margin-list"]
+* Antes de poder crear un volumen para un sistema Cloud Volumes ONTAP, ONTAP en las instalaciones o Azure NetApp Files con una plantilla, asegúrese de tener acceso a un entorno de trabajo adecuado donde se pondrá en marcha el volumen.
+
+
+[role="quick-margin-list"]
+* Si la plantilla activa un servicio de cloud en el volumen, por ejemplo https://docs.netapp.com/us-en/cloud-manager-backup-restore/concept-backup-to-cloud.html["Backup en el cloud"^] o. https://docs.netapp.com/us-en/cloud-manager-data-sense/concept-cloud-compliance.html["Cloud Data SENSE"^], asegúrese de que el servicio esté activo y con licencia en su entorno.
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Dos"] Inicie el servicio Plantillas de aplicación
+[role="quick-margin-para"]
+Seleccione *Estado > resolución* y haga clic en la ficha *Plantillas*.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Tres"] Genere el recurso ejecutando la plantilla y definiendo los parámetros
+[role="quick-margin-para"]
+Seleccione la plantilla, haga clic en *Ejecutar plantilla* e introduzca valores en los campos editables para crear el recurso.
+
+
+
+== Requisitos
+
+Lea los siguientes requisitos para asegurarse de tener una configuración compatible.
+
+* Si aún no tiene un conector, https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-connectors.html["Vea cómo crear conectores"^] Para AWS, Azure y GCP.
+* Al crear un volumen de Cloud Volumes ONTAP, asegúrese de tener disponible un entorno de trabajo de Cloud Volumes ONTAP.
+* Al crear un volumen ONTAP en las instalaciones, asegúrese de que tiene disponible un entorno de trabajo ONTAP en las instalaciones.
+* Al crear un volumen de Azure NetApp Files, asegúrese de tener disponible un entorno de trabajo de Azure NetApp Files.
+* Si la plantilla activa un servicio de cloud en el volumen, por ejemplo  https://docs.netapp.com/us-en/cloud-manager-backup-restore/concept-backup-to-cloud.html["Backup en el cloud"^], https://docs.netapp.com/us-en/cloud-manager-data-sense/concept-cloud-compliance.html["Cloud Data SENSE"^], o. https://docs.netapp.com/us-en/cloud-manager-replication/concept-replication.html["Replicación (SnapMirror)"^], asegúrese de que el servicio esté activo y con licencia en su entorno.
+
+
+
+
+== Seleccione y ejecute una plantilla de volumen
+
+Existen varias formas de seleccionar y ejecutar una plantilla para crear nuevos volúmenes:
+
+* Ejecute la plantilla de volumen desde el entorno de trabajo
+* Ejecute la plantilla de volumen desde el panel Plantillas
+
+
+Independientemente del método elegido, los detalles acerca de los parámetros de volumen necesarios que debe definir están disponibles en las siguientes secciones:
+
+* https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-create-volumes.html#create-a-volume-from-a-template["Cómo aprovisionar volúmenes de Cloud Volumes ONTAP"^]
+* https://docs.netapp.com/us-en/cloud-manager-azure-netapp-files/task-create-volumes.html#create-volumes-from-templates["Cómo aprovisionar volúmenes de Azure NetApp Files"^]
+* https://docs.netapp.com/us-en/cloud-manager-ontap-onprem/task-provisioning-ontap.html#creating-volumes-from-templates["Cómo aprovisionar volúmenes de ONTAP en las instalaciones"^]
+
+
+
+
+=== Ejecute una plantilla de volumen desde el entorno de trabajo
+
+Puede agregar un volumen a un entorno de trabajo existente desde la página _Working Environment_ y desde la página _Volume Details_.
+
+.Pasos
+. En la página _Working Environment_ o en la página _Volume Details_, haga clic en *Add Volume from Template*.
++
+image:screenshot_template_add_vol_from.png["Dos capturas de pantalla que muestran cómo los usuarios pueden crear nuevos volúmenes a partir de una plantilla."]
+
++
+Se muestra el _Panel de plantillas_ y sólo enumera las plantillas que se aplican al entorno de trabajo seleccionado. Por ejemplo, sólo muestra las plantillas Cloud Volumes ONTAP.
+
+. Haga clic en image:screenshot_horizontal_more_button.gif["Icono más"] Y *Ejecutar plantilla*.
++
+image:screenshot_template_run_from_dashboard.png["Captura de pantalla que muestra cómo ejecutar una plantilla desde el Panel de plantillas."]
+
++
+Aparecerá la página _Add Volume from Template_.
+
+. Introduzca los valores en los campos editables para crear el volumen y haga clic en *Ejecutar plantilla*.
++
+image:screenshot_run_template_from_canvas.png["Captura de pantalla que muestra los parámetros que debe definir para crear el volumen a partir de una plantilla."]
+
+
+
+
+
+=== Ejecute una plantilla de volumen desde el Panel de plantillas
+
+Puede agregar un volumen a un entorno de trabajo existente desde _Templates Dashboard_.
+
+.Pasos
+. Seleccione *Estado > resolución* y haga clic en la ficha *Plantillas*.
++
+Se muestra el _Templates Dashboard_.
+
+. Para la plantilla que desea utilizar, haga clic en image:screenshot_horizontal_more_button.gif["Icono más"] Y *Ejecutar plantilla*.
++
+image:screenshot_template_run_from_dashboard2.png["Captura de pantalla que muestra cómo ejecutar una plantilla desde el Panel de plantillas."]
+
++
+Aparece la página _Run Template_.
+
+. Introduzca los valores en los campos editables para crear el volumen y haga clic en *Ejecutar plantilla*.
++
+image:screenshot_run_template_from_dashboard.png["Captura de pantalla que muestra los parámetros que debe definir para crear el volumen a partir de una plantilla."]
+
++
+Tenga en cuenta que al ejecutar la plantilla desde la consola se necesita seleccionar el entorno de trabajo y otras variables (por ejemplo, el equipo virtual de almacenamiento o el agregado). Cuando ejecuta la plantilla desde el entorno de trabajo, el entorno de trabajo se rellena automáticamente.
+
+
+
+
+
+== Seleccione y ejecute una plantilla de entorno de trabajo
+
+Puede crear un nuevo entorno de trabajo desde _Templates Dashboard_ si su empresa ha creado una plantilla para esta funcionalidad.
+
+Si tiene alguna pregunta sobre los detalles necesarios para crear el entorno de trabajo, consulte https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-otc-aws.html["Inicio de Cloud Volumes ONTAP en AWS"^].
+
+.Pasos
+. Seleccione *Estado > resolución* y haga clic en la ficha *Plantillas*.
++
+Se muestra el _Templates Dashboard_.
+
+. Para la plantilla que desea utilizar, haga clic en image:screenshot_horizontal_more_button.gif["Icono más"] Y *Ejecutar plantilla*.
++
+image:screenshot_template_run_from_dashboard3.png["Captura de pantalla que muestra cómo ejecutar una plantilla desde el Panel de plantillas."]
+
++
+Aparece la página _Run Template_.
+
+. Introduzca valores en campos editables para crear el entorno de trabajo y el primer volumen y haga clic en *Ejecutar plantilla*.
++
+image:screenshot_template_run_from_dashboard_we.png["Captura de pantalla que muestra los parámetros que debe definir para crear el entorno de trabajo a partir de una plantilla."]
+
+
+
+
+
+== Seleccione y ejecute una plantilla que encuentre los recursos existentes
+
+Puede ejecutar una plantilla que encuentre ciertos recursos (por ejemplo, volúmenes) y, a continuación, activar un servicio de cloud en esos recursos (por ejemplo, Cloud Backup) si su empresa ha creado una plantilla utilizando esta funcionalidad. Al ejecutar la plantilla, puede realizar algunos ajustes menores de modo que el servicio cloud solo se aplique a los recursos adecuados.
+
+.Pasos
+. Seleccione *Estado > resolución* y haga clic en la ficha *Plantillas*.
++
+Se muestra el _Templates Dashboard_.
+
+. Para la plantilla que desea utilizar, haga clic en image:screenshot_horizontal_more_button.gif["Icono más"] Y *Ejecutar plantilla*.
++
+image:screenshot_template_run_from_dashboard4.png["Captura de pantalla que muestra cómo ejecutar una plantilla desde el Panel de plantillas."]
+
++
+Aparece la página _Run Template_ e inmediatamente ejecuta la búsqueda definida en la plantilla para buscar los volúmenes que coinciden con los criterios.
+
+. Consulte la lista de volúmenes devueltos en el área _Volume Results_.
++
+image:screenshot_template_find_search_results.png["Una captura de pantalla que muestra cómo se devolvieron los volúmenes de los criterios de búsqueda de recursos de la búsqueda."]
+
+. Si los resultados son los que esperaba, seleccione la casilla de verificación para cada volumen que desea que se habilite Cloud Backup con los criterios de la parte _Enable Cloud Backup on Volume_ de la plantilla y haga clic en *Ejecutar plantilla*.
++
+Si los resultados no son los esperados, haga clic en image:screenshot_edit_icon.gif["editar icono de lápiz"] Junto a _Search Criteria_ y afine aún más la búsqueda.
+
+
+
+.Resultados
+La plantilla se ejecutará y activará Cloud Backup en cada volumen que haya comprobado en los criterios de búsqueda.
+
+Se llamará cualquier error en la página _Running your Template_ y podrá resolver los problemas si es necesario.

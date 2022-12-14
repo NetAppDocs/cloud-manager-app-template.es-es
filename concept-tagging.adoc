@@ -1,0 +1,182 @@
+---
+sidebar: sidebar 
+permalink: concept-tagging.html 
+keywords: tags, overview, conceptual, resource tags, volume tags, AWS tags, Azure tags 
+summary: BlueXP le permite aplicar etiquetas a sus recursos _existing_ para ayudarle a organizar y administrar esos recursos. Las etiquetas son metadatos que puede utilizar para agrupar recursos para identificar aplicaciones, entornos, regiones, códigos de facturación, proveedores de cloud, y sigue. 
+---
+= Más información sobre etiquetado
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+BlueXP (antes Cloud Manager) le permite aplicar etiquetas a sus recursos _existentes_ para ayudarle a organizar y administrar esos recursos. Las etiquetas son metadatos que puede utilizar para agrupar recursos para identificar aplicaciones, entornos, regiones, códigos de facturación, proveedores de cloud, y sigue.
+
+Las etiquetas consisten en una *clave de etiqueta* y un *valor de etiqueta*. Por ejemplo, puede crear una clave de etiqueta denominada "entorno" y, a continuación, agregar valores de etiqueta de "producción" y "Prueba". Después de aplicarse a los recursos, puede buscar y ver rápidamente recursos que coincidan con el par clave/valor.
+
+Puede agregar pares de clave/valor de etiqueta a recursos _new_ al crear un entorno de trabajo o un volumen de Azure NetApp Files. También puede definir pares clave/valor de etiqueta en link:task-define-templates.html["Plantillas de BlueXP que cree"] Para sus administradores de almacenamiento e ingenieros de DevOps.
+
+Puede agregar etiquetas nuevas mediante el servicio de etiquetado y puede cambiar o eliminar etiquetas existentes.
+
+
+
+== Funciones
+
+El servicio de etiquetado ofrece las siguientes funciones y ventajas:
+
+* Cree claves de etiqueta y valores de etiqueta que coincidan con los términos utilizados en su entorno
+* Organice los recursos en su entorno para facilitar su supervisión y gestión
+* Añada, quite y edite las claves de etiqueta y los valores de etiqueta según el tipo de recurso
+* Etiquete los recursos y los recursos de ONTAP en su entorno de AWS y Azure.
+
+
+
+
+== Precios y licencias
+
+La capacidad de etiquetar los recursos no requiere licencia y es libre de usar por todos los usuarios de BlueXP con la función de administrador de cuentas o administrador de área de trabajo.
+
+
+
+== Recursos que puede etiquetar
+
+Puede aplicar etiquetas a los siguientes recursos.
+
+[cols="30,35,35"]
+|===
+| Proveedor | Servicio | Recurso 
+
+
+.3+| ONTAP | Cloud Volumes ONTAP | Volumen de máquina virtual de almacenamiento agregado 
+
+
+| ONTAP en las instalaciones | Volumen de máquina virtual de almacenamiento agregado 
+
+
+| Azure NetApp Files | Volumen 
+
+
+| Servicio de NetApp | Sincr | Relación 
+
+
+| AWS | EC2 | VPC del volumen de subred del grupo de seguridad de instancias 
+
+
+.4+| Azure | Informática | Máquina virtual de instantánea 
+
+
+| Red | Red virtual de grupo de seguridad 
+
+
+| Recurso | Grupo de recursos 
+
+
+| Reducida | Cuenta de almacenamiento 
+
+
+.2+| GCP | Informática | Instancia 
+
+
+| Reducida | Cucharón 
+|===
+Para obtener información acerca de las etiquetas de AWS EC2, consulte https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html["Documentación de AWS: Etiquetado de los recursos de Amazon EC2"^].
+
+Para obtener más información acerca de las etiquetas de Azure, consulte https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources?tabs=json["Documentación de Azure: Etiquetado de los recursos de Azure"^].
+
+Para obtener más información acerca de las etiquetas de Google, consulte https://cloud.google.com/compute/docs/labeling-resources["Documentación de Google Cloud: Etiquetado de los recursos de Google Cloud"^].
+
+
+
+== Requisitos previos
+
+
+
+=== Compruebe sus permisos de AWS Connector
+
+Si creó el conector con BlueXP versión 3.9.10 o superior, entonces está todo listo. Si creó el conector con una versión anterior de BlueXP, tendrá que añadir algunos permisos necesarios para el rol IAM de BlueXP para etiquetar las instancias de AWS EC2:
+
+[source, json]
+----
+{
+  "Action": [
+    "ec2:CreateTags",
+    "ec2:DeleteTags",
+    "ec2:DescribeTags",
+    "tag:getResources",
+    "tag:getTagKeys",
+    "tag:getTagValues",
+    "tag:TagResources",
+    "tag:UntagResources"
+  ],
+  "Resource": "*",
+  "Effect": "Allow",
+  "Sid": "tagServicePolicy"
+}
+----
+
+
+=== Compruebe sus permisos de Azure Connector
+
+Si creó el conector con BlueXP versión 3.9.10 o superior, entonces está todo listo. Si creó el conector con una versión anterior de BlueXP, tendrá que añadir algunos permisos necesarios para el rol IAM de operador de BlueXP para etiquetar los recursos de Azure:
+
+[source, json]
+----
+{
+  "id": "<ID>",
+  "properties": {
+    "roleName": "Cloud Manager Operator-<ID>",
+    "description": "Cloud Manager Operator",
+    "assignableScopes": [
+      "/subscriptions/<SUBSCRIPTION-ID>"
+    ],
+    "permissions": [
+      {
+        "actions": [
+          "Microsoft.Resources/tags/read",
+          "Microsoft.Resources/tags/write",
+          "Microsoft.Resources/tags/delete",
+          "Microsoft.ClassicCompute/virtualMachines/read"
+        ],
+        "notActions": [],
+        "dataActions": [],
+        "notDataActions": []
+      }
+    ]
+  }
+}
+----
+
+
+== Reglas y restricciones de las etiquetas
+
+Las siguientes reglas se aplican al crear claves de etiqueta y valores de etiqueta:
+
+* Longitud máxima de la clave: 128 caracteres
+* Longitud máxima del valor de clave: 256 caracteres
+* Caracteres válidos de etiqueta y etiqueta: Letras, números, espacios y caracteres especiales (_, @, &, *, etc.)
+* Las etiquetas distinguen mayúsculas de minúsculas/minúsculas.
+* Número máximo de etiquetas por recurso: 30
+* Por recurso, cada clave de etiqueta debe ser única
+
+
+
+
+=== Ejemplos de etiquetas
+
+[cols="50,50"]
+|===
+| Clave | Valores 
+
+
+| ENV | prueba de producción 
+
+
+| Dept | ventas de finanzas eng 
+
+
+| Propietario | almacenamiento de administración 
+|===

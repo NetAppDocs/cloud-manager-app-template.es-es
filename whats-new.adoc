@@ -1,0 +1,171 @@
+---
+sidebar: sidebar 
+permalink: whats-new.html 
+keywords: 'what"s new, features, new, release notes, bugs, limitations, known issues, enhancements, fixes' 
+summary: Conozca las novedades de AppTemplate y Etiquetado. 
+---
+= Novedades de AppTemplate y el etiquetado
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Conozca las novedades de AppTemplate y Etiquetado.
+
+
+
+== 3 de marzo de 2022
+
+
+
+=== Ahora puede crear una plantilla para buscar entornos de trabajo específicos
+
+Mediante la acción "Buscar recursos existentes" puede identificar el entorno de trabajo y, a continuación, utilizar otras acciones de plantilla, como la creación de un volumen, para realizar fácilmente acciones en entornos de trabajo existentes. https://docs.netapp.com/us-en/cloud-manager-app-template/task-define-templates.html#examples-of-finding-existing-resources-and-enabling-services-using-templates["Vaya aquí para obtener más información"].
+
+
+
+=== Capacidad de crear un entorno de trabajo de alta disponibilidad de Cloud Volumes ONTAP en AWS
+
+La compatibilidad existente para crear un entorno de trabajo de Cloud Volumes ONTAP en AWS se ha ampliado para incluir la creación de un sistema de alta disponibilidad además de un sistema de un único nodo. https://docs.netapp.com/us-en/cloud-manager-app-template/task-define-templates.html#create-a-template-for-a-cloud-volumes-ontap-working-environment["Vea cómo crear una plantilla para un entorno de trabajo de Cloud Volumes ONTAP"].
+
+
+
+== 9 de febrero de 2022
+
+
+
+=== Ahora puede crear una plantilla para buscar volúmenes existentes específicos y, a continuación, activar Cloud Backup
+
+Con la nueva acción "Find Resource" puede identificar todos los volúmenes en los que desea habilitar Cloud Backup y, a continuación, utilizar la acción Cloud Backup para habilitar el backup en esos volúmenes.
+
+Actualmente admite volúmenes en sistemas Cloud Volumes ONTAP y ONTAP en las instalaciones. https://docs.netapp.com/us-en/cloud-manager-app-template/task-define-templates.html#find-existing-volumes-and-activate-cloud-backup["Vaya aquí para obtener más información"].
+
+
+
+== 31 de octubre de 2021
+
+
+
+=== Ahora puede etiquetar las relaciones de sincronización para que pueda agruparlas o clasificarlas para un acceso sencillo
+
+https://docs.netapp.com/us-en/cloud-manager-app-template/concept-tagging.html["Obtenga más información sobre el etiquetado de recursos"].
+
+
+
+== 11 de octubre de 2021
+
+
+
+=== Ahora puede crear un duplicado de una plantilla existente
+
+La creación de un duplicado puede ahorrar mucho tiempo si desea crear una plantilla nueva que sea muy similar a una plantilla existente. Sólo haga el duplicado con un nuevo nombre y cambie los elementos de pareja que hacen que la plantilla sea única. link:task-define-templates.html#make-a-copy-of-a-template["Vea cómo crear una copia de una plantilla"].
+
+
+
+=== Habilitar los servicios en volúmenes creados con plantillas ahora es mucho más fácil
+
+Antes de necesitar seleccionar variables para identificar el entorno de trabajo, la máquina virtual de almacenamiento y el nombre del volumen. Ahora la plantilla le agrega esta información. Esto simplifica la adición de servicios para backup en el cloud, cumplimiento de normativas en el cloud y replicación en volúmenes nuevos.
+
+
+
+=== Se ha añadido soporte para que pueda etiquetar ciertos recursos de GCP
+
+Ahora puede gestionar etiquetas en los recursos de GCP mediante el servicio de etiquetado de Cloud Manager. Puede ver las etiquetas de GCP y los valores de etiqueta que se han aplicado a los recursos, y puede aplicar dichas etiquetas a otros recursos de GCP que esté gestionando. link:concept-tagging.html#resources-that-you-can-tag["Consulte los recursos de GCP que puede etiquetar"].
+
+
+
+== 2 de septiembre de 2021
+
+
+
+=== Ahora puede gestionar etiquetas en los recursos de Azure mediante el servicio de etiquetado
+
+Puede ver las etiquetas y los valores de etiqueta de Azure que se han aplicado a los recursos y puede aplicar dichas etiquetas a otros recursos de Azure que esté gestionando. link:concept-tagging.html#resources-that-you-can-tag["Consulte los recursos de Azure que puede etiquetar"].
+
+
+
+=== Ahora se pueden etiquetar algunos recursos adicionales de AWS EC2
+
+
+
+== 8 de agosto de 2021
+
+
+
+=== Ahora puede crear un entorno de trabajo Cloud Volumes ONTAP con plantillas
+
+En este momento, solo se proporciona compatibilidad para los entornos AWS y solo para clústeres de un solo nodo. Descubra cómo link:task-define-templates.html#create-a-template-for-a-cloud-volumes-ontap-working-environment["Cree una plantilla para un entorno de trabajo de Cloud Volumes ONTAP"].
+
+
+
+=== Una nueva función le permite agregar etiquetas a un volumen de una plantilla de volumen
+
+El etiquetado permite agrupar distintos recursos para identificar aplicaciones, regiones o departamentos con el fin de automatizar o asignar costes a determinados departamentos o regiones.
+
+
+
+=== Ahora puede gestionar etiquetas desde sus instancias de AWS EC2 en Cloud Manager
+
+Puede ver las etiquetas de AWS y los valores de etiqueta que se han aplicado a instancias de EC2 y puede aplicar dichas etiquetas a otras instancias de EC2 que gestiona. link:concept-tagging.html["Más información sobre etiquetado"].
+
+
+
+== 13 de julio de 2021
+
+
+
+=== Se ha agregado compatibilidad para utilizar el servicio de replicación al definir una plantilla
+
+Ahora puede agregar la plantilla que desee link:task-define-templates.html#add-replication-functionality-to-a-volume["replique los datos en el volumen que va a crear"] a otro volumen que utilice https://docs.netapp.com/us-en/cloud-manager-replication/concept-replication.html["Servicio de replicación"].
+
+Al replicar datos en otros sistemas de almacenamiento de NetApp y actualizar continuamente los datos secundarios, estos están siempre al día y disponibles cuando los necesite.
+
+
+
+=== Descargue un informe que incluya todos los volúmenes que se han "desviado" de la configuración de la plantilla
+
+De esta forma, podrá identificar estos volúmenes y asignar a alguien que haga que los volúmenes vuelvan a cumplir las normativas. Consulte link:task-check-template-compliance.html#create-a-drift-report-for-non-compliant-resources["cómo descargar su informe de drift"].
+
+
+
+=== Se ha liberado el nuevo servicio de etiquetado
+
+Una nueva función de Cloud Manager le permite aplicar etiquetas a los recursos de ONTAP existentes para ayudarle a organizar y gestionar esos recursos. Las etiquetas son metadatos que puede utilizar para agrupar recursos para identificar aplicaciones, entornos, regiones, códigos de facturación, proveedores de cloud, y sigue.
+
+link:concept-tagging.html["Más información sobre etiquetado"].
+
+
+
+== 7 de junio de 2021
+
+
+
+=== Ahora puede habilitar condicionalmente determinadas acciones cuando el usuario está ejecutando la plantilla
+
+Por ejemplo, si se crea un volumen Cloud Volumes ONTAP con la eficiencia del almacenamiento de NetApp habilitada, Cloud Backup también se habilita en ese volumen. Si la eficiencia del almacenamiento no está habilitada, Cloud Backup no está habilitado.
+
+
+
+=== Ahora puede crear un volumen en un sistema ONTAP en las instalaciones utilizando plantillas
+
+AppTemplate permite crear un volumen en un entorno de trabajo existente mediante plantillas.
+
+
+
+=== Se ha añadido una nueva funcionalidad denominada "drift" como opción al crear las plantillas
+
+Esta función permite a Cloud Manager supervisar los valores codificados de forma rígida que introdujo para un parámetro en una plantilla. Después de que un administrador de almacenamiento haya creado un volumen con esa plantilla, si después Cloud Manager ve que se ha cambiado el valor del parámetro de modo que ya no esté en línea con la definición de la plantilla, puede ver todos los volúmenes que han "desviado" de la plantilla diseñada. De esta forma, puede identificar estos volúmenes y realizar cambios para garantizar que cumplen las normativas.
+
+
+
+== 2 de mayo de 2021
+
+
+
+=== Ahora puede integrar Cloud Data Sense al crear una plantilla de volumen
+
+Ahora puede habilitar Data Sense para cada volumen recién creado o habilitar Cloud Backup para cada volumen recién creado... O cree una plantilla que permita realizar copias de seguridad y cumplimiento en el volumen creado.

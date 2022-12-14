@@ -1,0 +1,862 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blocks>
+  <block id="5dd11df101133565c34a0a5cfef5f86e" category="summary">BlueXP puede supervisar los valores de los parámetros utilizados cuando se creó un recurso con una plantilla utilizando la característica "drift". Drift identifica los recursos que se han modificado y que ya no cumplen con la configuración de la plantilla.</block>
+  <block id="738c328d0087a068339b3d63cd01f51a" category="doc">Comprobar los recursos para garantizar el cumplimiento de las plantillas</block>
+  <block id="214a61ce436e46b661501acdeee5221c" category="paragraph">En este momento, drift identifica los parámetros modificados en un recurso. Debe realizar ajustes manualmente en el recurso para volver a cumplir con la plantilla. En el futuro, podremos enviarle notificaciones cuando un recurso no cumpla con las normativas, o incluso invertir los cambios del usuario para que todos los recursos creados a partir de una plantilla vuelvan a cumplir las normativas automáticamente.</block>
+  <block id="2ab3e4cd0d86d65f9d51ef66c0c979a1" category="section-title">¿Cómo funciona la deriva</block>
+  <block id="270a79863849b0f5a1fb6e3ca8c5e8cf" category="paragraph">Drift identifica parámetros no conformes de este modo:</block>
+  <block id="2f4767232b378f442b114c6df47c9e64" category="list-text">Al crear una plantilla, se activa la deriva para determinados parámetros que no desea que los usuarios cambien. Por ejemplo, puede que necesite que las copias Snapshot se creen con la política "predeterminada" para todos los volúmenes que se creen a partir de una plantilla.</block>
+  <block id="176d49d1e84215b444f439fea07a3329" category="inline-image-macro">Una captura de pantalla que muestra cómo habilitar la desviación en un solo parámetro de una plantilla.</block>
+  <block id="311336fcea41c68a3d16c7293d66a166" category="paragraph"><block ref="311336fcea41c68a3d16c7293d66a166" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b1b69884668207d8257a2c199585d3c4" category="list-text">Se activa la deriva para la plantilla y, a continuación, se guarda la plantilla.</block>
+  <block id="a58a17de18b8ff4081df6a8a029fddef" category="inline-image-macro">Una captura de pantalla que muestra cómo activar la deriva para la plantilla.</block>
+  <block id="65439c70b898804017251c3d89e4b9a1" category="paragraph"><block ref="65439c70b898804017251c3d89e4b9a1" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a89edd795717fc5788fde97a150cdbfd" category="list-text">Los administradores de almacenamiento ejecutan la plantilla para crear volúmenes.</block>
+  <block id="702cc5e5b03abb2b13b06653993301cd" category="list-text">Más adelante, un administrador de almacenamiento edita un volumen y deshabilita las copias Snapshot.</block>
+  <block id="e0ea1e6e9a11e8802d9e17bd8c65420e" category="list-text">Ejecuta comprobaciones de deriva en todas las plantillas y el servicio AppTemplates compara la configuración de la plantilla de copias Snapshot con la configuración actual del volumen. Los valores que no sean compatibles se marcan para que pueda corregir la configuración incorrecta.</block>
+  <block id="6f1e06cdf469f6c9e2d5664f82d4cd46" category="section-title">El tablero de mandos de desviación</block>
+  <block id="eb00a81284bf83afa086db3e1e91383f" category="paragraph">El Panel de deriva muestra el número total de recursos (por ejemplo, volúmenes) que se han creado utilizando sus plantillas, el número que todavía es compatible con la plantilla, el número que no es compatible (desviado) y el número que se creó con Desderiva.</block>
+  <block id="55173c154995f28e9df46343a9ce0561" category="inline-image-macro">Captura de pantalla del Panel de deriva del servicio AppTemplates.</block>
+  <block id="a7e6e26f0a43b99c8a207a6d0a7bc773" category="paragraph"><block ref="a7e6e26f0a43b99c8a207a6d0a7bc773" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="812ce4d3a07734d12cdaa3ed2010e22f" category="list-text">Los controles de la parte superior de cada columna permiten ordenar los resultados en orden numérico o alfabético.</block>
+  <block id="d41d8cd98f00b204e9800998ecf8427e" category="inline-image-macro"></block>
+  <block id="0359e3c0b32dfd6306bd3d50e3c2de03" category="list-text">La <block ref="3fd7363714f2e2423924118bfd6b7147" category="inline-image-macro-rx" type="image"></block> Permite filtrar los resultados por nombre de plantilla, directiva de deriva y estado y tipo de acción. Por ejemplo:</block>
+  <block id="dc2aed6b9b1f1b0a6c08ee34faba057f" category="inline-image-macro">Captura de pantalla que muestra cómo utilizar el widget de filtro para refinar la lista de recursos.</block>
+  <block id="226b350675cf80a6c8ef906f3d514866" category="paragraph"><block ref="226b350675cf80a6c8ef906f3d514866" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b50b58694b4498c8af71d92940ef4b4a" category="list-text">La barra de búsqueda permite buscar un nombre de volumen o un nombre de plantilla específicos.</block>
+  <block id="2289aac3f042b380f68ae94d3b80edcc" category="list-text">Para obtener más información sobre el recurso real (o volumen), como el entorno de trabajo y la máquina virtual de almacenamiento, puede hacer clic en el <block ref="a74720392297d66ac1ab9a90296912c9" category="inline-image-macro-rx" type="image"></block>.</block>
+  <block id="b652d688fe7bd49013e097debd62377d" category="inline-image-macro">Captura de pantalla que muestra los detalles sobre un volumen en el panel de control de deriva.</block>
+  <block id="f94f5da3d864a2802ec18ef34e31c632" category="paragraph"><block ref="f94f5da3d864a2802ec18ef34e31c632" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b6ce5c8ea7a5fe26d49cc620ef72e8bf" category="section-title">Rellene el panel de deriva</block>
+  <block id="5ae7cb61db9467082e9eea24cffa5c5d" category="paragraph">Debe ejecutar la comprobación de deriva en una plantilla antes de rellenar los valores en el panel de deriva.</block>
+  <block id="6f2802bd954a52da9413653f06974328" category="paragraph">Puede ejecutar la comprobación de deriva para todas las plantillas desde el Panel de plantillas:</block>
+  <block id="d3b285f784c0ba93aec0e96991c6426b" category="inline-image-macro">Una captura de pantalla que muestra cómo ejecutar la comprobación de deriva para todas las plantillas.</block>
+  <block id="6800c3ab10609f87e92b1c2d671d818a" category="paragraph"><block ref="6800c3ab10609f87e92b1c2d671d818a" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="58e7eda3b48d7587cdb37980702881b8" category="paragraph">Puede ejecutar la comprobación de deriva en una sola plantilla desde el Panel de plantillas:</block>
+  <block id="30055c2914e5982a3d4520c8d7341dae" category="inline-image-macro">Una captura de pantalla que muestra cómo ejecutar la comprobación de deriva para una sola plantilla.</block>
+  <block id="09ba0e6ca6c933763f67961bc73d1c49" category="paragraph"><block ref="09ba0e6ca6c933763f67961bc73d1c49" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b36ada9c7c56f786c71fdfbea02d95d3" category="section-title">Cree un informe de deriva para recursos no conformes</block>
+  <block id="aeb389bbf15541824e09549764a991ad" category="paragraph">Puede ver un informe de deriva para un solo recurso o ejecutar un informe para descargar un informe para todos los recursos. Mediante este informe puede asignar acciones a administradores del sistema para realizar cambios que lleven los recursos de nuevo a la conformidad con la plantilla.</block>
+  <block id="a5a5986754b343a286af80fd084ea988" category="paragraph">Puede hacer clic en el icono de desviación de un recurso en el Panel de desviación para ver una lista de los parámetros de cada recurso que no es compatible.</block>
+  <block id="ecbe0476f7995436a619fbec67b150ea" category="inline-image-macro">Captura de pantalla de un informe de deriva para un solo recurso.</block>
+  <block id="e278cbaa988c388eb4f070a874cc7c84" category="paragraph"><block ref="e278cbaa988c388eb4f070a874cc7c84" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f5aeece6a8367e0a2a950b59ac5d280f" category="paragraph">Para ver un informe de deriva de los recursos que se han creado a partir de las plantillas, haga clic en <block ref="6ba48bcb767669a826177023eada095d" category="inline-image-macro-rx" type="image"></block> Para descargar un archivo .CSV. El informe de deriva refleja lo que se filtra actualmente en la página; no muestra todos los recursos a menos que no haya aplicado ningún filtro en la página.</block>
+  <block id="534c380a5cdca5610f18de17fa526847" category="section-title">Detalles de la salud de la replicación en el informe de la deriva</block>
+  <block id="b5363a8f8717713698cd5f0ade6c4a83" category="inline-link-macro">Activación de la replicación en un volumen mediante plantillas</block>
+  <block id="6bb92fc8b301ed81b081eeb63f8c277d" category="paragraph">Cuando <block ref="eef24c085d3101627e03570b2ef27e8a" category="inline-link-macro-rx"></block>, Puede elegir mostrar información de replicación más detallada en el informe de deriva activando la deriva en el campo "Habilitar supervisión del estado de la replicación". Cuando se habilita esta opción, el informe sobre deriva muestra si el estado de la relación de replicación es bueno o no es correcto (a la deriva), así como el tiempo de retraso, el estado y la última transferencia de SnapMirror.</block>
+  <block id="6ffc1ecbaefdcfbed3ede7fdb124aa93" category="paragraph">Esta captura de pantalla muestra los detalles de la replicación de una relación de SnapMirror que no están en buen estado en el informe de drift.</block>
+  <block id="16c2c563a9c70bc38dcd5058d89852a7" category="inline-image-macro">Una captura de pantalla del informe Drift donde se muestran los detalles de la replicación de una relación de SnapMirror no es saludable.</block>
+  <block id="dda535bed967fed0495f552c6c54b14e" category="paragraph"><block ref="dda535bed967fed0495f552c6c54b14e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a9986dfbd663475bd0b9a159d82e3587" category="paragraph">*Nota:* como la replicación se está aplicando inicialmente al volumen la salud será devuelta como "Falso", lo que significa que no es saludable. Transcurridos unos minutos, se mostrará el estado de replicación real.</block>
+  <block id="cfd52dcb30bb7d2ea88bc2c66e2ccc0f" category="summary">BlueXP le permite aplicar etiquetas a sus recursos _existing_ para ayudarle a organizar y administrar esos recursos. Las etiquetas son metadatos que puede utilizar para agrupar recursos para identificar aplicaciones, entornos, regiones, códigos de facturación, proveedores de cloud, y sigue.</block>
+  <block id="bed434cdb82938c37e10ec775ee39334" category="doc">Más información sobre etiquetado</block>
+  <block id="b30d9d9c3aca3c78264405a3976afc34" category="paragraph">BlueXP (antes Cloud Manager) le permite aplicar etiquetas a sus recursos _existentes_ para ayudarle a organizar y administrar esos recursos. Las etiquetas son metadatos que puede utilizar para agrupar recursos para identificar aplicaciones, entornos, regiones, códigos de facturación, proveedores de cloud, y sigue.</block>
+  <block id="40fa3ed3deb11f4523fb01c3e53cd533" category="paragraph">Las etiquetas consisten en una *clave de etiqueta* y un *valor de etiqueta*. Por ejemplo, puede crear una clave de etiqueta denominada "entorno" y, a continuación, agregar valores de etiqueta de "producción" y "Prueba". Después de aplicarse a los recursos, puede buscar y ver rápidamente recursos que coincidan con el par clave/valor.</block>
+  <block id="8b560c81adceb205c323088796c3a9c7" category="inline-link-macro">Plantillas de BlueXP que cree</block>
+  <block id="2e163db3e69e348e895ac4042c0f4c9c" category="paragraph">Puede agregar pares de clave/valor de etiqueta a recursos _new_ al crear un entorno de trabajo o un volumen de Azure NetApp Files. También puede definir pares clave/valor de etiqueta en <block ref="cf5b7c6993b005a6e69e2b6094f6daa8" category="inline-link-macro-rx"></block> Para sus administradores de almacenamiento e ingenieros de DevOps.</block>
+  <block id="126a062727c3057b3a937eb69aaa1597" category="paragraph">Puede agregar etiquetas nuevas mediante el servicio de etiquetado y puede cambiar o eliminar etiquetas existentes.</block>
+  <block id="98f770b0af18ca763421bac22b4b6805" category="section-title">Funciones</block>
+  <block id="5e30e27f68a75ca7a2e3182f2dd12b16" category="paragraph">El servicio de etiquetado ofrece las siguientes funciones y ventajas:</block>
+  <block id="3ea3f03a9826c525b7f8e89cf5f45bb0" category="list-text">Cree claves de etiqueta y valores de etiqueta que coincidan con los términos utilizados en su entorno</block>
+  <block id="39aff6391798a3cbbbd4f8b8cd74dc8c" category="list-text">Organice los recursos en su entorno para facilitar su supervisión y gestión</block>
+  <block id="9a9d09dff347b4f762cb3ea1cb1761a1" category="list-text">Añada, quite y edite las claves de etiqueta y los valores de etiqueta según el tipo de recurso</block>
+  <block id="4aeb19e9643ca4bd7c08134d7f5d73ad" category="list-text">Etiquete los recursos y los recursos de ONTAP en su entorno de AWS y Azure.</block>
+  <block id="8c3c2e38ab977ab43a9ebd00e29973df" category="section-title">Precios y licencias</block>
+  <block id="7ed5899669a5929914b723a2baef182d" category="paragraph">La capacidad de etiquetar los recursos no requiere licencia y es libre de usar por todos los usuarios de BlueXP con la función de administrador de cuentas o administrador de área de trabajo.</block>
+  <block id="9b3643d929067c43445625ecc4b23130" category="section-title">Recursos que puede etiquetar</block>
+  <block id="b087cfd5a6751cde85bc43abdbea1db3" category="paragraph">Puede aplicar etiquetas a los siguientes recursos.</block>
+  <block id="27703c8f150ac4bb0a3a83a7857353af" category="cell">Proveedor</block>
+  <block id="c2ba7e785c49050f48da9aacc45c2b85" category="cell">Servicio</block>
+  <block id="be8545ae7ab0276e15898aae7acfbd7a" category="cell">Recurso</block>
+  <block id="253b40ae359ba25b56231803430c4873" category="cell">ONTAP</block>
+  <block id="117bdbda976fe8b3212bc3b6327a0a1b" category="cell">Cloud Volumes ONTAP</block>
+  <block id="4d69d42719426a48d653efcd0d9add65" category="cell">Volumen de máquina virtual de almacenamiento agregado</block>
+  <block id="342ce22b061856522db3129652a55efb" category="cell">ONTAP en las instalaciones</block>
+  <block id="7450cfde7058dc5e1f7909d0280fd7ae" category="cell">Azure NetApp Files</block>
+  <block id="bd7a9717d29c5ddcab1bc175eda1e298" category="cell">Volumen</block>
+  <block id="808c50beba133531e42fe04b9b13b86d" category="cell">Servicio de NetApp</block>
+  <block id="d8e87c0927539672f54462c837be0b7f" category="cell">Sincr</block>
+  <block id="fbc97786af4bf30dc5b07809a950792c" category="cell">Relación</block>
+  <block id="4847e034bb0a55fcbc8a3380d6a3ab80" category="cell">AWS</block>
+  <block id="81b22456f78954c460ce2f531b5e048f" category="cell">EC2</block>
+  <block id="44418c8dd436ba2904b49d544d4c90b8" category="cell">VPC del volumen de subred del grupo de seguridad de instancias</block>
+  <block id="3a580f142203677f1f0bc30898f63f53" category="cell">Azure</block>
+  <block id="a623a8d0366bf079411aa30be45b2d10" category="cell">Informática</block>
+  <block id="0f8732d258fffa0be0320d1a4e5bdccb" category="cell">Máquina virtual de instantánea</block>
+  <block id="eec89088ee408b80387155272b113256" category="cell">Red</block>
+  <block id="6c096562a66b477196cc713915b16952" category="cell">Red virtual de grupo de seguridad</block>
+  <block id="dd23acac46f17cbfd4d5541f8ee3c7a1" category="cell">Grupo de recursos</block>
+  <block id="8c4aa541ee911e8d80451ef8cc304806" category="cell">Reducida</block>
+  <block id="add55592acf21be3b81edc0cbd46b3c5" category="cell">Cuenta de almacenamiento</block>
+  <block id="c731f72e1d22a7c5e01a7cb789a8885e" category="cell">GCP</block>
+  <block id="d9a17c1c9e8ef6866e4dbeef41c741b2" category="cell">Instancia</block>
+  <block id="30edf70db68aa84f05d3e72326807b0c" category="cell">Cucharón</block>
+  <block id="ab2bc7358191e02d5aacdd2ddaa4233d" category="inline-link">Documentación de AWS: Etiquetado de los recursos de Amazon EC2</block>
+  <block id="aa00eddbc27bae0a6cb4210ab565c4df" category="paragraph">Para obtener información acerca de las etiquetas de AWS EC2, consulte<block ref="9bd250e03cdf80384a24635f16673602" category="inline-link-rx"></block>.</block>
+  <block id="d25af39a1cc1d41b4b78226055c6969d" category="inline-link">Documentación de Azure: Etiquetado de los recursos de Azure</block>
+  <block id="cd3891a596fb71f2018f9febccdc9311" category="paragraph">Para obtener más información acerca de las etiquetas de Azure, consulte<block ref="132818a7eea2f1dd8c5e1c57244359ed" category="inline-link-rx"></block>.</block>
+  <block id="044bd5bc02d27eb17ed3cc5a11be4f3b" category="inline-link">Documentación de Google Cloud: Etiquetado de los recursos de Google Cloud</block>
+  <block id="3b0992b7e8536fc1e15651502081b6e6" category="paragraph">Para obtener más información acerca de las etiquetas de Google, consulte<block ref="5b102b4e66babd115f4b84c9458d0cfc" category="inline-link-rx"></block>.</block>
+  <block id="ee68e5b99222bbc29a480fcb0d1d6ee2" category="section-title">Requisitos previos</block>
+  <block id="2e555eb89efbc4fa0651bd1f644cf78e" category="section-title">Compruebe sus permisos de AWS Connector</block>
+  <block id="d912e080eacd169b9c6ec8ad804b0fe2" category="paragraph">Si creó el conector con BlueXP versión 3.9.10 o superior, entonces está todo listo. Si creó el conector con una versión anterior de BlueXP, tendrá que añadir algunos permisos necesarios para el rol IAM de BlueXP para etiquetar las instancias de AWS EC2:</block>
+  <block id="f684df81e4cb924eb887af3d63731c28" category="section-title">Compruebe sus permisos de Azure Connector</block>
+  <block id="61e852c379d0f3c7c2f47bcd0152539d" category="paragraph">Si creó el conector con BlueXP versión 3.9.10 o superior, entonces está todo listo. Si creó el conector con una versión anterior de BlueXP, tendrá que añadir algunos permisos necesarios para el rol IAM de operador de BlueXP para etiquetar los recursos de Azure:</block>
+  <block id="2a6cf45576e45e1753cb8e4a3218f9bf" category="section-title">Reglas y restricciones de las etiquetas</block>
+  <block id="310e25dd524b7da8c8ff6eb8edf50e5f" category="paragraph">Las siguientes reglas se aplican al crear claves de etiqueta y valores de etiqueta:</block>
+  <block id="47c6baf2a93fb70987f8d50230d68450" category="list-text">Longitud máxima de la clave: 128 caracteres</block>
+  <block id="00b61ace6d8de8337a462fc4b2ca3c47" category="list-text">Longitud máxima del valor de clave: 256 caracteres</block>
+  <block id="ccf8bf5880815b88f3f09c36d316225e" category="list-text">Caracteres válidos de etiqueta y etiqueta: Letras, números, espacios y caracteres especiales (_, @, &amp;, *, etc.)</block>
+  <block id="451514576a381fcadab95c07d22ca563" category="list-text">Las etiquetas distinguen mayúsculas de minúsculas/minúsculas.</block>
+  <block id="392a91200b1b67f84f30feca1ddfdf35" category="list-text">Número máximo de etiquetas por recurso: 30</block>
+  <block id="377d030d59bcd66d28017369cb57f768" category="list-text">Por recurso, cada clave de etiqueta debe ser única</block>
+  <block id="ddddcee4ac303defe9ce2211f2d4acc6" category="section-title">Ejemplos de etiquetas</block>
+  <block id="897356954c2cd3d41b221e3f24f99bba" category="cell">Clave</block>
+  <block id="c82a6100dace2b41087ba6cf99a5976a" category="cell">Valores</block>
+  <block id="aa9f9a8454a370443372f6259447844e" category="cell">ENV</block>
+  <block id="0c36db035cf92c76b7ade068ae9b8d68" category="cell">prueba de producción</block>
+  <block id="269e78d1f721be5126be1f09bb4b091b" category="cell">Dept</block>
+  <block id="f6ab9ceccae969405a9121790a11420d" category="cell">ventas de finanzas eng</block>
+  <block id="b6f4a2ec6356bbd56d49f2096bf9d3d3" category="cell">Propietario</block>
+  <block id="329185ee9cca0721a94429c99d157bdf" category="cell">almacenamiento de administración</block>
+  <block id="c9df4195a305212ffd7b56d24f67129d" category="summary">NetApp ofrece soporte para BlueXP de diversas maneras. Hay disponibles amplias opciones de auto soporte gratuito las 24 horas del día, los 7 días de la semana, como artículos de la base de conocimiento (KB) y un foro de la comunidad. Su registro de soporte incluye soporte técnico remoto a través de tickets web.</block>
+  <block id="fabfc25ef8996fd90836e58a4c0b26b6" category="doc">Obtenga ayuda</block>
+  <block id="7c5661ab6b39ee901cea00a6e7020a49" category="paragraph">NetApp ofrece soporte para BlueXP y sus servicios cloud de diversas maneras. Hay disponibles amplias opciones de auto soporte gratuito las 24 horas del día, los 7 días de la semana, como artículos de la base de conocimiento (KB) y un foro de la comunidad. Su registro de soporte incluye soporte técnico remoto a través de tickets web.</block>
+  <block id="07d41912a6ab6b97216f8cf89e93205c" category="section-title">Autoasistencia</block>
+  <block id="5e4b821a1a82558dead1ef6961e90666" category="paragraph">Estas opciones están disponibles de forma gratuita, las 24 horas del día, los 7 días de la semana:</block>
+  <block id="19111351b69b6b15668130b38b7f6038" category="inline-link">Base de conocimientos</block>
+  <block id="fd6bb4fa1ad0caeedd6782d92cc54ea3" category="list-text"><block ref="fd6bb4fa1ad0caeedd6782d92cc54ea3" category="inline-link-rx"></block></block>
+  <block id="9a3db1abe5491d0eb9bb5d125981356c" category="paragraph">Busque en la base de conocimientos de BlueXP para encontrar artículos útiles para resolver problemas.</block>
+  <block id="14526abd8bda5af347775025cd5342cf" category="inline-link">Comunidades</block>
+  <block id="410fdb9caa9c64da2ff3f88f4836960d" category="list-text"><block ref="410fdb9caa9c64da2ff3f88f4836960d" category="inline-link-rx"></block></block>
+  <block id="00c5fef3bb9d593ae96bf5d2ee60354a" category="paragraph">Únase a la comunidad de BlueXP para seguir los debates en curso o crear otros nuevos.</block>
+  <block id="5b6cf869265c13af8566f192b4ab3d2a" category="list-text">Documentación</block>
+  <block id="a4a6c2ea0078252eac2d74ef3e6c917c" category="paragraph">La documentación de BlueXP que está viendo actualmente.</block>
+  <block id="80b1b0d2b1ebf2b3cba2d25759801afd" category="list-text">Correo:ng-cloudmanager-feedback@netapp.com[correo electrónico de comentarios]</block>
+  <block id="6702efec14563f45f1ee2f8c613b8ad8" category="paragraph">Apreciamos sus opiniones. Envíe sus comentarios para ayudarnos a mejorar BlueXP.</block>
+  <block id="0659d428df833a806e29e65e632d380a" category="section-title">Soporte de NetApp</block>
+  <block id="82812db645b6ff5e9c2a24ddfb66c8d6" category="paragraph">Además de las opciones de autosoporte anteriores, puede trabajar con un especialista de soporte de NetApp para resolver cualquier problema después de activar el soporte de.</block>
+  <block id="8fece025a1a8fef7018449bf104a2527" category="paragraph-title">Antes de empezar</block>
+  <block id="e2a733504c4088b809813bbb35a3ddfd" category="inline-link-macro">Aprenda a registrarse para obtener soporte</block>
+  <block id="1012a287397c66025d7748edf06a36e2" category="paragraph">Para utilizar la capacidad *Crear un caso*, primero debe realizar un registro único del número de serie de su ID de cuenta de BlueXP (p. ej. 960xxxx) con NetApp. <block ref="3349e4b3d05f646f2f1421bee7c2ad26" category="inline-link-macro-rx"></block>.</block>
+  <block id="f3a29486bed19a90f2da6d007818b427" category="list-title">Pasos</block>
+  <block id="6254a4afeeb76765a127fe74d31c1b3d" category="list-text">En BlueXP, haga clic en *Ayuda &gt; Soporte*.</block>
+  <block id="f5052c65917d7341726235d4d4941461" category="list-text">Seleccione una de las opciones disponibles en Soporte técnico:</block>
+  <block id="383133cb6f7207b1c65c3ace94aa5e95" category="list-text">Haga clic en *Llame a nosotros* si desea hablar con alguien en el teléfono. Se le dirigirá a una página de netapp.com que enumera los números de teléfono a los que puede llamar.</block>
+  <block id="bf5bc6ab0f95f17f4e98c9d766b8c11d" category="list-text">Haga clic en *Crear un caso* para abrir una incidencia con los especialistas de soporte de NetApp:</block>
+  <block id="b53e0a259f4a0c8e7da80d6c94e26c84" category="list-text">*Cuenta del sitio de soporte de NetApp*: Seleccione la cuenta de NSS correspondiente asociada con la persona que abre el caso de soporte. Esta persona será el contacto principal con NetApp para contactar con ella, además de los correos electrónicos adicionales que se proporcionan a continuación.</block>
+  <block id="d950fb930d7f7e6bfdda1b91b4639a02" category="paragraph">Si no ve su cuenta NSS, puede ir a la pestaña *NSS Management* de la sección Soporte de BlueXP para agregarla allí.</block>
+  <block id="d63bf50426f4c712554faec55b30c548" category="list-text">*Servicio*: Seleccione el servicio con el que está asociado el problema. Por ejemplo, cuando BlueXP es específico de un problema de soporte técnico con flujos de trabajo o funcionalidades dentro del servicio.</block>
+  <block id="2e50c5f85523f0aba9ff2db10f18279c" category="list-text">*Entorno de trabajo*: Si se aplica al almacenamiento, seleccione *Cloud Volumes ONTAP* o *On-Prem* y, a continuación, el entorno de trabajo asociado.</block>
+  <block id="aa996e20900197b0ea41485ada083d8c" category="paragraph">La lista de entornos de trabajo se encuentra dentro del ámbito de la cuenta BlueXP, el área de trabajo y el conector que ha seleccionado en el banner superior del servicio.</block>
+  <block id="e6f29fb3c7636dc0040600dd0e84bb79" category="list-text">*Prioridad de caso*: Elija la prioridad para el caso, que puede ser Baja, Media, Alta o crítica.</block>
+  <block id="835eb4008e97c2a7f69bbb2725285e34" category="paragraph">Para obtener más información sobre estas prioridades, pase el ratón sobre el icono de información situado junto al nombre del campo.</block>
+  <block id="0f7d9319c95a8be1492e74601c4b3259" category="list-text">*Descripción del problema*: Proporcione una descripción detallada del problema, incluidos los mensajes de error aplicables o los pasos de solución de problemas que haya realizado.</block>
+  <block id="002c6f26fb01affb37b8cf3cef7a1fb0" category="list-text">*Direcciones de correo electrónico adicionales*: Introduzca direcciones de correo electrónico adicionales si desea que alguien más conozca este problema.</block>
+  <block id="baaf0e61add7d12cf8d12e023d5aef18" category="inline-image-macro">Captura de pantalla del formulario Crear un caso que le permite crear un caso con el soporte de NetApp.</block>
+  <block id="a2ff30886e1baf1e7d5045b5fc24f5b9" category="paragraph"><block ref="a2ff30886e1baf1e7d5045b5fc24f5b9" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="bd965e38a0c9cf27aa1bde099308e23f" category="paragraph-title">Después de terminar</block>
+  <block id="18f487556417bb6d9721a7005ae097c9" category="paragraph">Aparecerá una ventana emergente con el número de caso de soporte. Un especialista de soporte de NetApp revisará su caso y le pondrá en contacto con usted próximamente.</block>
+  <block id="04e15da1deae9568b4dcda64fbb0c8d5" category="paragraph">Para obtener un historial de sus casos de soporte, puede hacer clic en *Configuración &gt; línea de tiempo* y buscar acciones denominadas "Crear caso de soporte". Un botón situado en el extremo derecho le permite ampliar la acción para ver los detalles.</block>
+  <block id="5c56753585e89a84941bb3a78bc681af" category="paragraph">Es posible que se encuentre el siguiente mensaje de error al intentar crear un caso:</block>
+  <block id="a30f69ab0ec85d427a3e8835713525bd" category="paragraph">"No está autorizado a crear un caso en el servicio seleccionado"</block>
+  <block id="fa6b601b2fb4e3e5c7b466ecb8bd70ac" category="paragraph">Este error podría significar que la cuenta NSS y la compañía de registro con la que está asociada no es la misma compañía de registro para el número de serie de la cuenta de BlueXP (es decir, 960xxxx) o el número de serie del entorno de trabajo. Puede consultar su lista de cuentas NSS en la parte superior del formulario *Crear un caso* para encontrar la coincidencia correcta, o puede buscar ayuda mediante una de las siguientes opciones:</block>
+  <block id="e01df0b4dfd95eba2c59333419e4fac6" category="list-text">Usar el chat en el producto</block>
+  <block id="639be990cfca56ab4b63685d8bacd437" category="list-text">Envíe un caso no técnico en<block ref="2298f47e4dad19a3156da7ce6116d9b1" category="inline-link-rx"></block></block>
+  <block id="6d28d54ad9c4f6685bb752801088510b" category="summary">Puede ver, agregar, modificar y eliminar las etiquetas asignadas a sus recursos existentes mediante el servicio de etiquetado BlueXP. Esto le permite organizar y simplificar la gestión de sus recursos.</block>
+  <block id="9b07b7a435eb3748887ec84eac33cf64" category="doc">Gestione etiquetas para sus recursos</block>
+  <block id="f02ce38105e0bd4e1492a696a42fc111" category="section-title">Busque recursos que tengan ciertas etiquetas</block>
+  <block id="572b98a402ed12dbaca0370b0814a61c" category="paragraph">Si desea ver todos los recursos que tienen una determinada etiqueta, o un determinado valor de etiqueta y clave de etiqueta, puede buscar esas etiquetas. Puede buscar entre todos los recursos o solo dentro de determinadas categorías de recursos.</block>
+  <block id="10b56653c6ddbf81d7d4419364238254" category="list-text">Seleccione *Estado &gt; resolución* y haga clic en la ficha *Etiquetas*.</block>
+  <block id="8a4ccdfb1d164c3e3a6da2758ea59afa" category="list-text">Si es necesario, elija las credenciales de un proveedor de cloud específico en el campo *Seleccionar credenciales*.</block>
+  <block id="f58ddfd9537b922f14de15f169e66a44" category="list-text">En el campo _Resource Type_, seleccione el recurso, por ejemplo, *ONTAP:CVO:VOLUME* para buscar en todos los volúmenes de Cloud Volumes ONTAP.</block>
+  <block id="55048905cb51ad2998c06b578a1e485e" category="list-text">En el campo _Tag Key_, seleccione la etiqueta, por ejemplo, *Env* para restringir la búsqueda a volúmenes con la etiqueta "Env".</block>
+  <block id="57adb397c0fe3b63204853bc9186e49e" category="list-text">En el campo _Tag Value_, seleccione el valor clave, por ejemplo, *producción* para restringir la búsqueda a volúmenes con el nombre de etiqueta "Env" y el valor de etiqueta "Production".</block>
+  <block id="6b02683fa96542dc90cc0d413eec17d1" category="inline-image-macro">Captura de pantalla de la selección de un único conjunto de criterios de búsqueda para devolver un recurso con una clave de etiqueta específica y un valor de etiqueta.</block>
+  <block id="901753ca5c92cd91b11940a9fac8569a" category="paragraph"><block ref="901753ca5c92cd91b11940a9fac8569a" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="03e94c53a1f4fdaa62202db4528531d6" category="list-text">Haga clic en la <block ref="3fd7363714f2e2423924118bfd6b7147" category="inline-image-macro-rx" type="image"></block> Para agregar estos criterios de búsqueda al área Buscar.</block>
+  <block id="f0586e3a2b694cbeec93e35dd7f9e28e" category="inline-image-macro">Captura de pantalla de los criterios de búsqueda de etiquetas añadidos a la línea de búsqueda.</block>
+  <block id="05f475f79d5cf10dced9154d17d0b41c" category="paragraph"><block ref="05f475f79d5cf10dced9154d17d0b41c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="604b0f66d5091b97f5e89f0d8da1d314" category="list-text">Si ha finalizado la búsqueda, haga clic en *Buscar* y los resultados de la búsqueda aparecerán en la sección Recursos.</block>
+  <block id="88248f0ac65beba333e31aa507b13202" category="inline-image-macro">Captura de pantalla de los resultados de los recursos que cumplen los criterios de búsqueda de etiquetas.</block>
+  <block id="3e5ec3afb8a45d440659ebaabc265963" category="paragraph"><block ref="3e5ec3afb8a45d440659ebaabc265963" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="fb5a5dce727f3d71f986467d11667dcb" category="paragraph">Si desea agregar criterios de búsqueda adicionales, vuelva a seguir los pasos del 3 al 6 y, a continuación, haga clic en *Buscar*.</block>
+  <block id="a6e513182fed1ef73b8c8b9327893161" category="section-title">Reglas de búsqueda</block>
+  <block id="b01996a98368a45c3a5d4d8738338eae" category="paragraph">Al definir la búsqueda, se aplican las siguientes reglas:</block>
+  <block id="c3bdabf571c3082715580eb6be3e2ca2" category="list-text">Después de elegir un tipo de recurso, puede dejar vacíos los campos clave de etiqueta y valor de etiqueta si desea mostrar todos los recursos que tienen cualquier clave y cualquier valor de clave.</block>
+  <block id="f9b300b7e39032247e57d7ad64986d1d" category="list-text">Puede elegir una sola búsqueda o definir varias búsquedas para afinar los resultados en la sección recurso.</block>
+  <block id="659ca7552f6a8fe6a78aea2256b3c46f" category="list-text">Al definir varios conjuntos de criterios de búsqueda:</block>
+  <block id="1545b6e4202e3be562a850752e48b452" category="list-text">Si los criterios de dos búsquedas son para tipos de recursos diferentes, se trata como una operación "O" y el resultado muestra los recursos de ambas búsquedas. Por ejemplo, la siguiente búsqueda devuelve todos los volúmenes Azure NetApp Files que tienen el valor de etiqueta "Environment:demo" y todos los volúmenes Cloud Volumes ONTAP que tienen el valor de etiqueta "Environment:demo".</block>
+  <block id="9213e2140560ed1d8608498467b31c23" category="paragraph"><block ref="9213e2140560ed1d8608498467b31c23" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="bbaf8508cb8ab19b7d4c993760f453ae" category="list-text">Si los criterios para dos búsquedas son para el mismo tipo de recurso, entonces se trata como una operación "Y" y el resultado sólo muestra los recursos que coinciden *ambas* búsquedas. Por ejemplo, la siguiente búsqueda devuelve volúmenes Azure NetApp Files que tienen el valor de etiqueta "entorno:demostración" y el valor de etiqueta "Grupo:Finanzas".</block>
+  <block id="8ae0853ee1ff58fc47451430f34aa261" category="paragraph"><block ref="8ae0853ee1ff58fc47451430f34aa261" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="1e76587827a2c444b42731f500f5f7b9" category="list-text">Si ha definido varios criterios de búsqueda y, a continuación, decide eliminar uno, simplemente haga clic en el <block ref="45d4efe5d85352e2c35a12e8ace91564" category="inline-image-macro-rx" type="image"></block> Para eliminarlo del área de búsqueda.</block>
+  <block id="79eb09e7fc546bf99c72cd7650e9fbb4" category="section-title">Agregue etiquetas a los recursos existentes</block>
+  <block id="3e44cde650bf6f59b09127a99de693cc" category="paragraph">Puede aplicar etiquetas a un único recurso o a varios recursos. Los recursos podrían tener etiquetas existentes o no tener etiquetas actuales.</block>
+  <block id="4b6fca08a3864d4de4c51a0388dbf758" category="inline-link-macro">Consulte la lista de recursos que puede etiquetar en este momento.</block>
+  <block id="77d77a7d08e31270683303811b271c71" category="paragraph"><block ref="77d77a7d08e31270683303811b271c71" category="inline-link-macro-rx"></block></block>
+  <block id="0625a37343409c38dad5c4f59fbd1548" category="list-text">En la ficha *Etiquetas*, cree sus criterios de búsqueda y haga clic en *Buscar*.</block>
+  <block id="073ac7d814e9437e4970cec883c2f383" category="list-text">Seleccione el recurso o los recursos que desee etiquetar.</block>
+  <block id="527c3932c7cf0390db001df885ea8f28" category="list-text">Para seleccionar todos los recursos de la página, active la casilla de la fila de título (<block ref="b0be32365b13649b2a4ad63a5c5db9d7" category="inline-image-macro-rx" type="image"></block>).</block>
+  <block id="af03b66389cfbec8c481c73a89728046" category="list-text">Para seleccionar varios recursos, marque la casilla de cada recurso (<block ref="f3b0afa317fb06ade03449dd632d08e0" category="inline-image-macro-rx" type="image"></block>).</block>
+  <block id="daa7684c9693e9b5412a05c7d060a1ef" category="inline-image-macro">botón más</block>
+  <block id="cb5c297ef8dc3fe424475fa62b79e3e8" category="list-text">Para seleccionar un solo recurso, haga clic en la <block ref="e7e0e095d9ce72479b1102c3b9ff5a5b" category="inline-image-macro-rx" type="image"></block> icono para el recurso.</block>
+  <block id="cff1dfada6d6b7b98fd30ee02a0d1db9" category="inline-image-macro">Captura de pantalla que muestra cómo seleccionar un solo recurso, varios recursos o todos los recursos.</block>
+  <block id="b57ec2fd08f04b37b6a4067b53b493c2" category="paragraph"><block ref="b57ec2fd08f04b37b6a4067b53b493c2" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="953499073a80db33d37fc0e65d574cd3" category="list-text">Haga clic en *Administrar etiquetas* y aparecerá el cuadro de diálogo _Resource Tags_. Aparecerá cualquier etiqueta existente en este cuadro de diálogo.</block>
+  <block id="6628e1b5975a42c2be2ff5186caf860c" category="inline-image-macro">Captura de pantalla que muestra el cuadro de diálogo de etiquetas de recursos en el que puede ver las etiquetas asignadas actualmente y agregar nuevas etiquetas.</block>
+  <block id="9a25b58325689888cd22d9f62778dd88" category="paragraph"><block ref="9a25b58325689888cd22d9f62778dd88" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="1fb12afa3bbd8081db730626d9cf128e" category="list-text">Haga clic en *Agregar nueva etiqueta* y aparecerá una fila en blanco clave de etiqueta y valor de etiqueta en el cuadro de diálogo.</block>
+  <block id="c69b390a7a1622a148e2febd4ca307bf" category="list-text">Introduzca la clave de etiqueta y el valor de la etiqueta. Agregue más etiquetas en este momento si desea más etiquetas en este recurso y, a continuación, haga clic en *revisar y aplicar*.</block>
+  <block id="fb8530a1e792fa11ae22927c4489794a" category="list-text">Si los cambios parecen correctos en la página _revisando_, haga clic en *Guardar* y la nueva etiqueta se agregará al recurso o a todos los recursos seleccionados.</block>
+  <block id="55b2371e859e7dd661d62883c0e93f48" category="section-title">Cambiar los valores de etiqueta de un recurso</block>
+  <block id="8500d002f3036b9ac76b10f3975fa5b6" category="paragraph">Puede cambiar las etiquetas que están asignadas a los recursos y puede cambiar el valor de etiqueta que se aplica a una etiqueta existente.</block>
+  <block id="c6d44c78dac6303ee6c3d0525ffa451c" category="list-text">Seleccione el recurso o los recursos con los que desea cambiar las etiquetas.</block>
+  <block id="96be093270f8207adaa28aaa45ee837b" category="list-text">Haga clic en *Administrar etiquetas* y aparecerá el cuadro de diálogo _Resource Tags_.</block>
+  <block id="1400af94919e7ee1a09ca726e8b85d80" category="inline-image-macro">Captura de pantalla que muestra cómo modificar una etiqueta de un recurso o de varios recursos.</block>
+  <block id="ad331f4f30c579537be3c11e0e0dc081" category="paragraph"><block ref="ad331f4f30c579537be3c11e0e0dc081" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="ac9723812108c87763a081c3ff4f1c08" category="list-text">Introduzca un nuevo valor para el valor de la etiqueta y haga clic en *revisar y aplicar*.</block>
+  <block id="4cb2f4e76ebfa58ef36c58684a15abd0" category="list-text">Si el cambio parece correcto en la página _revisando_, haga clic en *Guardar* y el valor de la etiqueta cambiará para el recurso o para todos los recursos seleccionados.</block>
+  <block id="06b4175113796fd327444f906e00e5b0" category="section-title">Eliminar etiquetas de los recursos</block>
+  <block id="a3b429240e21705b5497678d9a1a450d" category="paragraph">Puede eliminar un par de clave/valor de etiqueta de un solo recurso o de varios recursos.</block>
+  <block id="442b989d73b53c1398a30d27048bd411" category="list-text">Seleccione el recurso o los recursos del que desea quitar etiquetas.</block>
+  <block id="25aa36d137bcf84c1df93b9abee71af1" category="inline-image-macro">Captura de pantalla que muestra cómo eliminar una etiqueta de un recurso o varios recursos.</block>
+  <block id="01c2aeb5ca936bbe9aa0ad9699706a64" category="paragraph"><block ref="01c2aeb5ca936bbe9aa0ad9699706a64" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c2b9a18179af322bffbbd1fc093f0e6a" category="list-text">Haga clic en la <block ref="ccf4df3a8e9a80d7b6ff904049041296" category="inline-image-macro-rx" type="image"></block> Para el par clave/valor de etiqueta que desea eliminar y la fila se elimina y, a continuación, haga clic en *revisar y aplicar*.</block>
+  <block id="6f195138d995bb3980eb20df6cd6b372" category="list-text">Si el cambio parece correcto en la página _Repasando_, haga clic en *Guardar* y el par clave/valor de etiqueta se eliminará del recurso o de todos los recursos seleccionados.</block>
+  <block id="30d965eef5ba25c6b9998ae38270b43e" category="doc">Avisos legales</block>
+  <block id="e9c44bbfd795a5d63d74c6a77afee70d" category="paragraph">Los avisos legales proporcionan acceso a las declaraciones de copyright, marcas comerciales, patentes y mucho más.</block>
+  <block id="6016a2b341113bf496b719905398ecd2" category="section-title">Derechos de autor</block>
+  <block id="09e95b77ffe81fe465a83ba99efad5c8" category="paragraph"><block ref="09e95b77ffe81fe465a83ba99efad5c8" category="inline-link-rx"></block></block>
+  <block id="126a02652da6de02962cf1b654fd6376" category="section-title">Marcas comerciales</block>
+  <block id="c4ce4761e466527d26b3e3d5ed1006fd" category="paragraph">NETAPP, el logotipo de NETAPP y las marcas enumeradas en la página de marcas comerciales de NetApp son marcas comerciales de NetApp, Inc. Los demás nombres de empresas y productos son marcas comerciales de sus respectivos propietarios.</block>
+  <block id="7aa531e9acfe2b98e34d2c92fe9846ff" category="paragraph"><block ref="7aa531e9acfe2b98e34d2c92fe9846ff" category="inline-link-rx"></block></block>
+  <block id="be89498d2f8a22ce47c02ba9795fe2af" category="section-title">Estadounidenses</block>
+  <block id="d0b19d36be2c5f16e9aef46c8a452d3d" category="paragraph">Puede encontrar una lista actual de las patentes propiedad de NetApp en:</block>
+  <block id="d7f1fbcf9ce4e42f705add574d262b2c" category="paragraph"><block ref="d7f1fbcf9ce4e42f705add574d262b2c" category="inline-link-rx"></block></block>
+  <block id="56c34c6410dd45c5cec44149ad0ce037" category="section-title">Política de privacidad</block>
+  <block id="fc248f74f5e36542f7f5627b8610e9a3" category="paragraph"><block ref="fc248f74f5e36542f7f5627b8610e9a3" category="inline-link-rx"></block></block>
+  <block id="c0227cef6f07a8cd2ac72f2945b031aa" category="section-title">Código abierto</block>
+  <block id="9b73989307c1975dfa4d5e1581e4afe8" category="paragraph">Los archivos de notificación proporcionan información sobre los derechos de autor y las licencias de terceros que se utilizan en software de NetApp.</block>
+  <block id="c95623cd0395d5a6bb6105b9d32f197b" category="inline-link">Aviso para BlueXP</block>
+  <block id="e8a6d0f19a957eac14b9917a6c92899b" category="list-text"><block ref="e8a6d0f19a957eac14b9917a6c92899b" category="inline-link-rx"></block></block>
+  <block id="6fab7ff15514de4d3ca2883bd502b6e7" category="inline-link-macro">Aviso para AppTemplate</block>
+  <block id="775a83959890feedd00e6dc592c3e60f" category="list-text"><block ref="775a83959890feedd00e6dc592c3e60f" category="inline-link-macro-rx"></block></block>
+  <block id="f56a22734fbef43dcef97b492e9cd352" category="summary">Existen ciertas características que se pueden utilizar al crear una plantilla que le permiten pasar valores entre acciones (como un nombre de volumen), bifurcación condicional para conectar acciones entre sí (habilitar copias de seguridad en un volumen nuevo) y que ayudan a los usuarios a personalizar los recursos cuando utilizan la plantilla.</block>
+  <block id="889ecb758e53f24c9efd4553bc09c14a" category="doc">Bloques de creación de plantillas</block>
+  <block id="4312f94678a5f3a99677eff317710d96" category="section-title">Controles de plantilla especiales</block>
+  <block id="d5e78bfdae44e43da50bb405d5cd401f" category="paragraph">Antes de empezar a crear la plantilla, debe comprender algunas opciones especiales que puede establecer al rellenar previamente un valor para un parámetro en una plantilla.</block>
+  <block id="f7951f72b872a8abe85b8d46142331e7" category="inline-image-macro">Captura de pantalla de las opciones editables y de deriva que se pueden establecer para los valores de parámetro.</block>
+  <block id="f20206d79ec146d281beed50d8e29708" category="paragraph"><block ref="f20206d79ec146d281beed50d8e29708" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="92c1f46b9da02a5d7bbcff6543bd9588" category="section-title">Casilla editable</block>
+  <block id="3f8e4e6365aa394b3479fdef75fe9f72" category="paragraph">Marque esta casilla para permitir que el administrador de almacenamiento anule el valor rellenado previamente que ha introducido en la plantilla. De este modo, se ofrece al administrador de almacenamiento una sugerencia sobre qué valor debería tener, pero se le permite personalizar el valor de la creación del recurso.</block>
+  <block id="c1740fe5b39f93f6c892f09718e037b2" category="paragraph">Si no está marcada, el usuario no puede cambiar el valor y el valor codificado en la plantilla siempre se utiliza cuando el administrador implementa un recurso.</block>
+  <block id="c476134c72fb48531290a4040a823edc" category="section-title">Casilla de verificación deriva</block>
+  <block id="d2d3ce785dba13fa31c8dfdc4f170942" category="paragraph">Marque esta casilla para que BlueXP supervise el valor codificado para un parámetro cuando se crea un recurso con la plantilla. Más adelante, puede ejecutar un informe de desviación para ver qué campos configurados con deriva ya no son compatibles con los ajustes de plantilla.</block>
+  <block id="b24825d81b9d78c2ec0b3766ce0f0e29" category="paragraph">Si no está marcada, el usuario puede cambiar el valor a cualquier valor después de que se haya creado el recurso.</block>
+  <block id="dc61d8962272ba87fc289d3611028a92" category="admonition">Para que la operación de deriva funcione, después de haber definido la deriva para algunos parámetros de la plantilla, debe habilitar la operación de deriva para la plantilla. Este es el último paso al crear una plantilla. Drift no funciona si está activado para un parámetro pero no se ha activado en la plantilla.</block>
+  <block id="14425fa948dd33c64b1ac596d827664d" category="section-title">Uso de una expresión regular (regex) en los campos</block>
+  <block id="789deba0d8cee492441e0edbdd3b1443" category="paragraph">Hay algunos campos dentro de las plantillas que le permiten introducir un regex para definir el valor que el administrador puede introducir en el campo; por ejemplo, "Nombre de volumen" y "Nombre de recurso compartido".</block>
+  <block id="92d0236acb01b23304b36e13b20df879" category="inline-image-macro">Captura de pantalla de uso de un regex para definir los valores permitidos para un nombre de volumen.</block>
+  <block id="8618076424bfb56bff4b8d378642afb7" category="paragraph"><block ref="8618076424bfb56bff4b8d378642afb7" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="bd79c94f5c040103b6ee92a27142a209" category="paragraph">Por ejemplo, si introduce "[a-za-Z][0-9a-za-Z_]{0,149}$" como regex del nombre del volumen, significa que "_el nombre debe comenzar con un carácter alfabético, puede contener solo números, letras o el guión bajo, y debería tener 150 caracteres o menos de longitud_".</block>
+  <block id="d9b7b2a8c18514b566365444476ee67b" category="section-title">Pasar valores entre acciones de plantilla</block>
+  <block id="49c2ea485e68d2177e58bb2d451473c8" category="paragraph">Las plantillas tienen la capacidad de utilizar información de una acción anterior para rellenar un campo en una acción futura. Por ejemplo, al definir el nombre del volumen que tendrá activada la funcionalidad de copia de seguridad en la nube, puede indicar a la acción copia de seguridad que utilice el valor que el administrador de almacenamiento introdujo como nombre del volumen desde la acción Crear Cloud Volumes ONTAP.</block>
+  <block id="317d9ac287a0bb30f0b154a9372237b4" category="paragraph">Hay tres tipos de información que el servicio AppTemplate puede utilizar:</block>
+  <block id="79bc4a04a5f308a67f608558bf0e314a" category="list-text">Valor de entrada: Es el valor real que el administrador de almacenamiento introdujo en un campo en una acción de plantilla anterior.</block>
+  <block id="362fe13e1711f8ee61db2bea123b8a0d" category="list-text">Valor de salida: Es el valor que genera BlueXP después de crear un recurso a partir de una acción de plantilla anterior.</block>
+  <block id="cb1be534cc7a13fb27acf340f07c83b6" category="list-text">Introduzca su propio valor: Éste es un valor que se introduce; no se accede a él desde una acción anterior de la plantilla.</block>
+  <block id="1faebed438b9f49efa46643ad9907fb7" category="paragraph">Por ejemplo, para permitir el análisis de cumplimiento de normativas en un volumen, el servicio Cloud Data Sense necesita tanto el "nombre del volumen" que introduce el administrador de almacenamiento (el valor de entrada) como el "UUID de volumen" que genera BlueXP cuando crea el volumen (el valor de salida).</block>
+  <block id="536e2c2dd1b0f2e4362deffc386760c4" category="paragraph">En la siguiente ilustración, se muestra cómo introducir esta información en la sección Cloud Data Sense action de la plantilla.</block>
+  <block id="a4d99746ded90308d15ecf5dc8850229" category="inline-image-macro">Una ilustración que muestra cómo utilizar un valor introducido en una acción anterior para rellenar un campo en otra acción.</block>
+  <block id="eefa405d25c68122a3d10c7be99b3fed" category="paragraph"><block ref="eefa405d25c68122a3d10c7be99b3fed" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="1e7ffb254a56e57a7a94185e202f98b7" category="section-title">Utilice condiciones para realizar diferentes acciones basadas en sentencias lógicas</block>
+  <block id="933e850f0252230afcc3081c478f82cb" category="paragraph">Las condiciones indican a la plantilla que ejecute diferentes acciones en función de si la condición es verdadera o falsa cuando el administrador de almacenamiento ejecuta la plantilla. Para agregar una condición, seleccione la acción *If. Lógico*:</block>
+  <block id="80f465f960c99f0bf9c9dda68bd2ff80" category="inline-image-macro">Captura de pantalla de cómo agregar sentencias condicionales en las plantillas.</block>
+  <block id="2f732de965d52c1cf23ba8cc9dbdc7b1" category="paragraph"><block ref="2f732de965d52c1cf23ba8cc9dbdc7b1" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="e7972af994bafc7ee1059b02b60c648d" category="paragraph">Por ejemplo, se puede presentar una guía que indica que, si un volumen tiene una capacidad superior a 50 GB, se debe habilitar Cloud Backup en ese volumen. Si el volumen tiene una capacidad menor, Cloud Backup no está habilitado. Puede implementarla en la plantilla, tal y como se muestra a continuación.</block>
+  <block id="af1dd10b1395740a8581cea239cb13fc" category="inline-image-macro">Captura de pantalla que muestra cómo se pueden utilizar las condiciones en la plantilla para habilitar Cloud Backup de forma condicional.</block>
+  <block id="81943cf2af4bc753aa5e517503f627e6" category="paragraph"><block ref="81943cf2af4bc753aa5e517503f627e6" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d94635611474af73ec85b190b28449bd" category="paragraph">Las condiciones constan de dos partes:</block>
+  <block id="01928da743a4e955b96a5b859c5f4bc4" category="list-text">Reglas: El elemento que está comprobando si es verdadero o falso.</block>
+  <block id="07876d2610f838d9cb19ae7aeadd98be" category="list-text">Y/o instrucción: Permite utilizar varias reglas para afinar aún más si se agregan acciones adicionales.</block>
+  <block id="c962626fb4ad9b65cc3a4217695f094c" category="paragraph">Una Regla consta de tres partes:</block>
+  <block id="7960c7072233e2369dad8e54b3c23d04" category="paragraph">*Campo de origen*: La ubicación desde la que se obtiene el valor para comparar.</block>
+  <block id="46b1885cab50ba7f852ee7e4296586b1" category="list-text">Obtener valor de entrada de la acción: El valor real que el administrador de almacenamiento introdujo en un campo de una acción anterior de la plantilla.</block>
+  <block id="57b9871adc92cb08516da8d18bf96f74" category="list-text">Obtener valor de salida de la acción: El valor generado por BlueXP después de crear un recurso a partir de una acción de plantilla anterior.</block>
+  <block id="ac2e89a4baae83530e11a9c64165f130" category="list-text">Introducir valor: Es un valor que se introduce; no se tiene acceso a él desde una acción anterior de la plantilla. Este puede ser un valor de un recurso que ya existe; por ejemplo, un volumen existente.</block>
+  <block id="f7d6dca310f4edc482b1d3bd0cdfb18f" category="paragraph">*Operador* - el operador utilizado para la comparación. Las opciones son *igual*, *no igual*, *mayor que*, *menor que*, *mayor o igual*, *menor o igual*.</block>
+  <block id="67547dca721bdbf95912a7906fe534d0" category="paragraph">*Valor de campo*: El valor real que está comparando. Las opciones son las mismas que las del campo _Source_.</block>
+  <block id="b0d1e1e2323f9c0a905de14efcf597fc" category="paragraph">Una instrucción and/or permite agregar de forma condicional más acciones para los usuarios cuando ejecutan la plantilla en función de si se evalúan varias reglas como True o False. *Y* requiere que todas las reglas sean verdaderas o falsas, y *o* requiere sólo una de las reglas necesita ser verdadera o falsa.</block>
+  <block id="ebb6a65b01a975d2a1a81fadb941a41c" category="paragraph">Cuando se usan tanto una y como una declaración con sus reglas, el proceso de evaluación sigue el orden matemático estándar donde “Y” precede a “O”. Por ejemplo:</block>
+  <block id="d53609834d8e761d8b38e21f9aa36fda" category="list-text">&lt;Rule1&gt; O &lt;Rule2&gt; Y &lt;Rule3&gt;</block>
+  <block id="313a2072e1da794cb340b46d310d902f" category="paragraph">Esta afirmación se evalúa en el siguiente orden: &lt;Rule1&gt; O (&lt;Rule2&gt; Y &lt;Rule3&gt;)</block>
+  <block id="2dd9329059e344c5425db239b998fb7b" category="summary">El servicio AppTemplate le permite estandarizar la creación de recursos para sus entornos de trabajo BlueXP.</block>
+  <block id="91ee6aa91810fc059d494948432212cc" category="doc">Documentación de AppTemplate</block>
+  <block id="1b5e9cae3a94402e9b6da6ef4080d155" category="summary">Conozca las novedades de AppTemplate y Etiquetado.</block>
+  <block id="19ec922e883af01ef71b60b0644f1764" category="doc">Novedades de AppTemplate y el etiquetado</block>
+  <block id="983a4e7f5913304ec713a249baf7be47" category="section-title">3 de marzo de 2022</block>
+  <block id="400480e0d45c783abec0a0fffbb005a6" category="section-title">Ahora puede crear una plantilla para buscar entornos de trabajo específicos</block>
+  <block id="6aa300e24ddf3ee5a99bbb1cf5bb4a72" category="inline-link">Vaya aquí para obtener más información</block>
+  <block id="d92cd2c19989d78fa305aa796b16eb3e" category="paragraph">Mediante la acción "Buscar recursos existentes" puede identificar el entorno de trabajo y, a continuación, utilizar otras acciones de plantilla, como la creación de un volumen, para realizar fácilmente acciones en entornos de trabajo existentes.<block ref="9d92075da3fbaa4669bd5d845665bbc5" category="inline-link-rx"></block>.</block>
+  <block id="411448f8702bbfa858b0a2ba2ee94014" category="section-title">Capacidad de crear un entorno de trabajo de alta disponibilidad de Cloud Volumes ONTAP en AWS</block>
+  <block id="6eed6fdcaa0bf2c22f0c8e78ff686d29" category="inline-link">Vea cómo crear una plantilla para un entorno de trabajo de Cloud Volumes ONTAP</block>
+  <block id="9f1c9f721b531a16a189c619276f3969" category="paragraph">La compatibilidad existente para crear un entorno de trabajo de Cloud Volumes ONTAP en AWS se ha ampliado para incluir la creación de un sistema de alta disponibilidad además de un sistema de un único nodo.<block ref="35471ca8d19c78b8fa96525b636e5efc" category="inline-link-rx"></block>.</block>
+  <block id="17fc50243c5a80f407e83d268bcab18e" category="section-title">9 de febrero de 2022</block>
+  <block id="f1f7e50301c1e57e30e795fa8928ee8f" category="section-title">Ahora puede crear una plantilla para buscar volúmenes existentes específicos y, a continuación, activar Cloud Backup</block>
+  <block id="98b343467576e58f6658965bc67f83c1" category="paragraph">Con la nueva acción "Find Resource" puede identificar todos los volúmenes en los que desea habilitar Cloud Backup y, a continuación, utilizar la acción Cloud Backup para habilitar el backup en esos volúmenes.</block>
+  <block id="8b4368f9c9aad8f44dd1b5ba1d4d746a" category="paragraph">Actualmente admite volúmenes en sistemas Cloud Volumes ONTAP y ONTAP en las instalaciones.<block ref="f7210026d1a7cf546c7270b9d8e104cc" category="inline-link-rx"></block>.</block>
+  <block id="784044bd2af30d58bbb0dbcea3adbad6" category="section-title">31 de octubre de 2021</block>
+  <block id="70c889b200c3ef8dbb491ca542d1d091" category="section-title">Ahora puede etiquetar las relaciones de sincronización para que pueda agruparlas o clasificarlas para un acceso sencillo</block>
+  <block id="049ebb609707e4c76f578eb98777ffdc" category="inline-link">Obtenga más información sobre el etiquetado de recursos</block>
+  <block id="00b4c4979fe8d65dc663ea7c82a1b1c2" category="paragraph"><block ref="ddc85a18edb3f9e32810e603b7ef9eb7" category="inline-link-rx"></block>.</block>
+  <block id="778446633edb0e3ec577cd756d668367" category="section-title">11 de octubre de 2021</block>
+  <block id="b2792e486aa7d3697e8cdc3061fee8eb" category="section-title">Ahora puede crear un duplicado de una plantilla existente</block>
+  <block id="addd83032f7bc85573c2d778fbce152b" category="inline-link-macro">Vea cómo crear una copia de una plantilla</block>
+  <block id="d8297eba97a5465d726b7dfc48cc13ea" category="paragraph">La creación de un duplicado puede ahorrar mucho tiempo si desea crear una plantilla nueva que sea muy similar a una plantilla existente. Sólo haga el duplicado con un nuevo nombre y cambie los elementos de pareja que hacen que la plantilla sea única. <block ref="f91157bfd2bb5cbf5e539da6f97e4710" category="inline-link-macro-rx"></block>.</block>
+  <block id="bd54d700336d620d317331b08aa02c25" category="section-title">Habilitar los servicios en volúmenes creados con plantillas ahora es mucho más fácil</block>
+  <block id="0cb0eeda22a2ab5a3af95e330a22a74c" category="paragraph">Antes de necesitar seleccionar variables para identificar el entorno de trabajo, la máquina virtual de almacenamiento y el nombre del volumen. Ahora la plantilla le agrega esta información. Esto simplifica la adición de servicios para backup en el cloud, cumplimiento de normativas en el cloud y replicación en volúmenes nuevos.</block>
+  <block id="6642a926337ad7312f290ed116119905" category="section-title">Se ha añadido soporte para que pueda etiquetar ciertos recursos de GCP</block>
+  <block id="db1b81be614bd9a5ca7dc44b22c02310" category="inline-link-macro">Consulte los recursos de GCP que puede etiquetar</block>
+  <block id="e4e712eb035bdea737277dd1b8993a0a" category="paragraph">Ahora puede gestionar etiquetas en los recursos de GCP mediante el servicio de etiquetado de Cloud Manager. Puede ver las etiquetas de GCP y los valores de etiqueta que se han aplicado a los recursos, y puede aplicar dichas etiquetas a otros recursos de GCP que esté gestionando. <block ref="409286efa16f3a61c8f6160b0cdd3b73" category="inline-link-macro-rx"></block>.</block>
+  <block id="d798cbf5a08fbeb9fdd3652e5b00bb4c" category="section-title">2 de septiembre de 2021</block>
+  <block id="d79a83633ad92c383dcbb0a13e0bcb54" category="section-title">Ahora puede gestionar etiquetas en los recursos de Azure mediante el servicio de etiquetado</block>
+  <block id="b4b08857877112938961aaa3e2a131f2" category="inline-link-macro">Consulte los recursos de Azure que puede etiquetar</block>
+  <block id="44e0789645e569abc1d8998ab3015e3d" category="paragraph">Puede ver las etiquetas y los valores de etiqueta de Azure que se han aplicado a los recursos y puede aplicar dichas etiquetas a otros recursos de Azure que esté gestionando. <block ref="566291be7033a26e1b235b2a2d2ef8ff" category="inline-link-macro-rx"></block>.</block>
+  <block id="1625471915e0f870bd60f61204e44adb" category="section-title">Ahora se pueden etiquetar algunos recursos adicionales de AWS EC2</block>
+  <block id="d8cd3b5af685675591328bfe617a63c8" category="section-title">8 de agosto de 2021</block>
+  <block id="f83d30e0e720fff7c6bf6e63a011b32f" category="section-title">Ahora puede crear un entorno de trabajo Cloud Volumes ONTAP con plantillas</block>
+  <block id="984956ca6b0ab2e60f484c9bada495b5" category="inline-link-macro">Cree una plantilla para un entorno de trabajo de Cloud Volumes ONTAP</block>
+  <block id="05ef6a32f83373b0aaaab04a0cfb067e" category="paragraph">En este momento, solo se proporciona compatibilidad para los entornos AWS y solo para clústeres de un solo nodo. Descubra cómo <block ref="b3c0e34ddc6f02981e8f634895a0f3cf" category="inline-link-macro-rx"></block>.</block>
+  <block id="2c0be6f7358124aa37df859a713d308c" category="section-title">Una nueva función le permite agregar etiquetas a un volumen de una plantilla de volumen</block>
+  <block id="adb5f80ec3b6f1b0d9ad3b40327218db" category="paragraph">El etiquetado permite agrupar distintos recursos para identificar aplicaciones, regiones o departamentos con el fin de automatizar o asignar costes a determinados departamentos o regiones.</block>
+  <block id="bc7511a95a277ec462af40b1c9446eff" category="section-title">Ahora puede gestionar etiquetas desde sus instancias de AWS EC2 en Cloud Manager</block>
+  <block id="587a3b529ee36768600b3185997270b8" category="inline-link-macro">Más información sobre etiquetado</block>
+  <block id="87c0200a60cc25f90f7d11c9af5852e4" category="paragraph">Puede ver las etiquetas de AWS y los valores de etiqueta que se han aplicado a instancias de EC2 y puede aplicar dichas etiquetas a otras instancias de EC2 que gestiona. <block ref="78bc354b5bc36ea6c1a33109df4c795e" category="inline-link-macro-rx"></block>.</block>
+  <block id="148ac7400035f34ce9532083a87fe872" category="section-title">13 de julio de 2021</block>
+  <block id="6fddf82f19600242e06b00b39fe5b65e" category="section-title">Se ha agregado compatibilidad para utilizar el servicio de replicación al definir una plantilla</block>
+  <block id="367ca1b4aadef246752fe5dc9dbfa720" category="inline-link-macro">replique los datos en el volumen que va a crear</block>
+  <block id="bd78b220c8f6ffb11029e676aca762e1" category="inline-link">Servicio de replicación</block>
+  <block id="18b66794f04012b531d4cc5914f5f8f3" category="paragraph">Ahora puede agregar la plantilla que desee <block ref="6738ace5df735ae0ff117275f600ff2e" category="inline-link-macro-rx"></block> a otro volumen que utilice<block ref="0cbc5a9fd380783b2e1491fb4decd0c8" category="inline-link-rx"></block>.</block>
+  <block id="b97e650c4494f3305ee0ac31ef6caa19" category="paragraph">Al replicar datos en otros sistemas de almacenamiento de NetApp y actualizar continuamente los datos secundarios, estos están siempre al día y disponibles cuando los necesite.</block>
+  <block id="f506872ede8f49b310b1f217dfbecce5" category="section-title">Descargue un informe que incluya todos los volúmenes que se han "desviado" de la configuración de la plantilla</block>
+  <block id="8b521b3330e37ed57ab6eea2702514ff" category="inline-link-macro">cómo descargar su informe de drift</block>
+  <block id="d995a583774874e6dfba85f30dc14514" category="paragraph">De esta forma, podrá identificar estos volúmenes y asignar a alguien que haga que los volúmenes vuelvan a cumplir las normativas. Consulte <block ref="3861ce04d0fce9eae63955cfc17ca34d" category="inline-link-macro-rx"></block>.</block>
+  <block id="5113dc13004941ed2e6dd508ad063909" category="section-title">Se ha liberado el nuevo servicio de etiquetado</block>
+  <block id="b2c5f55555590a4c06851e0098a9fbbd" category="paragraph">Una nueva función de Cloud Manager le permite aplicar etiquetas a los recursos de ONTAP existentes para ayudarle a organizar y gestionar esos recursos. Las etiquetas son metadatos que puede utilizar para agrupar recursos para identificar aplicaciones, entornos, regiones, códigos de facturación, proveedores de cloud, y sigue.</block>
+  <block id="bef30da0bb60a2c21060e5694267abfe" category="paragraph"><block ref="78bc354b5bc36ea6c1a33109df4c795e" category="inline-link-macro-rx"></block>.</block>
+  <block id="945fb8f32f58d1cc36cb9f1e9e4c6fe5" category="section-title">7 de junio de 2021</block>
+  <block id="294787c0f0d7e3e2190db5b2d601b396" category="section-title">Ahora puede habilitar condicionalmente determinadas acciones cuando el usuario está ejecutando la plantilla</block>
+  <block id="a1b4bb66baa87c6181574db8b88c8d3d" category="paragraph">Por ejemplo, si se crea un volumen Cloud Volumes ONTAP con la eficiencia del almacenamiento de NetApp habilitada, Cloud Backup también se habilita en ese volumen. Si la eficiencia del almacenamiento no está habilitada, Cloud Backup no está habilitado.</block>
+  <block id="be1e169d75e8b12c690c295e44c3528f" category="section-title">Ahora puede crear un volumen en un sistema ONTAP en las instalaciones utilizando plantillas</block>
+  <block id="952326f3e521cc60cf8ef420a4ebc40b" category="paragraph">AppTemplate permite crear un volumen en un entorno de trabajo existente mediante plantillas.</block>
+  <block id="310b0424f7115f87e39e306f22db9f8e" category="section-title">Se ha añadido una nueva funcionalidad denominada "drift" como opción al crear las plantillas</block>
+  <block id="011741db456ebe1ea2d73d2c43f93efc" category="paragraph">Esta función permite a Cloud Manager supervisar los valores codificados de forma rígida que introdujo para un parámetro en una plantilla. Después de que un administrador de almacenamiento haya creado un volumen con esa plantilla, si después Cloud Manager ve que se ha cambiado el valor del parámetro de modo que ya no esté en línea con la definición de la plantilla, puede ver todos los volúmenes que han "desviado" de la plantilla diseñada. De esta forma, puede identificar estos volúmenes y realizar cambios para garantizar que cumplen las normativas.</block>
+  <block id="824b76af9549cb14fd2443aa485afb15" category="section-title">2 de mayo de 2021</block>
+  <block id="719c876ca7b16f592c8bd26cdbb0ffaa" category="section-title">Ahora puede integrar Cloud Data Sense al crear una plantilla de volumen</block>
+  <block id="96e3f6826df4638ccb92b90bd780b773" category="paragraph">Ahora puede habilitar Data Sense para cada volumen recién creado o habilitar Cloud Backup para cada volumen recién creado... O cree una plantilla que permita realizar copias de seguridad y cumplimiento en el volumen creado.</block>
+  <block id="243263104c829e77835d632f591230d5" category="summary">Antes de poder abrir un caso de soporte con el soporte técnico de NetApp, debe añadir una cuenta de la página de soporte de NetApp a BlueXP y, a continuación, registrarse para recibir soporte.</block>
+  <block id="42748df9eaa0be17ddc5cc1593cf57ab" category="doc">Regístrese para recibir soporte</block>
+  <block id="8bf30fadf784022b073adb9233678a71" category="paragraph">Antes de poder abrir un caso de soporte con el soporte técnico de NetApp, debe añadir una cuenta del sitio de soporte de NetApp (NSS) a BlueXP y, a continuación, registrarse para recibir soporte.</block>
+  <block id="0375f4855be072c7d856a0233cc21de9" category="section-title">Soporte para soluciones de proveedores cloud</block>
+  <block id="be845c219bb74b14349ffa6e27e7aef3" category="paragraph">Para obtener asistencia técnica sobre las siguientes soluciones de proveedores de nube que ha integrado en BlueXP, consulte “obtención de ayuda” en la documentación de BlueXP para ese producto.</block>
+  <block id="18cf072964a583150dd247485ba75b92" category="inline-link-macro">Amazon FSX para ONTAP</block>
+  <block id="5bf5309465f91318228a7f956b826348" category="list-text"><block ref="5bf5309465f91318228a7f956b826348" category="inline-link-macro-rx"></block></block>
+  <block id="0e2bc9c853e0af52ead12823c025e58b" category="list-text"><block ref="0e2bc9c853e0af52ead12823c025e58b" category="inline-link-macro-rx"></block></block>
+  <block id="b0cee72642f5457a71ddd0b49efb6d93" category="inline-link-macro">Cloud Volumes Service para Google Cloud</block>
+  <block id="02efcbea18b9485a78a41871dce1e64d" category="list-text"><block ref="02efcbea18b9485a78a41871dce1e64d" category="inline-link-macro-rx"></block></block>
+  <block id="0b0e252af8897fbe981ec6682d2aa33b" category="section-title">Información general del registro de soporte</block>
+  <block id="192054ad7601240a3e8be54cc5cc548e" category="paragraph">Existen dos formas de registro para activar el derecho de asistencia:</block>
+  <block id="2322ca552c2b0ebe090c8485519246a8" category="list-text">Registro de la suscripción al soporte de ID de cuenta de BlueXP (número de serie de 20 dígitos xxxx960xxxxx que se encuentra en la página Recursos de asistencia técnica de BlueXP).</block>
+  <block id="23fdcbefa6d9cd877be7ceb7a18bb936" category="paragraph">Esto sirve como su ID de suscripción de soporte único para cualquier servicio dentro de BlueXP. Debe registrarse cada suscripción de asistencia técnica a nivel de cuenta de BlueXP.</block>
+  <block id="55ff64467cd508971910145ab5d6b3b8" category="list-text">Registrar los números de serie de Cloud Volumes ONTAP asociados con una suscripción en el mercado de su proveedor de cloud (estos son números de serie de 20 dígitos 909201xxxxxxxx).</block>
+  <block id="67dbdeb11e22ea7def810bade59ce818" category="paragraph">Estos números de serie se denominan comúnmente _PAYGO serial Numbers_ y son generados por BlueXP en el momento de la implementación de Cloud Volumes ONTAP.</block>
+  <block id="9d4125dc88bb9db6eb4be939905761ce" category="paragraph">El registro de ambos tipos de números de serie permite funcionalidades, como abrir tickets de soporte y la generación automática de casos.</block>
+  <block id="98bc603dcb6d5a57d540b13b541fa41a" category="paragraph">La forma de registrarse depende de si es un cliente o partner nuevo o existente.</block>
+  <block id="e5646198d2e01aab2cec9ef946f9c53a" category="list-text">Cliente o partner existente</block>
+  <block id="76928f97884b4332b83c5be9b99d93d3" category="paragraph">Como cliente o partner de NetApp, puede usar su cuenta de SSO del sitio de soporte de NetApp (NSS) para realizar estos registros anteriormente. En el Panel de soporte, BlueXP proporciona una página *NSS Management* en la que puede agregar su cuenta NSS. Una vez que agregue su cuenta NSS, BlueXP registra automáticamente estos números de serie.</block>
+  <block id="4e6af37fb81d50483d832d4de6e2b26a" category="inline-xref">Aprenda a añadir su cuenta de NSS</block>
+  <block id="8d80298f51b7ff2da78e26e60195c7a3" category="paragraph"><block ref="cbec7c1a4a2acff5e84457dd449ac01d" category="inline-xref-macro-rx"></block>.</block>
+  <block id="1c91f3adc957364cb01d33e100ee1ea3" category="list-text">Nuevo en NetApp</block>
+  <block id="679f2cae4657f177cc89458d49c97e5f" category="paragraph">Si es totalmente nuevo en NetApp, debe completar un registro una vez del número de serie de su ID de cuenta de BlueXP en el sitio de registro de soporte de NetApp. Una vez completado este registro y cree una nueva cuenta de NSS, puede utilizar esta cuenta en BlueXP para registrarse automáticamente en el futuro.</block>
+  <block id="00fc9d0c515c69ea2c368521453d982e" category="inline-xref">Aprenda a registrarse en NetApp</block>
+  <block id="97454ce87333f7ebd50ee38b8126fb39" category="paragraph"><block ref="37544f11913357c4e8c8a4ec607ae247" category="inline-xref-macro-rx"></block>.</block>
+  <block id="a92ec860f505b318fd0f0eba6165d607" category="section-title">Agregue una cuenta NSS a BlueXP</block>
+  <block id="f2575f6d19024f7288cf78d7dc5b3db9" category="paragraph">La consola de soporte le permite añadir y gestionar sus cuentas de la página de soporte de NetApp para utilizarlas con BlueXP.</block>
+  <block id="328a2c1e7778e9edaf79d90c51409ac4" category="list-text">Si tiene una cuenta de nivel de cliente, puede añadir una o varias cuentas de NSS.</block>
+  <block id="e3cd99e4aa330ae6bdfb3754d83ae962" category="list-text">Si tiene una cuenta de partner o distribuidor, puede añadir una o varias cuentas de NSS, pero no se podrán añadir junto con las cuentas de nivel de cliente.</block>
+  <block id="1afe19576f77bb0073c93359ed2cbb18" category="list-text">En la parte superior derecha de la consola de BlueXP, haga clic en el icono Ayuda y seleccione *Soporte*.</block>
+  <block id="b50f0a46135bcb7083b1f2f82032fc26" category="inline-image-macro">Una captura de pantalla del menú Ayuda en el que Soporte es la primera opción de la lista</block>
+  <block id="868d9aa88f16ea923af1d15eac5d2647" category="paragraph"><block ref="868d9aa88f16ea923af1d15eac5d2647" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d17d6b5dafebab6b7659da8850737e70" category="list-text">Haga clic en *Administración de NSS &gt; Agregar cuenta de NSS*.</block>
+  <block id="8aaf101e623c543c7eef3c65f6233366" category="list-text">Cuando se le pregunte, haga clic en *continuar* para que se le redirija a una página de inicio de sesión de Microsoft.</block>
+  <block id="19d089db572ee6a1e154a0c9c9e57bfd" category="paragraph">NetApp utiliza Microsoft Azure Active Directory como proveedor de identidades para servicios de autenticación específicos para soporte y licencias.</block>
+  <block id="465ec6d5eafa3524c948c99d8bfcd306" category="list-text">En la página de inicio de sesión, proporcione su dirección de correo electrónico registrada en el sitio de soporte de NetApp y contraseña para realizar el proceso de autenticación.</block>
+  <block id="cbc6cc3bb022583403171b447b2a962c" category="paragraph">Estas acciones permiten a BlueXP utilizar su cuenta NSS para cosas como descargas de licencias, verificación de actualizaciones de software y futuros registros de soporte.</block>
+  <block id="cf3a2d2c139bf5c9cc87fe714bfff3b1" category="paragraph">Tenga en cuenta lo siguiente:</block>
+  <block id="0f0a0d646a020cf3a65ce82ada4cfb01" category="list-text">La cuenta debe ser una cuenta de nivel de cliente (no una cuenta de invitado o temporal).</block>
+  <block id="1dcb63fd55c4d22e87cb32275b8cc808" category="inline-image-macro">Icono de tres puntos horizontales</block>
+  <block id="ff67299785d475e87002751aa6ab5eb8" category="list-text">Después de iniciar sesión correctamente, NetApp almacenará el nombre de usuario de NSS. Se trata de un ID generado por el sistema que se asigna a su correo electrónico. En la página *NSS Management*, puede mostrar su correo electrónico desde <block ref="0d0843f26c0819e5369f690fefbf68b7" category="inline-image-macro-rx" type="image"></block> de windows</block>
+  <block id="505da61efe6bebebbaf092da18f64613" category="list-text">Si alguna vez necesita actualizar sus tokens de credenciales de inicio de sesión, también hay una opción *Actualizar credenciales* en la <block ref="0d0843f26c0819e5369f690fefbf68b7" category="inline-image-macro-rx" type="image"></block> de windows Con esta opción se le solicita que vuelva a iniciar sesión.</block>
+  <block id="ad56c7289bc13dcf4f78c285f7f03878" category="section-title">Regístrese en NetApp</block>
+  <block id="f1bac79c2c71fbd93863b9fbd718094c" category="paragraph">La forma de registrarse para recibir soporte de NetApp depende de si ya tiene una cuenta del sitio de soporte de NetApp (NSS).</block>
+  <block id="bf4c731c0ee7f60c8018ad8f96828dda" category="section-title">Cliente existente con una cuenta de NSS</block>
+  <block id="7e177185e7eddff33dd8f3aeb7551132" category="paragraph">Si es cliente de NetApp con una cuenta de NSS, solo tiene que registrarse para recibir soporte a través de BlueXP.</block>
+  <block id="25b94e7b58140f12be91fa8fd935fa59" category="list-text">Si aún no lo ha hecho, agregue su cuenta NSS a BlueXP.</block>
+  <block id="819aff12752b7e6a1828e755c7664de7" category="list-text">En la página *Recursos*, haga clic en *Registrar para asistencia*.</block>
+  <block id="e8a3d9970b8fc1d92caaf33d9e116bd4" category="inline-image-macro">Captura de pantalla que muestra un número de serie de la cuenta y la opción Registrar para Soporte</block>
+  <block id="113f9cd7bac6f4faa6b8d58e3e099a8e" category="paragraph"><block ref="113f9cd7bac6f4faa6b8d58e3e099a8e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="1ff5aefce774ec72a211f2b3bb10b950" category="section-title">Cliente existente pero no cuenta NSS</block>
+  <block id="cc1d3c161bcf25e6445c2fc771647849" category="paragraph">Si ya es cliente de NetApp con licencias y números de serie existentes pero _no_ cuenta de NSS, solo tiene que crear una cuenta de NSS.</block>
+  <block id="5b2b7f628f804bcb786a097c7e45aa41" category="inline-link">Formulario de registro de usuarios del sitio de soporte de NetApp</block>
+  <block id="0c4a8b62da9473fbd5401273c4f85ee0" category="list-text">Complete el para crear una cuenta en la página de soporte de NetApp<block ref="041bcb6d9bdf91f7d6ac92ae3a196e12" category="inline-link-rx"></block></block>
+  <block id="d61c9f72493817776f392db42ac446a2" category="list-text">Asegúrese de seleccionar el nivel de usuario adecuado, que normalmente es *Cliente/Usuario final de NetApp*.</block>
+  <block id="5226d4ec1f4f81b740cbbd27635b441f" category="list-text">Asegúrese de copiar el número de serie de la cuenta BlueXP (960xxxx) utilizado anteriormente para el campo de número de serie. Esto agilizará el procesamiento de la cuenta.</block>
+  <block id="e9b1f53d6cabb3394833a4e102eb6a69" category="section-title">Totalmente nuevo en NetApp</block>
+  <block id="c20c107d0d4eef6351660f3590324232" category="paragraph">Si es totalmente nuevo en NetApp y no tiene una cuenta de NSS, siga cada paso que se indica a continuación.</block>
+  <block id="2974170a8b1b5b4a2ac69aacd4c1c9c3" category="list-text">Busque el número de serie de su ID de cuenta en la página Support Registration.</block>
+  <block id="ef5e63bb6b6827440a13cc2ec7e9cf56" category="paragraph"><block ref="ef5e63bb6b6827440a13cc2ec7e9cf56" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="dd50e314c18933734174c1156dd9237f" category="inline-link">Sitio de registro de soporte de NetApp</block>
+  <block id="78f94e749b89d69dcbf3baff21ccb958" category="list-text">Vaya a.<block ref="e1c4be66250fd76d5c52bfe2cb7daee2" category="inline-link-rx"></block> Y seleccione *no soy un cliente registrado de NetApp*.</block>
+  <block id="d4f633ef130727b2776fa7f45024ca7d" category="list-text">Rellene los campos obligatorios (aquellos con asteriscos rojos).</block>
+  <block id="1128fc8d5ec64880f4d49337ed798d31" category="list-text">En el campo *línea de productos*, seleccione *Cloud Manager* y, a continuación, seleccione el proveedor de facturación correspondiente.</block>
+  <block id="50a1dc01b7312307c34a888071586955" category="list-text">Copie el número de serie de su cuenta desde el paso 2 anterior, complete la comprobación de seguridad y confirme que ha leído la Política de privacidad de datos global de NetApp.</block>
+  <block id="3a24c87c9971d2011b4df223718f84b4" category="paragraph">Se envía inmediatamente un correo electrónico al buzón de correo para finalizar esta transacción segura. Asegúrese de comprobar sus carpetas de spam si el correo electrónico de validación no llega en pocos minutos.</block>
+  <block id="03413baeca1ff7222737d8ce299bd4e8" category="list-text">Confirme la acción desde el correo electrónico.</block>
+  <block id="201080500e946070a2e4873042507c77" category="paragraph">Confirmar envía su solicitud a NetApp y recomienda que cree una cuenta en la página de soporte de NetApp.</block>
+  <block id="cc8b0535948da368f832027c19b7f853" category="list-text">Asegúrese de copiar el número de serie de la cuenta (960xxxx) utilizado anteriormente para el campo de número de serie. Esto agilizará el procesamiento de la cuenta.</block>
+  <block id="684375e279a289295b72a006d93e2c4c" category="paragraph">NetApp debería ponerse en contacto con usted durante este proceso. Este es un ejercicio de incorporación puntual para nuevos usuarios.</block>
+  <block id="1c0e45ef07d0dbc13ca2394d5e285fd7" category="paragraph">Una vez que tenga su cuenta de la página de soporte de NetApp, podrá navegar a BlueXP para añadir esta cuenta de NSS para futuros registros.</block>
+  <block id="65b46511d02a19c141330a17641ebc2f" category="summary">El servicio AppTemplate le permite estandarizar la creación de recursos en sus entornos de trabajo en BlueXP. Por ejemplo, puede codificar los parámetros necesarios en una "plantilla de volumen" que se aplican más tarde cuando un administrador de almacenamiento crea un volumen utilizando la plantilla. Puede incluir el tipo de disco necesario, el tamaño, el protocolo, la política de Snapshot, el proveedor de cloud, y sigue. También puede activar determinados servicios, como Cloud Backup, para cada volumen creado.</block>
+  <block id="8840e623646d3d59bdb75d58d2cbfb3c" category="doc">Más información sobre AppTemplate</block>
+  <block id="6f5f9a149e1cd9abec2bd8310110be5e" category="paragraph">El servicio AppTemplate le permite estandarizar la creación de recursos en sus entornos de trabajo en BlueXP (anteriormente Cloud Manager). Por ejemplo, puede codificar los parámetros necesarios en una "plantilla de volumen" que se aplican más tarde cuando un administrador de almacenamiento crea un volumen utilizando la plantilla. Puede incluir el tipo de disco necesario, el tamaño, el protocolo, la política de Snapshot, el proveedor de cloud, y sigue. También puede activar determinados servicios, como Cloud Backup, para cada volumen creado.</block>
+  <block id="29c77a5a00dda7efae90c176f1eaa37b" category="paragraph">Las plantillas facilitan que los administradores de almacenamiento creen volúmenes optimizados para los requisitos de carga de trabajo de cada aplicación puesta en marcha, como bases de datos, correo electrónico o servicios de streaming. Además, facilita la vida a los arquitectos de almacenamiento sabiendo que cada volumen se crea de forma óptima para cada aplicación.</block>
+  <block id="2cc0eed5a3999c679ed14d2cb6588587" category="paragraph">AppTemplate ofrece las siguientes características y ventajas:</block>
+  <block id="3a07949495aa0f10524a38b2f8b42ff9" category="list-text">Automatiza y mejora el diseño y el desarrollo de su infraestructura</block>
+  <block id="628898f2daed85c109f1e353f32ae510" category="list-text">Ofrece una única ubicación para activar diferentes servicios de cloud de NetApp; como Cloud Backup y Cloud Data Sense</block>
+  <block id="b56e74814d72e13b8bd9eb4561010dba" category="list-text">Identifica los recursos que se han modificado y que ya no cumplen con la plantilla (mediante la operación "drift")</block>
+  <block id="535863b7811f106bde3e7f273a118764" category="inline-link-macro">Más información sobre la deriva</block>
+  <block id="5bd5bf968b8be74cc15838b062223bc7" category="paragraph">En este momento, deberá realizar ajustes manualmente para que el recurso vuelva a cumplir con la plantilla. <block ref="070f7b254d8faecc6fc5a699202bdab9" category="inline-link-macro-rx"></block>.</block>
+  <block id="04d8b8693a17205c619758eaa8d300e2" category="section-title">Acciones de plantilla disponibles</block>
+  <block id="1521fcd4ef1bd7f293c2968ccf8c8162" category="paragraph">Una plantilla es una cadena de "acciones" que tiene algunos valores predefinidos. Puede crear plantillas que incluyan las siguientes acciones:</block>
+  <block id="d7b818155971ac6a308c49db2d58706d" category="paragraph">*Acciones de recursos:*</block>
+  <block id="afc7000b969456a3160fc4505fb2cc0b" category="list-text">Crear un volumen de Cloud Volumes ONTAP (en AWS, Azure o GCP)</block>
+  <block id="13a5ac55db7d05c915e23a24a2096643" category="list-text">Cree un volumen de Azure NetApp Files</block>
+  <block id="aa2021a9b8c47541aa967f65a329bdea" category="list-text">Crear un volumen de ONTAP en las instalaciones</block>
+  <block id="4850ffe766acbb8beb6c7c24ebcfaf4b" category="list-text">Crear un entorno de trabajo Cloud Volumes ONTAP (sistema de un solo nodo o de alta disponibilidad en AWS)</block>
+  <block id="d1287a3b275ab8ba01a5fff6e4888348" category="list-text">Busque recursos existentes que cumplan ciertos criterios (de modo que pueda aplicar una acción «servicios» al salir de recursos).</block>
+  <block id="de66c35536cd0fdc78f33d76a51b81ab" category="paragraph">*Servicios:*</block>
+  <block id="dad57e95fc9a5390302ad830888cbdb9" category="inline-link">Backup en el cloud</block>
+  <block id="c7f54fc101fff8114fd0bab318e81454" category="list-text">Activar<block ref="65043dfb781746b8fde5bfddb319eb97" category="inline-link-rx"></block> En los volúmenes (no aplicable para Azure NetApp Files)</block>
+  <block id="d882bf73cd5caf1e5aa39edbf893ad74" category="inline-link">Cloud Data SENSE</block>
+  <block id="b691f77f5b87583a1ecac4f114cb70cf" category="list-text">Activar<block ref="4af4db8698c4a0998b2c93dbadcf8efe" category="inline-link-rx"></block> en los volúmenes</block>
+  <block id="8c340dc334134096f68b880b42a8692c" category="inline-link">Replicación</block>
+  <block id="99869d72f8362c5cb7e7d08bc7a9ad39" category="list-text">Activar<block ref="f2bb37938a60ba7c308705367c1f4d0b" category="inline-link-rx"></block> En los volúmenes (no aplicable para Azure NetApp Files)</block>
+  <block id="1872302bd774dd65cb025cb6c760357c" category="paragraph">Por ejemplo, puede crear una plantilla que cree un volumen Cloud Volumes ONTAP. O que crea un volumen de Cloud Volumes ONTAP y, a continuación, habilita Cloud Backup en ese volumen. O que cree un volumen de Cloud Volumes ONTAP y, a continuación, habilita Cloud Backup _y_ Cloud Data Sense en ese volumen.</block>
+  <block id="3fb67d827d434a38ea3f2b8aca181ada" category="paragraph">NetApp agregará más acciones a lo largo del tiempo.</block>
+  <block id="b02190159d307046a1fc115e2234c430" category="section-title">Cómo funciona AppTemplate</block>
+  <block id="34d0c1b964384a0752aad91c917688a4" category="paragraph">El servicio AppTemplate consta de 3 partes. La plantilla disponible "acciones", la plantilla de aplicación personalizada y el recurso implementado como resultado de ejecutar la plantilla. La siguiente imagen muestra la relación entre cada componente:</block>
+  <block id="f5afa7cf8be08a4f697b8293dad144b2" category="inline-image-macro">Un diagrama de los distintos usuarios implicados en la creación y utilización de plantillas de aplicación.</block>
+  <block id="ecfa39b6560418cfe2345a90c8e7e31b" category="paragraph"><block ref="ecfa39b6560418cfe2345a90c8e7e31b" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="fed74dbc8e98acceae8b4538b3ad2067" category="paragraph">En un nivel superior, las plantillas funcionan de la siguiente manera:</block>
+  <block id="83fe213d4e31bface1f9e62afb1dec57" category="list-text">NetApp define "acciones" la plantilla disponible.</block>
+  <block id="d5faf5a6584d91a0f5b4616090f2ec8c" category="paragraph">Por ejemplo, una "acción" para crear un volumen de Cloud Volumes ONTAP o un volumen de Azure NetApp Files.</block>
+  <block id="1ad8e87e4651a2cc69c46159a02233b3" category="list-text">Su arquitecto de almacenamiento selecciona las "acciones" que desea utilizar para crear una plantilla de aplicación y, a continuación, codifica ciertos valores para los parámetros mostrados.</block>
+  <block id="2c0f798d8b592eb8938ac2f2c3e3a12a" category="paragraph">Por ejemplo, seleccionan discos de alta velocidad y una gran cantidad de RAM para volúmenes de Cloud Volumes ONTAP que se usarán para transportar las cargas de trabajo de las bases de datos de Oracle. Además, requieren que se realicen backups para cada volumen.</block>
+  <block id="480b6a5d9ee4db8a0ae283b6de8df01f" category="list-text">Sus administradores de almacenamiento utilizan las plantillas para crear recursos optimizados para las aplicaciones para las que se utilizarán.</block>
+  <block id="f8f85ac75a9d32ac7e4bd19a88c88489" category="paragraph">Por ejemplo, crean un volumen que se utilizará para una base de datos Oracle mediante la plantilla de volumen creada para las bases de datos.</block>
+  <block id="537f35739e01ac333f01ac9b4cbc3e9f" category="list-text">El servicio realiza un seguimiento de determinados ajustes de recursos definidos en la plantilla mediante la función de «drift», tal y como determina su arquitecto de almacenamiento.</block>
+  <block id="928cf9c83840b963ee70f31eae6f5478" category="paragraph">La función AppTemplate no requiere licencia y es gratuita para todos los usuarios de BlueXP.</block>
+  <block id="2aa9db43c73bb2f52c729395f9446dd5" category="admonition">Las plantillas le permiten aplicar un servicio cloud a los recursos creados; por ejemplo, habilite Cloud Backup en cada volumen. En este caso, el uso del servicio de backup y el espacio de almacenamiento de objetos que utilizan los archivos de backup tienen un coste.</block>
+  <block id="e646e16bee8b32e6ea29e30d01970a6c" category="section-title">Limitaciones</block>
+  <block id="8f39707abf86186330a61f0aa7f57c55" category="list-text">El servicio AppTemplate no es compatible con ninguna de las regiones de Gov Cloud o en sitios sin acceso a Internet.</block>
+  <block id="5853165343224a78fee94389519a9b28" category="list-text">No puede usar una plantilla para crear un volumen de Cloud Volumes ONTAP en un agregado existente. Se crean nuevos volúmenes en un nuevo agregado.</block>
+  <block id="cbabd9bfcb3ce90ea05504c320db481e" category="summary">Seleccione una de las plantillas de aplicaciones que su organización ha creado para crear entornos de trabajo o volúmenes optimizados para cargas de trabajo y aplicaciones específicas. Las plantillas también le permiten activar Cloud Backup, Cloud Data Sense y Replication (SnapMirror) en los volúmenes o en los volúmenes existentes.</block>
+  <block id="2d26910773af1a0f9d4d48400c5c93b1" category="doc">Crear o modificar recursos mediante plantillas</block>
+  <block id="c66b8415e6c06857c4a2df8e4beb665d" category="inline-link">Replicación (SnapMirror)</block>
+  <block id="9552710f5d08d8e046e5e38b40dd0754" category="paragraph">Seleccione una de las plantillas de aplicaciones que su organización ha creado para crear entornos de trabajo o volúmenes optimizados para cargas de trabajo y aplicaciones específicas. Las plantillas también le permiten activar<block ref="65043dfb781746b8fde5bfddb319eb97" category="inline-link-rx"></block>,<block ref="4af4db8698c4a0998b2c93dbadcf8efe" category="inline-link-rx"></block>, y.<block ref="7b4b255123bb321e706fd8a6488dad10" category="inline-link-rx"></block> en los volúmenes creados o en los volúmenes existentes.</block>
+  <block id="5f29105c4fcb4fd7664c9b573f2325b4" category="paragraph">Las plantillas le permiten crear volúmenes para sistemas Cloud Volumes ONTAP, Azure NetApp Files y ONTAP en las instalaciones.</block>
+  <block id="06ad314b340900d226b1196e1fe289e9" category="section-title">Inicio rápido</block>
+  <block id="91e06e9a9ef97681b798e2e5e007ba97" category="paragraph">Empiece rápidamente siguiendo estos pasos o desplácese hacia abajo hasta las secciones restantes para obtener todos los detalles.</block>
+  <block id="06c2cea18679d64399783748fa367bdd" category="inline-image-macro">Uno</block>
+  <block id="a915908264892de9209e8f5f402e6e50" category="list-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block> Verifique los requisitos previos necesarios</block>
+  <block id="e0fb2c2abefd11630ebc42b8a6eb3570" category="list-text">Antes de poder crear un volumen para un sistema Cloud Volumes ONTAP, ONTAP en las instalaciones o Azure NetApp Files con una plantilla, asegúrese de tener acceso a un entorno de trabajo adecuado donde se pondrá en marcha el volumen.</block>
+  <block id="e04a6c526d4b3218b5b39dab077db37c" category="list-text">Si la plantilla activa un servicio de cloud en el volumen, por ejemplo<block ref="65043dfb781746b8fde5bfddb319eb97" category="inline-link-rx"></block> o.<block ref="4af4db8698c4a0998b2c93dbadcf8efe" category="inline-link-rx"></block>, asegúrese de que el servicio esté activo y con licencia en su entorno.</block>
+  <block id="aada29daee1d64ed0fe907043855cb7e" category="inline-image-macro">Dos</block>
+  <block id="33a675c8565b9b4c87c8c07929b5c5cf" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block> Inicie el servicio Plantillas de aplicación</block>
+  <block id="a687989eefccb6d7024bfaee46859103" category="paragraph">Seleccione *Estado &gt; resolución* y haga clic en la ficha *Plantillas*.</block>
+  <block id="ca8a2087e5557e317599344687a57391" category="inline-image-macro">Tres</block>
+  <block id="8798137d952922eb0808160ad81122c0" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block> Genere el recurso ejecutando la plantilla y definiendo los parámetros</block>
+  <block id="8e11a084ad23a73bf5ea573d54dded8e" category="paragraph">Seleccione la plantilla, haga clic en *Ejecutar plantilla* e introduzca valores en los campos editables para crear el recurso.</block>
+  <block id="5a2ebfb8baa378cfcfcba58bbb1380c2" category="section-title">Requisitos</block>
+  <block id="4b09bdd4ca435f6a4b77b142f9481573" category="paragraph">Lea los siguientes requisitos para asegurarse de tener una configuración compatible.</block>
+  <block id="23e0e07c56fc07b2d6bc44d30e5187d4" category="inline-link">Vea cómo crear conectores</block>
+  <block id="880e0da9ea31d472fa96b1ad7e4be6ad" category="list-text">Si aún no tiene un conector,<block ref="0e90a2191f59a8f46190195b37c75156" category="inline-link-rx"></block> Para AWS, Azure y GCP.</block>
+  <block id="72e3ca24265542fce89dd834f12f4619" category="list-text">Al crear un volumen de Cloud Volumes ONTAP, asegúrese de tener disponible un entorno de trabajo de Cloud Volumes ONTAP.</block>
+  <block id="be34f1201bb3e74c3a66c39a92d09bee" category="list-text">Al crear un volumen ONTAP en las instalaciones, asegúrese de que tiene disponible un entorno de trabajo ONTAP en las instalaciones.</block>
+  <block id="05c907c9bac7ddec874ec0fcb09aad0c" category="list-text">Al crear un volumen de Azure NetApp Files, asegúrese de tener disponible un entorno de trabajo de Azure NetApp Files.</block>
+  <block id="a499c28f4eb5f5209b3bea27baae8295" category="list-text">Si la plantilla activa un servicio de cloud en el volumen, por ejemplo <block ref="65043dfb781746b8fde5bfddb319eb97" category="inline-link-rx"></block>,<block ref="4af4db8698c4a0998b2c93dbadcf8efe" category="inline-link-rx"></block>, o.<block ref="7b4b255123bb321e706fd8a6488dad10" category="inline-link-rx"></block>, asegúrese de que el servicio esté activo y con licencia en su entorno.</block>
+  <block id="b2da214653ffb084521bfa6c178ff811" category="section-title">Seleccione y ejecute una plantilla de volumen</block>
+  <block id="7e74b3cdfd5537c5b51af1069f462892" category="paragraph">Existen varias formas de seleccionar y ejecutar una plantilla para crear nuevos volúmenes:</block>
+  <block id="41ff95e1ea070071cb2436d312ea3115" category="list-text">Ejecute la plantilla de volumen desde el entorno de trabajo</block>
+  <block id="7d732f0050089fa03a5ccaf0ef3972e8" category="list-text">Ejecute la plantilla de volumen desde el panel Plantillas</block>
+  <block id="2b408048493f7891ab8a18339cbef7b1" category="paragraph">Independientemente del método elegido, los detalles acerca de los parámetros de volumen necesarios que debe definir están disponibles en las siguientes secciones:</block>
+  <block id="1d4cf496ca25a3cab66cbc73d2b1c000" category="inline-link">Cómo aprovisionar volúmenes de Cloud Volumes ONTAP</block>
+  <block id="2be95708ec7ad744a5fa35812c4330a3" category="list-text"><block ref="2be95708ec7ad744a5fa35812c4330a3" category="inline-link-rx"></block></block>
+  <block id="96483bf24dd5d282884c28a8c230bfde" category="inline-link">Cómo aprovisionar volúmenes de Azure NetApp Files</block>
+  <block id="ed7e85ad682d7c827abfc065cc610813" category="list-text"><block ref="ed7e85ad682d7c827abfc065cc610813" category="inline-link-rx"></block></block>
+  <block id="df4a9164b01ccf35f74c9520638ad0b7" category="inline-link">Cómo aprovisionar volúmenes de ONTAP en las instalaciones</block>
+  <block id="34b8afcdd2d501d158f8dfa46a70068b" category="list-text"><block ref="34b8afcdd2d501d158f8dfa46a70068b" category="inline-link-rx"></block></block>
+  <block id="c07fd60a71244d7a4ab72c83beb068d6" category="section-title">Ejecute una plantilla de volumen desde el entorno de trabajo</block>
+  <block id="2342f0281f4d2a90f7477ed651c18e7f" category="paragraph">Puede agregar un volumen a un entorno de trabajo existente desde la página _Working Environment_ y desde la página _Volume Details_.</block>
+  <block id="847533f76f2539591f2ed541ef5ef72e" category="list-text">En la página _Working Environment_ o en la página _Volume Details_, haga clic en *Add Volume from Template*.</block>
+  <block id="0ac913640e05ca365f5a393962934e01" category="inline-image-macro">Dos capturas de pantalla que muestran cómo los usuarios pueden crear nuevos volúmenes a partir de una plantilla.</block>
+  <block id="2d892e3cbbb0b29eb197061deb0539cd" category="paragraph"><block ref="2d892e3cbbb0b29eb197061deb0539cd" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="866e23a1c4ed5bf233d7e358044b8e25" category="paragraph">Se muestra el _Panel de plantillas_ y sólo enumera las plantillas que se aplican al entorno de trabajo seleccionado. Por ejemplo, sólo muestra las plantillas Cloud Volumes ONTAP.</block>
+  <block id="8f0a75d2d5a82f31f2cf069c3b0ee684" category="inline-image-macro">Icono más</block>
+  <block id="0107b14a93ef1d128a47eab0a257362b" category="list-text">Haga clic en <block ref="50acd719b1954eb4890c002b3b5e71a6" category="inline-image-macro-rx" type="image"></block> Y *Ejecutar plantilla*.</block>
+  <block id="ef7dd761a51f95d983604b03095ba47b" category="inline-image-macro">Captura de pantalla que muestra cómo ejecutar una plantilla desde el Panel de plantillas.</block>
+  <block id="764523b69b476a762d8f6178a65eee14" category="paragraph"><block ref="764523b69b476a762d8f6178a65eee14" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f505856a4a971e934b73488d7faffec5" category="paragraph">Aparecerá la página _Add Volume from Template_.</block>
+  <block id="190737142dd783de87873656b362e980" category="list-text">Introduzca los valores en los campos editables para crear el volumen y haga clic en *Ejecutar plantilla*.</block>
+  <block id="6e3b3a4e03da2c7a0fbae4147925038b" category="inline-image-macro">Captura de pantalla que muestra los parámetros que debe definir para crear el volumen a partir de una plantilla.</block>
+  <block id="3e4296163753c591705e041795661a6c" category="paragraph"><block ref="3e4296163753c591705e041795661a6c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="29dfbe5727531f456e16c418443650fb" category="section-title">Ejecute una plantilla de volumen desde el Panel de plantillas</block>
+  <block id="79a5be6184496e04a800701c03275ada" category="paragraph">Puede agregar un volumen a un entorno de trabajo existente desde _Templates Dashboard_.</block>
+  <block id="ab5def1a97337779a1bc393108327177" category="paragraph">Se muestra el _Templates Dashboard_.</block>
+  <block id="596f8bd98917485511472f81dd61ef9e" category="list-text">Para la plantilla que desea utilizar, haga clic en <block ref="50acd719b1954eb4890c002b3b5e71a6" category="inline-image-macro-rx" type="image"></block> Y *Ejecutar plantilla*.</block>
+  <block id="034adad7c67d2e9a9dd3a8019b40eb84" category="paragraph"><block ref="034adad7c67d2e9a9dd3a8019b40eb84" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a918532ef256d4238d742eaee5308f7f" category="paragraph">Aparece la página _Run Template_.</block>
+  <block id="80ff21e45244c476e2be6b71de223d38" category="list-text">Introduzca los valores en los campos editables para crear el volumen y haga clic en *Ejecutar plantilla*.</block>
+  <block id="dbe672112d3378110db8fa7757b6ec30" category="paragraph"><block ref="dbe672112d3378110db8fa7757b6ec30" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="0008e4b80c15d6d38bd1f6234a51330c" category="paragraph">Tenga en cuenta que al ejecutar la plantilla desde la consola se necesita seleccionar el entorno de trabajo y otras variables (por ejemplo, el equipo virtual de almacenamiento o el agregado). Cuando ejecuta la plantilla desde el entorno de trabajo, el entorno de trabajo se rellena automáticamente.</block>
+  <block id="9ab493f5de85b8e5a3705fe61fdf293d" category="section-title">Seleccione y ejecute una plantilla de entorno de trabajo</block>
+  <block id="01a2a85f3cd4ec0dcb3da1124102db42" category="paragraph">Puede crear un nuevo entorno de trabajo desde _Templates Dashboard_ si su empresa ha creado una plantilla para esta funcionalidad.</block>
+  <block id="6602afb860a6cca23c3b75bf601365eb" category="inline-link">Inicio de Cloud Volumes ONTAP en AWS</block>
+  <block id="03fdeb1a058aa425a68019c66e34e6ca" category="paragraph">Si tiene alguna pregunta sobre los detalles necesarios para crear el entorno de trabajo, consulte<block ref="497bfdbba9caf2f6a6f7d799eda40dc3" category="inline-link-rx"></block>.</block>
+  <block id="6195381a3e6e204f9315912ad2e31d58" category="paragraph"><block ref="6195381a3e6e204f9315912ad2e31d58" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="4532596496eaadd10e82985d53d942d9" category="list-text">Introduzca valores en campos editables para crear el entorno de trabajo y el primer volumen y haga clic en *Ejecutar plantilla*.</block>
+  <block id="f208614ddd4a42d1fe01800107447f9d" category="inline-image-macro">Captura de pantalla que muestra los parámetros que debe definir para crear el entorno de trabajo a partir de una plantilla.</block>
+  <block id="c1f52c2315cb68ab5da30355d493efa8" category="paragraph"><block ref="c1f52c2315cb68ab5da30355d493efa8" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="798178653cd4f1b33a2dc3600f51d489" category="section-title">Seleccione y ejecute una plantilla que encuentre los recursos existentes</block>
+  <block id="8d320e289935a3bc0309b4430f10862f" category="paragraph">Puede ejecutar una plantilla que encuentre ciertos recursos (por ejemplo, volúmenes) y, a continuación, activar un servicio de cloud en esos recursos (por ejemplo, Cloud Backup) si su empresa ha creado una plantilla utilizando esta funcionalidad. Al ejecutar la plantilla, puede realizar algunos ajustes menores de modo que el servicio cloud solo se aplique a los recursos adecuados.</block>
+  <block id="f256ffa6b4a4136dfb85dcf69983ada2" category="paragraph"><block ref="f256ffa6b4a4136dfb85dcf69983ada2" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="026ba222ebdf2fd2c82a0d12c610c566" category="paragraph">Aparece la página _Run Template_ e inmediatamente ejecuta la búsqueda definida en la plantilla para buscar los volúmenes que coinciden con los criterios.</block>
+  <block id="89c185a4d78a8567859db775ed13246b" category="list-text">Consulte la lista de volúmenes devueltos en el área _Volume Results_.</block>
+  <block id="b1fcd481a40253a09785803da0077de9" category="inline-image-macro">Una captura de pantalla que muestra cómo se devolvieron los volúmenes de los criterios de búsqueda de recursos de la búsqueda.</block>
+  <block id="1dc5726bf39154cb21baff6b494f9fad" category="paragraph"><block ref="1dc5726bf39154cb21baff6b494f9fad" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="ca98aa84984d29ab9e65eedb02a68ba7" category="list-text">Si los resultados son los que esperaba, seleccione la casilla de verificación para cada volumen que desea que se habilite Cloud Backup con los criterios de la parte _Enable Cloud Backup on Volume_ de la plantilla y haga clic en *Ejecutar plantilla*.</block>
+  <block id="27d7b10352920ea311d933853a157434" category="inline-image-macro">editar icono de lápiz</block>
+  <block id="f3b757371a9961d5ce7c320198eb268b" category="paragraph">Si los resultados no son los esperados, haga clic en <block ref="8e860c5cca0144ac9d126d75205476b6" category="inline-image-macro-rx" type="image"></block> Junto a _Search Criteria_ y afine aún más la búsqueda.</block>
+  <block id="fd69c5cf902969e6fb71d043085ddee6" category="paragraph-title">Resultados</block>
+  <block id="c6eb5da2af16b1f095636b3b5fc6a252" category="paragraph">La plantilla se ejecutará y activará Cloud Backup en cada volumen que haya comprobado en los criterios de búsqueda.</block>
+  <block id="ad065cba81dd0205f37aa602c122c6aa" category="paragraph">Se llamará cualquier error en la página _Running your Template_ y podrá resolver los problemas si es necesario.</block>
+  <block id="cc371045494864a1be09aecf8486813b" category="summary">Seleccione una o varias de las "acciones" proporcionadas por NetApp y cree rápidamente una plantilla de aplicación que pueda utilizar su organización para empezar a optimizar la creación de recursos.</block>
+  <block id="7b7aa0d4bd1d1332a50f445e21889bc8" category="doc">Cree plantillas de aplicación para su organización</block>
+  <block id="53eecd7f53fddfec88f1dbaf29600d72" category="list-text">Antes de que los usuarios puedan crear un volumen para un sistema Cloud Volumes ONTAP, ONTAP en las instalaciones o Azure NetApp Files con una plantilla, asegúrese de que tienen acceso a un entorno de trabajo adecuado donde se pondrá en marcha el volumen.</block>
+  <block id="45ebff704e28730c0e631bb5f09b2205" category="list-text">Si tiene pensado agregar una "acción" de servicio cloud a su plantilla, por ejemplo<block ref="65043dfb781746b8fde5bfddb319eb97" category="inline-link-rx"></block> o.<block ref="4af4db8698c4a0998b2c93dbadcf8efe" category="inline-link-rx"></block>, asegúrese de que el servicio esté activo y con licencia en su entorno.</block>
+  <block id="81736c3492216167017a2d56ef452f6f" category="paragraph">Seleccione *Estado &gt; resolución*, haga clic en la ficha *Editor* y seleccione las acciones que utilizará en su plantilla.</block>
+  <block id="6e6cc05a85425cbeb55920cadd22871b" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block> Genere la plantilla seleccionando "acciones" y definiendo parámetros</block>
+  <block id="ba13d007a4f76ded358c0280157f648b" category="paragraph">Siga los pasos de creación y defina las acciones que realizará la plantilla.</block>
+  <block id="45ef42d49d3545c2dc4c85b1084a47e4" category="list-text">Al crear una plantilla de volumen de Cloud Volumes ONTAP, asegúrese de que dispone de un entorno de trabajo Cloud Volumes ONTAP para los usuarios. Compruebe cómo se inicia un sistema Cloud Volumes ONTAP en<block ref="9d7ce7d64938e2f7608d2bb2edf0463c" category="inline-link-rx"></block>,<block ref="24f9dba5182403aa08072eb715753c19" category="inline-link-rx"></block>, o en<block ref="50ded4108906004e3a51ae63e78f7f8d" category="inline-link-rx"></block>.</block>
+  <block id="b927c65793ede8840d859f745c1070b4" category="inline-link">Descubra un sistema ONTAP en las instalaciones</block>
+  <block id="e30afa6af477c023130a06261e3f1227" category="list-text">Al crear una plantilla de volumen ONTAP en las instalaciones, asegúrese de que tiene disponible un entorno de trabajo ONTAP en las instalaciones para sus usuarios. Descubra cómo<block ref="73a5fece0c926f1d97e300f9e1e63b86" category="inline-link-rx"></block> En BlueXP.</block>
+  <block id="89bbeb90a25e5540f1875c6148fc07a6" category="inline-link">Crear un entorno de trabajo de Azure NetApp Files</block>
+  <block id="592b06abb0acdfe2b240cddf86e10637" category="list-text">Al crear una plantilla de volumen Azure NetApp Files, asegúrese de que tiene un entorno de trabajo Azure NetApp Files disponible para los usuarios. Descubra cómo<block ref="476f1ab3b7492b38993b3c305f1332d8" category="inline-link-rx"></block> En BlueXP.</block>
+  <block id="e6ed2b3f4bf8b70c7dffd440bfa20748" category="list-text">Si planea utilizar Cloud Backup para realizar una copia de seguridad de un volumen en la plantilla, asegúrese de que su entorno ha activado Cloud Backup.</block>
+  <block id="375fb9ecf54511eed57c23439aba8fa9" category="list-text">Si planea utilizar Cloud Data Sense para analizar volúmenes en la plantilla, asegúrese de que su entorno ha activado Cloud Data Sense.</block>
+  <block id="b2db245c1e7b0de62f61003787ba3eb2" category="list-text">Si va a habilitar la replicación en la plantilla y la plantilla es para un volumen de ONTAP en las instalaciones, el clúster de ONTAP debe tener una licencia de SnapMirror activa.</block>
+  <block id="ec83027c05d71f4e7343616a10e8b48e" category="section-title">Ejemplos de creación de recursos mediante plantillas</block>
+  <block id="54efaa09fa271348667d3925486f25d8" category="paragraph">Las plantillas de recursos le permiten crear nuevos volúmenes o un nuevo entorno de trabajo de Cloud Volumes ONTAP.</block>
+  <block id="030a036b48378de1f3003036be2d3597" category="section-title">Cree una plantilla para un volumen de Cloud Volumes ONTAP</block>
+  <block id="ab93b13353c035a51f382bda0bfbed96" category="inline-link">cómo aprovisionar volúmenes de Cloud Volumes ONTAP</block>
+  <block id="821f9fc7a9c5e046eb762a4d185a08f7" category="paragraph">Consulte<block ref="154a2016582f1d0d3d1ef7ccb4cc4af7" category="inline-link-rx"></block> Para obtener información detallada sobre todos los parámetros que necesita completar en la plantilla de volumen Cloud Volumes ONTAP.</block>
+  <block id="e9e4c331008e320c9b03b119f438ec84" category="paragraph">En este ejemplo crearemos una plantilla llamada "volumen CVO para bases de datos" e incluiremos las dos acciones siguientes:</block>
+  <block id="6115c1aa690e31fcf33eef72f8accb32" category="list-text">Cree un volumen de Cloud Volumes ONTAP</block>
+  <block id="4611422bf9a4ff570849e7d651f9c0a2" category="paragraph">Haga un volumen para el entorno AWS, configúrelo con 100 GB de almacenamiento, establezca la Política de Snapshot en "valor predeterminado" y habilite la eficiencia del almacenamiento.</block>
+  <block id="d0285b972453920d44e9bfc537f86825" category="list-text">Habilite Cloud Backup</block>
+  <block id="0e7b1101bfe909f1f24d1bc082d8cb0b" category="paragraph">Crear 30 copias de seguridad diarias, 13 semanales y 3 mensuales (utilizando la política de retención_ de _3 meses).</block>
+  <block id="44fbc3f04f1c80f38f04a2c9ae828fad" category="list-text">Seleccione *Estado &gt; resolución*, haga clic en la ficha *Plantillas* y haga clic en *Agregar nueva plantilla*.</block>
+  <block id="12800accdcea8213a17428d96d3f650b" category="paragraph">Se muestra la página _Select_a Template_.</block>
+  <block id="ac454ecfe801e40640fcab274d8376c7" category="inline-image-macro">Una captura de pantalla que muestra cómo seleccionar la acción principal que se realizará con esta plantilla.</block>
+  <block id="badf0b64af7e4dbccc924f1b86d16441" category="paragraph"><block ref="badf0b64af7e4dbccc924f1b86d16441" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="e9d6286a0d87815f2dfb97a9d19be924" category="list-text">Seleccione *volumen para Cloud Volumes ONTAP + copia de seguridad* como el tipo de recurso que desea crear y haga clic en *comenzar*.</block>
+  <block id="2e40b56b7fa804a6923caf652b7c25aa" category="paragraph">Se muestra la página _Create Volume in Cloud Volumes ONTAP Action Definition_.</block>
+  <block id="99d5fcac810e0357f1ce55dabd9aadfd" category="inline-image-macro">Captura de pantalla que muestra una plantilla de CVO en blanco que necesita rellenar.</block>
+  <block id="c300df2aa9b635b7e59061b7084d3807" category="paragraph"><block ref="c300df2aa9b635b7e59061b7084d3807" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="801e9079b48c523d52a05513463997fe" category="list-text">*Nombre de acción*: De forma opcional, escriba un nombre de acción personalizado en lugar del valor predeterminado.</block>
+  <block id="7cbfd40e0aecc60c4a4efbc45ba21139" category="list-text">*Contexto:* Introduzca el contexto del entorno de trabajo Cloud Volumes ONTAP; si es necesario.</block>
+  <block id="059515978a375903c4b939adacaa923b" category="paragraph">Cuando los usuarios inician la plantilla desde un entorno de trabajo existente, esta información se rellena automáticamente.</block>
+  <block id="9723c14ceead0bcb4a1db0b77671f08a" category="paragraph">Cuando los usuarios inician la plantilla desde el Panel de plantillas (no en un contexto de entorno de trabajo), deben seleccionar el entorno de trabajo y la SVM donde se creará el volumen. Por eso estos campos se marcan como "editables".</block>
+  <block id="5ea98d0d0acbef5bd9f5c07ca7a061be" category="list-text">*Detalles:* Introduzca el nombre y el tamaño del volumen.</block>
+  <block id="6f16a5f8ff5d75ab84c018adacdfcbb7" category="cell">Campo</block>
+  <block id="b5a7adde1af5c87d7fd797b6245c2a39" category="cell">Descripción</block>
+  <block id="5a33fdd3ad048388d676b3cfe62a76b4" category="cell">Nombre del volumen</block>
+  <block id="2883dfc230f7a5fee0fceab3e724eed1" category="cell">Haga clic en el campo y seleccione una de las 5 opciones. Puede dejar que el administrador escriba cualquier nombre seleccionando *texto libre*, o puede especificar que el nombre del volumen debe tener un prefijo o sufijo determinado, que contiene ciertos caracteres, o que sigue las reglas de una expresión regular (regex) que introduzca. Por ejemplo, puede especificar que "dB" sea un prefijo, sufijo o contiene; requerir que el usuario agregue nombres de volumen como "dB_vol1", "vol1_dB" o "vol_dB_1".</block>
+  <block id="191fac23c2b2ea4e948178972521292f" category="cell">Tamaño del volumen</block>
+  <block id="00c8763f564b8663e70d7c5282bfb116" category="cell">Puede especificar un rango de valores permitidos o puede especificar un tamaño fijo. Este valor se da en GB. Para nuestro ejemplo podemos agregar un valor fijo *100*.</block>
+  <block id="189f63f277cd73395561651753563065" category="cell">Etiquetas</block>
+  <block id="5c383dfd487b893537243d1ff2b9c575" category="cell">Introduzca un nombre y una pareja de valores para una etiqueta que desee asociar a este volumen. Por ejemplo, puede agregar "Centro de costes" como nombre de etiqueta y el código de centro de costes "6655829" como valor. Es posible asociar más de una etiqueta a un volumen. Para ello, se deben añadir más nombres de etiqueta y parejas de valores.</block>
+  <block id="8cb0ac47c325f07198a8d894befe84b4" category="list-text">*Protección:* Elija si este volumen tendrá copias snapshot creadas seleccionando "predeterminado" o alguna otra directiva, o bien elija "ninguna" si no desea crear copias snapshot.</block>
+  <block id="14e9a0afe9a24320a6cbef6a736df90e" category="list-text">*Perfil de uso:* Elija si las funciones de eficiencia del almacenamiento de NetApp se aplican al volumen. Esto incluye thin provisioning, deduplicación y compresión. Para nuestro ejemplo, mantenga la eficiencia del almacenamiento habilitada.</block>
+  <block id="9a58906a5890a61a2ba00a2bc5f6a847" category="list-text">*Tipo de disco:* Elija el proveedor de almacenamiento en la nube y el tipo de disco. Para algunas selecciones de disco también puede seleccionar un valor de IOPS o rendimiento (MB/s) mínimo y máximo; básicamente, defina un cierto valor de calidad de servicio (QoS).</block>
+  <block id="8a199052157229eefe6d69b9e724047a" category="list-text">*Opciones de protocolo:* Seleccione *NFS* o *SMB* para establecer el protocolo del volumen. Y, a continuación, proporcione los detalles del protocolo.</block>
+  <block id="5dc73c128ec631156d8581bb645e55cc" category="cell">Campos NFS</block>
+  <block id="8aaaedc342a0dce1d73d33f3fb69a2af" category="cell">Control de accesos</block>
+  <block id="4a3d2f4e3aa9bd79e413c5b9fa744ab3" category="cell">Elija si se necesitan controles de acceso para acceder al volumen.</block>
+  <block id="8dadce9de6b5f104b9f1990b73f191f0" category="cell">Política de exportación</block>
+  <block id="565e7c939f0a1769928e7ea0649f804b" category="cell">Cree una política de exportación para definir los clientes de la subred que puedan acceder al volumen.</block>
+  <block id="97e382ecf7e6f1064476764cbcc5b429" category="cell">Versión de NFS</block>
+  <block id="7d357e387e1a68e43d79ca61a0b67fb9" category="cell">Seleccione la versión de NFS del volumen: _NFSv3_ o _NFSv4_, o puede seleccionar ambas.</block>
+  <block id="ba1dcdd66cd4d8a61910f9d39950817a" category="cell">Campos de SMB</block>
+  <block id="d30b23c0886d5712f5995a7793376942" category="cell">Nombre del recurso compartido</block>
+  <block id="6e94b2e72c0376574fc6b13ca0384876" category="cell">Haga clic en el campo y seleccione una de las 5 opciones. Puede dejar que el administrador escriba cualquier nombre (texto libre) o puede especificar que el nombre del recurso compartido debe tener un prefijo o sufijo determinado, que contiene ciertos caracteres o que sigue las reglas de una expresión regular (regex) que escriba.</block>
+  <block id="d08ccf52b4cdd08e41cfb99ec42e0b29" category="cell">Permisos</block>
+  <block id="81075cbf19436268ea82309abe5e2fbf" category="cell">Seleccione el nivel de acceso a un recurso compartido para usuarios y grupos (también llamados listas de control de acceso o ACL).</block>
+  <block id="3d0a35be70eebb15d947ea1010db1320" category="cell">Usuarios / grupos</block>
+  <block id="ea73180f9c8cb441163847f36b7e315b" category="cell">Especifique usuarios o grupos de Windows locales o de dominio, o usuarios o grupos de UNIX. Si especifica un nombre de usuario de Windows de dominio, debe incluir el dominio del usuario con el formato domain\username.</block>
+  <block id="979ea4704bcee326b5ea5d2bc6a4a89b" category="list-text">*Segmentación:* Elija la política de organización en niveles que desea aplicar al volumen o establezca esta opción en "ninguna" si no desea organizar en niveles los datos inactivos de este volumen en el almacenamiento de objetos.</block>
+  <block id="e8ef245792950f46479876f766e2e142" category="inline-link">políticas de organización en niveles del volumen</block>
+  <block id="b0e17b25c2ac5fdfcde0ef543eb85101" category="inline-link">Organización en niveles de los datos inactivos en el almacenamiento de objetos</block>
+  <block id="ee33f204180d62cfb217e1aec2a2f775" category="paragraph">Consulte<block ref="51ba3de2fe0f2a8abd8380ab98f33811" category="inline-link-rx"></block> para ver información general, consulte<block ref="d98e4cd2c7e92258651d80578af83733" category="inline-link-rx"></block> para asegurarse de que su entorno esté configurado para la organización en niveles.</block>
+  <block id="dcbae1cdee8a3f08d129ff3de6884125" category="list-text">Haga clic en *aplicar* después de definir los parámetros necesarios para esta acción.</block>
+  <block id="7566e7b2ebc49252e3a55e0d5dd8d796" category="paragraph">Si los valores de la plantilla se completan correctamente, se añade una Marca de verificación verde al cuadro "Crear volumen en Cloud Volumes ONTAP".</block>
+  <block id="edabbad74c4bab7275b00df22d1795fb" category="list-text">Haga clic en el cuadro *Activar copia de seguridad en la nube en volumen* y aparecerá el cuadro de diálogo _Activar copia de seguridad en la nube en Definición_ de acción de volumen para que pueda rellenar los detalles de copia de seguridad en la nube.</block>
+  <block id="e7b2940e4c4ae2261e85a3d7a22c8cb5" category="inline-image-macro">Captura de pantalla que muestra las acciones adicionales que puede añadir al volumen creado.</block>
+  <block id="1d52e1ed02fe4b810c04939e74af1f18" category="paragraph"><block ref="1d52e1ed02fe4b810c04939e74af1f18" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f558391a06df755ed33bfad6325d0441" category="list-text">Seleccione la política de copias de seguridad de *3 meses Retention* para crear 30 copias de seguridad diarias, 13 semanales y 3 mensuales.</block>
+  <block id="ee90c4ccb63dcb129be28139926904d8" category="inline-link-macro">cómo completar estos campos</block>
+  <block id="102438db076a8d87db11f71b80bc5d27" category="list-text">Debajo de los campos entorno de trabajo y nombre de volumen hay tres selecciones que utiliza para indicar qué volumen tendrá habilitada la copia de seguridad. Consulte <block ref="0f494e6e7e9db827f82823d25be045fa" category="inline-link-macro-rx"></block>.</block>
+  <block id="0728b4f74021dc704fab300222094c8b" category="list-text">Haga clic en *aplicar* y se guardará el cuadro de diálogo copia de seguridad en la nube.</block>
+  <block id="46725495896c458f104f504d53b4b320" category="list-text">Introduzca el nombre de plantilla *volumen CVO para bases de datos* (para este ejemplo) en la parte superior izquierda.</block>
+  <block id="d69be6c531037f06436630d128988a41" category="list-text">Haga clic en *Configuración y deriva* para obtener una descripción más detallada de modo que esta plantilla pueda distinguirse de otras plantillas similares y, por lo tanto, puede activar deriva para la plantilla general y, a continuación, haga clic en *aplicar*.</block>
+  <block id="0107177951fcfb1e8290634ec2f0b1ad" category="paragraph">Drift permite a BlueXP supervisar los valores codificados de forma rígida introducidos para los parámetros al crear esta plantilla.</block>
+  <block id="069cf34ab6ca64e85728193a5aab0a4e" category="list-text">Haga clic en *Guardar plantilla*.</block>
+  <block id="8eea62084ca7e541d918e823422bd82e" category="paragraph-title">Resultado</block>
+  <block id="8b8745414ffb4d1bc70671bfa839ed7d" category="paragraph">Se crea la plantilla y se devuelve al Panel de plantillas donde aparece la nueva plantilla.</block>
+  <block id="5e0cbbeb0c7fbcd015cc8264aa380cf6" category="inline-xref">qué debe informar a sus usuarios acerca de las plantillas</block>
+  <block id="0a45425eb0911358963a7a4da437beeb" category="paragraph">Consulte <block ref="2fb234aaf0c174d8c17b6003cc9fc11d" category="inline-xref-macro-rx"></block>.</block>
+  <block id="0723f0287083e700309ab63bd37a0c33" category="section-title">Cree una plantilla para un volumen Azure NetApp Files</block>
+  <block id="38c68ceb833297ed3631cc6cc44141ab" category="paragraph">La creación de una plantilla para un volumen Azure NetApp Files se realiza de la misma manera que la creación de una plantilla para un volumen Cloud Volumes ONTAP.</block>
+  <block id="98165316f4a6a7eb3b2eea00a7c71656" category="inline-link">cómo aprovisionar volúmenes de Azure NetApp Files</block>
+  <block id="1dcec9f35c7e20c4011388d6173a9a3e" category="paragraph">Consulte<block ref="71642e13367a6341a10e13f459821e6e" category="inline-link-rx"></block> Para obtener detalles acerca de todos los parámetros que necesita completar en la plantilla de volumen ANF.</block>
+  <block id="31ea9a5156da1667ca8c913660cb04e8" category="paragraph"><block ref="31ea9a5156da1667ca8c913660cb04e8" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b1198c02b1425b74b6391ffd99cbc74b" category="list-text">Seleccione *plantilla en blanco* y haga clic en *comenzar*.</block>
+  <block id="ddc839fd59d3af096b5f24caa0aac73e" category="list-text">Seleccione *Crear volumen en Azure NetApp Files* como el tipo de recurso que desea crear y haga clic en *aplicar*.</block>
+  <block id="d7f05890785a6be968f73b8eaead7a27" category="paragraph">Se muestra la página _Create Volume in Azure NetApp Files Action Definition_.</block>
+  <block id="d64e3f9a180b7c834241b44a88d16f4d" category="inline-image-macro">Captura de pantalla que muestra una plantilla ANF en blanco que necesita rellenar.</block>
+  <block id="bea9505dd83d12b3dd7397d8682eb37b" category="paragraph"><block ref="bea9505dd83d12b3dd7397d8682eb37b" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="09ff1b3fa74cf72dc0a62eaa7242effd" category="list-text">*Detalles del volumen:* Introduzca un nombre y tamaño de volumen y, opcionalmente, especifique etiquetas para el volumen.</block>
+  <block id="c44953330b995fcda50e59d40ea3a049" category="cell">Puede especificar un rango de valores permitidos o puede especificar un tamaño fijo. Este valor se da en GB.</block>
+  <block id="f727b1e918e496981ef541497e02f03e" category="list-text">*Protocolo:* Seleccione *NFSv3*, *NFSv4.1* o *SMB* para establecer el protocolo del volumen. Y, a continuación, proporcione los detalles del protocolo.</block>
+  <block id="cb4d2c1623299b4c2878da3019af962f" category="cell">Ruta del volumen</block>
+  <block id="377c42289584cc56d1ca3a47af882648" category="cell">Seleccione una de las 5 opciones. Puede permitir que el administrador escriba cualquier ruta de acceso seleccionando *texto libre*, o puede especificar que el nombre de la ruta de acceso debe tener un prefijo o sufijo determinado, que _contenga_ determinados caracteres o que siga las reglas de una expresión regular (regex) que introduzca.</block>
+  <block id="9f669007b0241e85f918bbf51c094ed1" category="cell">Reglas de la política de exportación</block>
+  <block id="bcccd81c3a412f1013995a215560e6f4" category="list-text">*Contexto:* Introduzca el entorno de trabajo Azure NetApp Files, los detalles de una cuenta Azure NetApp Files nueva o existente y otros detalles.</block>
+  <block id="68049d5b86773fa123aee6b5162b46ba" category="cell">Entorno de trabajo</block>
+  <block id="66618d802ff15f9772bf7cabf1ccccd5" category="cell">Cuando los usuarios del administrador del almacenamiento inician la plantilla desde un entorno de trabajo existente, esta información se rellena automáticamente. Cuando los usuarios inician la plantilla desde el Panel de plantillas (no en un contexto de entorno de trabajo), deben seleccionar el entorno de trabajo donde se creará el volumen.</block>
+  <block id="baac6f97c8e7e8e6270cc894e6bdbe8c" category="cell">Nombre de cuenta de NetApp</block>
+  <block id="32fe392abad2a40de341773cc015c9ed" category="cell">Introduzca el nombre que desee usar para la cuenta.</block>
+  <block id="5094b7a12b4988ad4d43027cff543c44" category="cell">ID de suscripción de Azure</block>
+  <block id="9d50dad1baec8117f193564ab3e971b7" category="cell">Introduzca el ID de suscripción de Azure. Este es el ID completo en un formato similar a "2b04f26-7de6-42eb-9234-e2903d7s327".</block>
+  <block id="f447ac856e7e72435904956e3b15f433" category="cell">Región</block>
+  <block id="bc24e6fad764484fb6365689ca4d656e" category="inline-link">nombre de región interna</block>
+  <block id="db11e34ee53f07b67134b18d34ea5869" category="cell">Introduzca la región mediante<block ref="982c814c46363bccb479e928a36b737e" category="inline-link-rx"></block>.</block>
+  <block id="a35ce6a7b02cbfd98e9837032a457dd5" category="cell">Nombre del grupo de recursos</block>
+  <block id="01652266b6c049dc9e680639d9932631" category="cell">Introduzca el nombre del grupo de recursos que desee usar.</block>
+  <block id="0941eb13d6f2381bd092f5083e63aed8" category="cell">Nombre del pool de capacidad</block>
+  <block id="4fd739db287e5a16b75e3489f92360b2" category="cell">Introduzca el nombre de un pool de capacidad existente.</block>
+  <block id="9770c6469e9d27585d6c0c389ede7bc3" category="cell">Subred</block>
+  <block id="4c695379c0a2d8fa6d7f8c59bda94b06" category="cell">Introduzca el vnet y la subred. Este valor incluye la ruta completa, en un formato similar a "/subscriptions/&lt;subscription_id&gt;/ResourceGroups/&lt;resource_group&gt;/ providers/Microsoft.Network/virtualNetworks/&lt;vpc_name&gt;/Subnets/&lt;subhet_name&gt;".</block>
+  <block id="c8cef9ee8b7303419027647a212fda91" category="list-text">*Copia snapshot:* Introduzca el ID de instantánea para una instantánea de volumen existente si desea que este nuevo volumen se cree utilizando características de un volumen existente.</block>
+  <block id="18801e3c62d625d360e2e7ea2b62c1b7" category="list-text">Introduzca el nombre que desea utilizar para la plantilla en la parte superior izquierda.</block>
+  <block id="56b6bad4ad8b3fcc1c2572a38f72bbbc" category="section-title">Cree una plantilla para un volumen de ONTAP en las instalaciones</block>
+  <block id="d3a13fb50cc9406d1e6091d1a798ff8a" category="inline-link">cómo aprovisionar volúmenes de ONTAP en las instalaciones</block>
+  <block id="2ae042576bd53fa925dc0c175ec115a2" category="paragraph">Consulte<block ref="66f502a6d6407b2e7db3bd3d647a7434" category="inline-link-rx"></block> Si desea obtener información detallada sobre todos los parámetros necesarios para completar en la plantilla de volumen de ONTAP en las instalaciones.</block>
+  <block id="abea42b586bcc6693bfcf53290293b41" category="paragraph">Aparecerá la página _Add New Action_.</block>
+  <block id="4f58f599c7e133b39a2f56df4f449c81" category="inline-image-macro">Una captura de pantalla que muestra cómo seleccionar la acción principal de la página Agregar nueva acción.</block>
+  <block id="b9a9d1475979d9d1c4cd0440dd88810d" category="paragraph"><block ref="b9a9d1475979d9d1c4cd0440dd88810d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="6c6e50215d08a8e2a4d4b3b967318d88" category="list-text">Seleccione *Crear volumen en ONTAP* local como el tipo de recurso que desea crear y haga clic en *aplicar*.</block>
+  <block id="a00fd358a9eee9d23c91c9d79c7b6e51" category="paragraph">Se muestra la página _Create Volume in on-local ONTAP Action Definition_.</block>
+  <block id="75ded3aff94ceea416f4a8ab89a32002" category="inline-image-macro">Captura de pantalla que muestra una plantilla de ONTAP onprem en blanco que necesita rellenar.</block>
+  <block id="89035127115cb3301d3a94b49531ed51" category="paragraph"><block ref="89035127115cb3301d3a94b49531ed51" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b30775865ed56b7c2909b414f5bb5416" category="list-text">*Context:* Introduzca el contexto de entorno de trabajo de ONTAP en las instalaciones; si es necesario.</block>
+  <block id="27ca463515b4c83e76d5222e013a0079" category="paragraph">Cuando los usuarios inician la plantilla desde el Panel de plantillas (no en un contexto de entorno de trabajo), deben seleccionar el entorno de trabajo, la SVM y el agregado donde se creará el volumen.</block>
+  <block id="6b8f1d602895dd119fb811094bedb73b" category="list-text">*Perfil de uso:* Elija si las funciones de eficiencia del almacenamiento de NetApp se aplican al volumen. Esto incluye thin provisioning, deduplicación y compresión.</block>
+  <block id="40e5030f72431662e47f324512075e1a" category="paragraph">Si los valores de la plantilla se completan correctamente, se añade una Marca de verificación verde al cuadro "Crear volumen en ONTAP local".</block>
+  <block id="b74bc7581cece8a120da088eb00d917f" category="list-text">Introduzca el nombre de la plantilla en la parte superior izquierda.</block>
+  <block id="679e23d213be6214a99d26fb979d6001" category="paragraph">Se crea la plantilla y se devuelve al Panel de plantillas donde aparece la nueva plantilla.</block>
+  <block id="216d716a4c08d31f3e40260ee58f2904" category="section-title">Cree una plantilla para un entorno de trabajo de Cloud Volumes ONTAP</block>
+  <block id="0d489881f98fefa7f8b791c4f4e7d7a1" category="paragraph">Puede crear un entorno de trabajo Cloud Volumes ONTAP de un solo nodo o de alta disponibilidad mediante plantillas.</block>
+  <block id="07b221aacb78d81a6389d6512f7b46cc" category="list-text">En este momento, solo se ofrece compatibilidad para entornos AWS.</block>
+  <block id="cc46cd379c9c1e14c8c28bca9392395f" category="list-text">Esta plantilla no crea el primer volumen en el entorno de trabajo. Debe añadir una acción "Crear volumen en Cloud Volumes ONTAP" en la plantilla para crear el volumen.</block>
+  <block id="af78f376877c8c8c70d830fc500a2cca" category="inline-link">cómo iniciar el sistema Cloud Volumes ONTAP de un único nodo en AWS</block>
+  <block id="27b91813df07253f9b34c2c33a28dc25" category="inline-link">Par de alta disponibilidad de Cloud Volumes ONTAP en AWS</block>
+  <block id="cc8cd5a43afbf50d3c76ca4927c286d1" category="paragraph">Consulte<block ref="17218100ebd265ac766a5fc208b6c6f8" category="inline-link-rx"></block> o a<block ref="e59af64db55d6d6b5c59844c08c8e1b5" category="inline-link-rx"></block> para los requisitos previos que deben estar vigentes y para obtener detalles sobre todos los parámetros que deberá definir en esta plantilla.</block>
+  <block id="982967d26b8426889a4c2982331cbefe" category="paragraph"><block ref="982967d26b8426889a4c2982331cbefe" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="40bb655abcddd337fbc3dc9a23c1c92b" category="list-text">Seleccione *Crear entorno de trabajo en AWS (nodo único)* o *Crear entorno de trabajo en AWS (alta disponibilidad)* como el tipo de recurso que desea crear y haga clic en *aplicar*.</block>
+  <block id="e8547bfeacec12f30aa5d7de4fbd86b4" category="paragraph">Para este ejemplo, se muestra la página _Create Working Environment in AWS (un solo nodo)_.</block>
+  <block id="d70355e885e82b6e2a9347467809fc82" category="inline-image-macro">Captura de pantalla que muestra una plantilla de entorno de trabajo de Cloud Volumes ONTAP en blanco que debe rellenar.</block>
+  <block id="3232ff2033d10cf395332723ec31481e" category="paragraph"><block ref="3232ff2033d10cf395332723ec31481e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="ab59d67e05a3f51373ba331faa69f02e" category="list-text">*Detalles y credenciales*: Seleccione las credenciales de AWS que desea utilizar, introduzca un nombre de entorno de trabajo y agregue etiquetas, si es necesario.</block>
+  <block id="09eb13e81cc007418ee8fa04feb8088f" category="paragraph">Algunos de los campos en esta página son claros y explicativos. En la siguiente tabla se describen los campos que podrían presentar dificultades:</block>
+  <block id="2daf1cb573c2c61422faf64610cf9402" category="cell">Credenciales</block>
+  <block id="64917fe8c1577c91426bd43a4aef38db" category="cell">Estas son las credenciales de la cuenta de administrador del clúster de Cloud Volumes ONTAP. Puede usar estas credenciales para conectarse a Cloud Volumes ONTAP a través de ONTAP System Manager o de su CLI.</block>
+  <block id="2cebc28eab2cacd2695a37777c14a93f" category="cell">Nombre del entorno de trabajo</block>
+  <block id="14938059a03b38f1f630bba556c15624" category="cell">BlueXP usa el nombre del entorno de trabajo para asignar un nombre tanto al sistema Cloud Volumes ONTAP como a la instancia de Amazon EC2. También utiliza el nombre como prefijo para el grupo de seguridad predefinido si selecciona esa opción. Haga clic en el campo y seleccione una de las 5 opciones. Puede permitir que el administrador escriba cualquier nombre seleccionando *texto libre*, o puede especificar que el nombre del entorno de trabajo debe tener un prefijo o sufijo determinado, que _contiene ciertos caracteres o que sigue las reglas de una expresión regular (regex) que introduzca.</block>
+  <block id="42b463e9a7149a42c8aa33ac96a9611d" category="cell">Las etiquetas de AWS son metadatos para sus recursos de AWS. BlueXP agrega las etiquetas a la instancia de Cloud Volumes ONTAP y cada recurso de AWS asociado a la instancia. Para obtener información sobre etiquetas, consulte<block ref="9bd250e03cdf80384a24635f16673602" category="inline-link-rx"></block>.</block>
+  <block id="6101eef8fd3b11affed5baa0379eb7b5" category="inline-link">Hoja de cálculo de AWS</block>
+  <block id="21e39bab34fec6294e31fe4e65b232c7" category="list-text">*Ubicación y conectividad*: Introduzca la información de red que grabó en<block ref="837a3d1b1486e7cc7dba08a5d4a77996" category="inline-link-rx"></block>. Esto incluye la región, VPC, subred y grupo de seguridad de AWS.</block>
+  <block id="6f27ddf091b10f1dfd4ab13be0759ec7" category="paragraph">Si tiene una publicación externa de AWS, puede implementar un sistema Cloud Volumes ONTAP de un solo nodo en esa publicación seleccionando el VPC de salida. La experiencia es la misma que cualquier otro VPC que resida en AWS.</block>
+  <block id="e01401f96474df4861317e5b4493deca" category="list-text">*Método de autenticación*: Seleccione el método de autenticación SSH que desea utilizar; una contraseña o un par de claves.</block>
+  <block id="94b720129da1fad395a78adb9dd8004f" category="list-text">*cifrado de datos*: Elija sin cifrado de datos o cifrado gestionado por AWS.</block>
+  <block id="8d4e0ae3c5be71d9c725659a6203fb6f" category="paragraph">Para el cifrado gestionado por AWS, puede elegir una clave maestra de cliente (CMK) diferente de su cuenta u otra cuenta de AWS.</block>
+  <block id="7238e3ed6732433c6a3fc43c882f2749" category="inline-link">Aprenda a configurar AWS KMS para el cloud Volumes ONTAP</block>
+  <block id="2dff4bc0654f658707793fc687e4a17f" category="paragraph"><block ref="aab3f238743393f06eea77a640671e14" category="inline-link-rx"></block>.</block>
+  <block id="84fee0ef7a3aad23dfb27e9c3b17b961" category="list-text">*Método de carga*: Especifique la opción de carga que desea utilizar con este sistema.</block>
+  <block id="9dbd3ac8bddbf4313a163e34e79476bf" category="inline-link">Conozca estos métodos de carga</block>
+  <block id="c2e9e869bf938477d84b552043f7a81a" category="paragraph"><block ref="0cc5783cded63ddb149e3f9f53e8f86e" category="inline-link-rx"></block>.</block>
+  <block id="8ac4cd210de5bd5fe91a871c186e8be3" category="list-text">*Cuenta en la página de soporte de NetApp*: Seleccione una cuenta en la página de soporte de NetApp.</block>
+  <block id="f6b1eeef6a894819bc1138daa571ecaa" category="list-text">*Paquetes preconfigurados*: Seleccione uno de los cuatro paquetes preconfigurados que determinarán varios factores para volúmenes creados en el entorno de trabajo.</block>
+  <block id="cb2bbd3723ec0171f93e30cb1d35ebc4" category="list-text">*Configuración de SMB*: Si planea implementar volúmenes mediante SMB en este entorno de trabajo, puede configurar un servidor CIFS y elementos de configuración relacionados.</block>
+  <block id="80a0d065fe120a53a92d1cbae6bd3fa2" category="paragraph">Si los valores de la plantilla se completan correctamente, se agrega una Marca de verificación verde al cuadro "Crear entorno de trabajo en AWS (nodo único)".</block>
+  <block id="abd25867aae2404fdbef96ae0b0057ee" category="inline-xref">Cree una plantilla para un volumen de Cloud Volumes ONTAP</block>
+  <block id="520d34c754a3e963e32a0fc19ab1421c" category="list-text">Puede que desee agregar otra acción en esta plantilla para crear un volumen para este entorno de trabajo. Si es así, haga clic en <block ref="f928d2751b49d5f69d575bc7f78c5aae" category="inline-image-macro-rx" type="image"></block> y agregue esa acción. Descubra cómo <block ref="f498f1e6b10c72f9f04179db4da15305" category="inline-xref-macro-rx"></block> para obtener más detalles.</block>
+  <block id="45a406745a298842b185cafcdaedc62b" category="section-title">Ejemplos de búsqueda de recursos existentes mediante plantillas</block>
+  <block id="f7322605429ac37b6517eaccfdebcdfe" category="paragraph">Con la acción _Find existing Resources_ puede encontrar entornos de trabajo específicos o encontrar volúmenes existentes proporcionando una variedad de filtros para limitar la búsqueda sólo a los recursos que le interesan. Después de encontrar los recursos correctos, podrá añadir volúmenes a un entorno de trabajo o habilitar un servicio cloud en los volúmenes resultantes.</block>
+  <block id="18bc86c303dfcce839364dfb6f86c8d7" category="admonition">En este momento puede encontrar volúmenes en sistemas Cloud Volumes ONTAP, ONTAP en las instalaciones y Azure NetApp Files. Además, puede habilitar Cloud Backup en Cloud Volumes ONTAP y ONTAP Volumes en las instalaciones. Los recursos y servicios adicionales estarán disponibles más adelante.</block>
+  <block id="38e15ec3e6bd73e018349ed1f0bf12bb" category="section-title">Busque los volúmenes existentes y active un servicio cloud</block>
+  <block id="80252c15af311783e16e6d31bb72ca0b" category="paragraph">La funcionalidad de acción actual _Find existing Resources_ permite encontrar volúmenes en entornos de trabajo de Cloud Volumes ONTAP y ONTAP en las instalaciones que no tienen habilitado Cloud Backup ni Cloud Data Sense. Al habilitar Cloud Backup en volúmenes específicos, esta acción también establece la política de backup que configuró como política predeterminada para ese entorno de trabajo, de modo que todos los volúmenes futuros de dichos entornos puedan usar la misma normativa de backup.</block>
+  <block id="6d0c20318ee7bcc13d58fa262e33c7d2" category="inline-image-macro">Una captura de pantalla que muestra cómo seleccionar la acción Buscar recursos existentes en la página Agregar nueva acción.</block>
+  <block id="0e9d27a36a1187dea1616df501ce108d" category="paragraph"><block ref="0e9d27a36a1187dea1616df501ce108d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="11c981e1d4ed40ea0925d9ae06dae41f" category="list-text">Seleccione *Buscar recursos existentes* como el tipo de acción que desea definir y haga clic en *aplicar*.</block>
+  <block id="1b733abaf243d15600d33f844e9bdc13" category="paragraph">Se muestra la página _Find existing Resources Action Definition_.</block>
+  <block id="10798727522d9d9973a80cddbbd083ac" category="inline-image-macro">Una captura de pantalla que muestra una plantilla de recursos existentes de búsqueda en blanco que necesita rellenar.</block>
+  <block id="23b2538202f81713f750e06e99508701" category="paragraph"><block ref="23b2538202f81713f750e06e99508701" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d453807788f3b6bbd3ea47f9cbe56875" category="list-text">*Nombre de acción*: Introduzca un nombre de acción personalizado en lugar del valor predeterminado. Por ejemplo, "Find large Volumes on cluster ABC and enable Backup".</block>
+  <block id="463c18d84d5e845ea1d485923b7349ce" category="list-text">*Tipo de recurso:* Seleccione el tipo de recurso que desea encontrar. En este caso, puede seleccionar *volúmenes en Cloud Volumes ONTAP*.</block>
+  <block id="7d61d7a876b512b9951ebcd6b058cc77" category="paragraph">Esta es la única entrada necesaria para esta acción. Puede hacer clic en *continuar* ahora y recibirá una lista de todos los volúmenes de todos los sistemas Cloud Volumes ONTAP de su entorno.</block>
+  <block id="af2373ef86f3287751a203259821db48" category="paragraph">En su lugar, se recomienda rellenar algunos filtros para reducir el número de resultados (en este caso, volúmenes) a los que aplicará la acción de backup en el cloud.</block>
+  <block id="759a269bf5c05fa6647b728a4b6acab7" category="list-text">En el área _context_ puede seleccionar un entorno de trabajo específico y otros detalles acerca de ese entorno de trabajo.</block>
+  <block id="70b9fbef4c70dff460de52b0d7c1eb40" category="inline-image-macro">Una captura de pantalla que muestra los filtros de contexto que puede aplicar a la plantilla Buscar recursos existentes.</block>
+  <block id="7a978f856247996229928441e0d8ef1d" category="paragraph"><block ref="7a978f856247996229928441e0d8ef1d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="ad47acd6a839d467d8e7d8cc0ab575bb" category="list-text">En el área _Details_ puede seleccionar el nombre del volumen, el rango de tamaño de volumen y las etiquetas asignadas a los volúmenes.</block>
+  <block id="f3ab419ac906615be19ae0d551c2ddd6" category="paragraph">Para el nombre del volumen, haga clic en el campo y seleccione una de las 5 opciones. Puede dejar que el administrador escriba cualquier nombre seleccionando *texto libre*, o puede especificar que el nombre del volumen debe tener un prefijo o sufijo determinado, que contiene ciertos caracteres, o que sigue las reglas de una expresión regular (regex) que introduzca.</block>
+  <block id="8567823797f59455548dc8dd1f03f80e" category="paragraph">Para el tamaño del volumen, puede especificar un rango; por ejemplo, todos los volúmenes entre 100 GIB y 500 GIB.</block>
+  <block id="75aa65993e3f52840fc5b343dbb63651" category="paragraph">En el caso de las etiquetas, puede restringir aún más la búsqueda para que los resultados muestren solo volúmenes con ciertas parejas de clave de etiqueta/valor.</block>
+  <block id="be9642dda4ebe2b728f2c474b3d3a411" category="inline-image-macro">Una captura de pantalla que muestra los filtros Detalles que puede aplicar a la plantilla Buscar recursos existentes.</block>
+  <block id="817d077440da0b77af9b35e673301360" category="paragraph"><block ref="817d077440da0b77af9b35e673301360" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c253b1193d9cac2bb6fdffc90caab002" category="list-text">Haga clic en *continuar* y la página se actualizará para mostrar los criterios de búsqueda definidos en la plantilla.</block>
+  <block id="9fc88e3f72037f83544b6dc4a0f0e114" category="inline-image-macro">Captura de pantalla que muestra los criterios de búsqueda definidos para la plantilla de búsqueda de recursos existentes.</block>
+  <block id="7dd1bb02dcba000872f2025a15ad1520" category="paragraph"><block ref="7dd1bb02dcba000872f2025a15ad1520" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a8bf8eaff65aa0f4ae0660056e385701" category="list-text">Haga clic en *probar ahora los criterios de búsqueda* para ver los resultados actuales.</block>
+  <block id="33e49b40585f164240484bc804e648ef" category="list-text">Si los resultados no son los esperados, haga clic en <block ref="8e860c5cca0144ac9d126d75205476b6" category="inline-image-macro-rx" type="image"></block> Junto a _Search Criteria_ y afine aún más su búsqueda.</block>
+  <block id="95d491c21e0c934c6282c13d886a25c9" category="list-text">Cuando los resultados sean buenos, haga clic en *hecho*.</block>
+  <block id="902215290e82837ad3918c6de3db9e64" category="paragraph">La acción completada _Find Existing Resources_ aparece en la ventana del editor.</block>
+  <block id="9979d1ff76d2ea7068844b0cfd0bdb76" category="list-text">Haga clic en el signo más para añadir otra acción, seleccione *Activar Cloud Backup en volumen* y haga clic en *aplicar*.</block>
+  <block id="7ebacdda898134e4d1b0a44a8ce8b373" category="paragraph">La acción _Enable Cloud Backup on Volume_ se agrega a la ventana.</block>
+  <block id="bbc24d39829a188624fd31cd99972f84" category="inline-image-macro">Una captura de pantalla que muestra los pasos para añadir una acción de Cloud Backup a la plantilla.</block>
+  <block id="a4cbf43d9463d6f510a4d2c7af8800f2" category="paragraph"><block ref="a4cbf43d9463d6f510a4d2c7af8800f2" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="629026899287206b23bf1b8d05d2e57c" category="inline-xref">Agregar la funcionalidad de backup a un volumen</block>
+  <block id="0864e2983319d781f957de96128569d4" category="list-text">Ahora puede definir los criterios de copia de seguridad tal como se describe en <block ref="567736f0dbefe603b86c06be6821957e" category="inline-xref-macro-rx"></block> De forma que la plantilla aplique la política de copia de seguridad correcta a los volúmenes que seleccione de la acción _Find Existing Resources_ (Buscar recursos existentes).</block>
+  <block id="2cd168ea59a502ef9e27e6003134ad57" category="list-text">Haga clic en *aplicar* para guardar la personalización que realizó en la acción copia de seguridad y, a continuación, haga clic en *Guardar plantilla* cuando haya terminado.</block>
+  <block id="fb88189ee911a47d2e0e233fefd1523c" category="section-title">Buscar entornos de trabajo existentes</block>
+  <block id="1399c696c7891af3d1972a47be151f0a" category="paragraph">Mediante la acción _Find existing Resources_ puede buscar el entorno de trabajo y, a continuación, utilizar otras acciones de plantilla, como la creación de un volumen, para realizar fácilmente acciones en el entorno de trabajo existente.</block>
+  <block id="ee14a216e8a337c2bb79d6d82521a077" category="paragraph"><block ref="ee14a216e8a337c2bb79d6d82521a077" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="68ad7010ce50e08f51cc603a02813591" category="list-text">*Nombre de acción*: Introduzca un nombre de acción personalizado en lugar del valor predeterminado. Por ejemplo, "Buscar entornos de trabajo que incluyan Dallas".</block>
+  <block id="d12d07cdc05a227cd72eb672e87e4f6a" category="list-text">*Tipo de recurso:* Seleccione el tipo de recurso que desea encontrar. En este caso, seleccione *entornos de trabajo*.</block>
+  <block id="293a4f358df2db5ec8b84c40b989f884" category="paragraph">Esta es la única entrada necesaria para esta acción. Puede hacer clic en *continuar* ahora y recibirá una lista de todos los entornos de trabajo de su entorno.</block>
+  <block id="8be93188ada53e1878b3d730f33c567d" category="paragraph">En su lugar, se recomienda rellenar algunos filtros para reducir el número de resultados (en este caso, entornos de trabajo).</block>
+  <block id="8a6cf07a7afb6950374a6137dd3207ed" category="list-text">Después de definir algunos filtros en el área _Details_, puede seleccionar un entorno de trabajo específico.</block>
+  <block id="e4b9d87ee0a05c6ace352d34259ff623" category="list-text">Haga clic en *continuar* para guardar la configuración y, a continuación, haga clic en *hecho*.</block>
+  <block id="04589f02205d83ab5273554763f29cef" category="list-text">Introduzca el nombre de la plantilla en la parte superior izquierda y, a continuación, haga clic en *Guardar plantilla*</block>
+  <block id="1c2460f99ff766a130c121d2511fc817" category="section-title">Ejemplos de habilitación de servicios mediante plantillas</block>
+  <block id="411375f96ccfa37e0dbc3d0cc4f2819d" category="paragraph">Las plantillas de servicios permiten activar los servicios Cloud Backup, Cloud Data Sense o Replication (SnapMirror) en un volumen recién creado.</block>
+  <block id="d09587f155f4de501e417ae05bd6c246" category="section-title">Añada la funcionalidad de backup a un volumen</block>
+  <block id="1ccabcbf7b43011ff18a0521cbf426d2" category="paragraph">Al crear una plantilla de volumen, puede agregar en la plantilla que desea crear copias de seguridad del volumen periódicamente con el<block ref="65043dfb781746b8fde5bfddb319eb97" category="inline-link-rx"></block> servicio.</block>
+  <block id="8e50b75e57684da1ad2c63f7281c1bb2" category="admonition">Esta acción no es aplicable para volúmenes de Azure NetApp Files.</block>
+  <block id="cc7c4a3dbe40e7192b900e2b4a3f22d4" category="inline-image-macro">Captura de pantalla de la página para activar la funcionalidad de backup para sus volúmenes.</block>
+  <block id="3a5623787eadb0de7109dbf1472e4723" category="paragraph"><block ref="3a5623787eadb0de7109dbf1472e4723" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="390ceefd694c59851dd3cce7b5560a77" category="list-text">*Política*: Seleccione la política de copia de seguridad que desea utilizar.</block>
+  <block id="2ec2f9ba216ad598e0f2a06ca8613ab2" category="list-text">*Contexto*: De forma predeterminada, las variables se llenan para el entorno de trabajo, el equipo virtual de almacenamiento y el volumen para indicar que creará copias de seguridad para el volumen creado previamente en esta misma plantilla. Así que si eso es lo que quieres hacer, todo está listo.</block>
+  <block id="45c479a3827985134b6c11fc5b56fe19" category="inline-link-macro">Complete los campos de contexto</block>
+  <block id="55ec93141dffeda07c8ca26ba1fa8f75" category="paragraph">Si desea crear backups para otro volumen, es posible introducir estos detalles manualmente. Descubra cómo <block ref="be096e16163144495d696eb6dce624e2" category="inline-link-macro-rx"></block> para indicar un volumen diferente.</block>
+  <block id="1af1dabe0aa1f41e5209035cdc7e766d" category="list-text">Haga clic en *aplicar* para guardar los cambios.</block>
+  <block id="b5c5217c35ca5ffa37ec218b349e4d8e" category="section-title">Añada la funcionalidad de detección de datos a un volumen</block>
+  <block id="7da7de40922950422b249e15e2c3102a" category="paragraph">Al crear una plantilla de volumen, puede agregar en la plantilla que desea analizar el volumen para su cumplimiento y clasificación mediante la<block ref="4af4db8698c4a0998b2c93dbadcf8efe" category="inline-link-rx"></block> servicio.</block>
+  <block id="b6af640e26399bc8467a4465b802ea47" category="inline-image-macro">Captura de pantalla de la página para activar la funcionalidad de análisis para sus volúmenes.</block>
+  <block id="3f95813bf3f9fe4ef1653df2a79b2b7d" category="paragraph"><block ref="3f95813bf3f9fe4ef1653df2a79b2b7d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="273ef973fddf0605397f60b2a725e43e" category="list-text">*Contexto*: De forma predeterminada, las variables se rellenan para el entorno de trabajo, el nombre del volumen, el UUID del volumen, la ruta del volumen y el protocolo para indicar que va a analizar los datos del volumen creado previamente en esta misma plantilla. Así que si eso es lo que quieres hacer, todo está listo.</block>
+  <block id="38c9050a05ab7ae3bc16a77a1ce8e787" category="paragraph">Si desea analizar datos para otro volumen, puede introducir estos detalles manualmente. Descubra cómo <block ref="be096e16163144495d696eb6dce624e2" category="inline-link-macro-rx"></block> para indicar un volumen diferente.</block>
+  <block id="e0c791fcd9f870d36b0118528bd195c2" category="section-title">Añada la funcionalidad de replicación a un volumen</block>
+  <block id="e91e8aaf9f11e77bfda39b40027b045f" category="paragraph">Al crear una plantilla de volumen, puede agregar la plantilla que desea replicar los datos del volumen a otro volumen mediante el<block ref="f2bb37938a60ba7c308705367c1f4d0b" category="inline-link-rx"></block> servicio. Puede replicar datos en un clúster de Cloud Volumes ONTAP o en un clúster de ONTAP en las instalaciones.</block>
+  <block id="8dcc2a374ce8c093526cc5152324230d" category="paragraph">La funcionalidad de replicación consta de tres partes: Seleccionar el volumen de origen, seleccionar el volumen de destino y definir la configuración de replicación. Cada sección se describe a continuación.</block>
+  <block id="4da2d6a9396d0b82185925638b423b25" category="list-text">*Detalles del origen*: Introduzca los detalles sobre el volumen de origen que desea replicar:</block>
+  <block id="cfae220ef6bc70299c0d06988e12e0b6" category="inline-image-macro">Captura de pantalla de la página para definir la ubicación del volumen de origen de la replicación.</block>
+  <block id="db81be12438b4e3c3bdf3beca6e831f7" category="paragraph"><block ref="db81be12438b4e3c3bdf3beca6e831f7" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a91218a8b9b25c1cc8cec554d31e45c0" category="list-text">De forma predeterminada, las tres primeras variables se llenan en el entorno de trabajo, la máquina virtual de almacenamiento y el volumen para indicar que va a replicar el volumen creado anteriormente en esta misma plantilla. Así que si eso es lo que quieres hacer, todo está listo.</block>
+  <block id="7983c642c200e679fc182d6cda6332be" category="paragraph">Si desea replicar un volumen diferente, puede introducir esos detalles manualmente. Descubra cómo <block ref="be096e16163144495d696eb6dce624e2" category="inline-link-macro-rx"></block> para indicar un volumen diferente.</block>
+  <block id="f5eccf7ec10f562fd7945167b11881ca" category="list-text">La replicación requiere que los entornos de trabajo de origen y destino estén conectados mediante las LIF de interconexión de clústeres. Introduzca la dirección IP de la LIF entre clústeres para el entorno de trabajo de origen.</block>
+  <block id="174102b086067ead19a50d7ce2f8211a" category="paragraph">Para obtener esta información: Haga doble clic en el entorno de trabajo, haga clic en el icono de menú y haga clic en Información.</block>
+  <block id="af686206beaeefe98fe2a5a5cac4ffec" category="list-text">*Detalles de destino*: Introduzca los detalles sobre el volumen de destino que creará la operación de replicación:</block>
+  <block id="c5c1dec1eb73121500306c6b9b8bd6c6" category="inline-image-macro">Captura de pantalla de la página para definir la ubicación del volumen de destino de la replicación.</block>
+  <block id="5cf0c8384bbad7232646ccbe04ed32b0" category="paragraph"><block ref="5cf0c8384bbad7232646ccbe04ed32b0" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="99b3d3bf418d271f350304cf1acdcd45" category="list-text">Seleccione el entorno de trabajo donde se creará el volumen.</block>
+  <block id="faccd2324eec8e1960bb88fd7aa8cdb6" category="list-text">Seleccione la máquina virtual de almacenamiento donde reside el volumen.</block>
+  <block id="34a5bd93b44b1a265bd952eb2c9f4c52" category="list-text">Al replicar un volumen a un clúster de Cloud Volumes ONTAP (no a un clúster ONTAP en las instalaciones), debe especificar el proveedor de destino (AWS, Azure o GCP).</block>
+  <block id="744304af5427c93a0de90b14d5d0a697" category="list-text">Al replicar un volumen en un clúster de Cloud Volumes ONTAP, puede especificar si la organización en niveles de volúmenes está habilitada en el volumen de destino.</block>
+  <block id="8658f363929ef58e4d7bb3ba3dfa8f72" category="list-text">Para el nombre del volumen de destino, haga clic en el campo y seleccione una de las 5 opciones. Puede dejar que el administrador escriba cualquier nombre seleccionando *texto libre*, o puede especificar que el nombre del volumen debe tener un prefijo o sufijo determinado, que contiene ciertos caracteres, o que sigue las reglas de una expresión regular (regex) que introduzca.</block>
+  <block id="5fa8f034006e1b96b6e2a47890b3ae33" category="list-text">La replicación requiere que los entornos de trabajo de origen y destino estén conectados mediante las LIF de interconexión de clústeres. Introduzca la dirección IP de la LIF entre clústeres para el entorno de trabajo de destino.</block>
+  <block id="7fcd5d25a42a71b6edb4a94ce9593493" category="list-text">Seleccione el agregado en el que residirá el volumen.</block>
+  <block id="cd5d05c14061b6263cc650d83d3d5659" category="list-text">Al replicar un volumen a un clúster de Cloud Volumes ONTAP (no a un clúster de ONTAP en las instalaciones), debe especificar el tipo de disco que se usará para el nuevo volumen.</block>
+  <block id="4d10b6637923bf1b343d93d2f5f97467" category="list-text">*Detalles de la replicación*: Introduzca los detalles sobre el tipo y la frecuencia de la operación de replicación:</block>
+  <block id="e735bf2a268997d317453aed9b1e1464" category="inline-image-macro">Captura de pantalla de la página para definir la configuración de replicación de la relación.</block>
+  <block id="6903a733d838513debd657e6e4b52918" category="paragraph"><block ref="6903a733d838513debd657e6e4b52918" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="2e05b02199241577d21f467e3a216fc1" category="inline-link">política de replicación</block>
+  <block id="23647b4aee667229f438bac6d37c6f14" category="list-text">Seleccione la<block ref="fce626f96b8a582bd914af9774e3f4bd" category="inline-link-rx"></block> que usted desea utilizar.</block>
+  <block id="28b7ceda6afe52e7cddb056ae1cc1b42" category="list-text">Seleccione una copia puntual o una programación de replicación recurrente.</block>
+  <block id="a890fcd17657bbd0255d609a9ac66f87" category="inline-link-macro">Vea cómo se ve esto en el informe sobre la deriva</block>
+  <block id="550aba8dd2351fcca6220e9726d1b0b4" category="list-text">Habilite la supervisión del estado de la replicación si desea que el informe drift incluya el estado de la replicación de la relación de SnapMirror junto con el tiempo de retraso, el estado y el momento de la última transferencia. <block ref="e9afe1d61d7f4e2024b782abd0cbb1af" category="inline-link-macro-rx"></block>.</block>
+  <block id="a17ec67a32a0998705df91c25c3b8420" category="list-text">Seleccione si desea establecer un límite de velocidad de transferencia y, a continuación, introduzca la tasa máxima (en kilobytes por segundo) a la que se pueden transferir los datos. Se puede introducir un valor fijo, o bien se puede proporcionar un valor mínimo y máximo para permitir que el administrador de almacenamiento seleccione un valor en ese rango.</block>
+  <block id="e03c4d2a8455ec2482acf1f509382257" category="section-title">Qué hacer después de crear la plantilla</block>
+  <block id="856a9d1850ea33e764f9c6e201455be4" category="paragraph">Después de crear una plantilla, debe informar a los administradores de almacenamiento de que la utilicen al crear nuevos entornos y volúmenes de trabajo.</block>
+  <block id="73d6735a0765fae8b09bab1a9aa14293" category="inline-link-macro">Creación de recursos mediante plantillas</block>
+  <block id="916d7a2812bff61e120f6cb051a97f08" category="paragraph">Usted puede señalarlos <block ref="00987a40189f413ef051200970901187" category="inline-link-macro-rx"></block> para obtener más detalles.</block>
+  <block id="a0aa6f0787dc9e06db535b8b92d3da0a" category="section-title">Edite o elimine una plantilla</block>
+  <block id="ffb2a1eed8ad8c67507aad3d1a39caa3" category="paragraph">Puede modificar una plantilla si necesita cambiar cualquiera de los parámetros. Después de guardar los cambios, todos los recursos futuros creados a partir de la plantilla utilizarán los nuevos valores de parámetro.</block>
+  <block id="47ea4ecfbdf34424db879d30ee9d311b" category="paragraph">También puede eliminar una plantilla si ya no la necesita. La eliminación de una plantilla no afecta a ninguno de los recursos que se crearon con la plantilla. Sin embargo, no se puede realizar ninguna comprobación de cumplimiento de desviación una vez eliminada la plantilla.</block>
+  <block id="b44b7e1f0ab25d2be436ede5d937b8c0" category="inline-image-macro">Captura de pantalla que muestra cómo modificar una plantilla o eliminarla.</block>
+  <block id="e11c8770592f0241028d35b02f4f9619" category="paragraph"><block ref="e11c8770592f0241028d35b02f4f9619" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d3b35f794b6029f799ac51ebc0e6aa73" category="section-title">Haga una copia de una plantilla</block>
+  <block id="03332676c38cbd1189f2240710881e3a" category="paragraph">Puede crear una copia de una plantilla existente. Esto puede ahorrar mucho tiempo si desea crear una plantilla nueva que sea muy similar a una plantilla existente. Simplemente cree el duplicado con un nuevo nombre y, a continuación, puede editar la plantilla para cambiar los elementos de parejas que hacen única la plantilla.</block>
+  <block id="763165e5bc9a9a1c445da7d2ef9edaf1" category="inline-image-macro">Captura de pantalla que muestra cómo duplicar una plantilla.</block>
+  <block id="45a0059a48c059287929332e05648327" category="paragraph"><block ref="45a0059a48c059287929332e05648327" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="01861a2435910cac249c0a1eaea3e27b" category="sidebar">Documentos de AppTemplate</block>
+  <block id="7d0ee6fed10d3d4e5c9ee496729ab519" category="sidebar">Notas de la versión</block>
+  <block id="be11c74c1dd7f307bb80183a90dc2067" category="sidebar">Manos a la obra</block>
+  <block id="973d48daa10556f358647cfe1cc53216" category="sidebar">Usar AppTemplate</block>
+  <block id="d878dbf9ab702cfef892ea35b53108d3" category="sidebar">Utilizar plantillas para estandarizar la creación de recursos</block>
+  <block id="52b2438a3d1515af5b3918e6d0fa443d" category="sidebar">Cree plantillas para su organización</block>
+  <block id="1ff123cfbf88ad9c58cfd44c2b72c291" category="sidebar">Ejecute plantillas para crear recursos</block>
+  <block id="4a37630008b707a26bac4e9b9d2d91bc" category="sidebar">Organice sus recursos con etiquetas</block>
+  <block id="0460583622f03a52d7693094d6fa2452" category="sidebar">Conceptos</block>
+  <block id="0adc03eac86772ad2c75c8f140be417e" category="sidebar">Conocimiento y apoyo</block>
+  <block id="35f98b47133ad8954f63b25aef2dad3a" category="sidebar">Obtenga más información sobre el etiquetado</block>
+  <block id="5fef629b836b60819e0c0ce49cd2b9d7" category="sidebar">Novedades</block>
+  <block id="12b8ed36a576a6d4769c8d350b438a8a" category="sidebar">Crear plantillas</block>
+  <block id="59cccee54a9c1422dca33d7662d37b76" category="sidebar">Entorno de trabajo Cloud Volumes ONTAP</block>
+  <block id="f829fef4575b38109cd246bafbd6718e" category="sidebar">Volumen Cloud Volumes ONTAP</block>
+  <block id="217aec976bd66d37571f1fe0e44a4e77" category="sidebar">Volumen Azure NetApp Files</block>
+  <block id="21dc3aafb4a3e393dccd900e9ba42118" category="sidebar">Volumen ONTAP en las instalaciones</block>
+  <block id="dc771c253d08d9cdafc72d7919e16d98" category="sidebar">Añada la funcionalidad de backup, detección de datos o replicación a un volumen</block>
+  <block id="c8ca3079f96c0e324b876d7055a67c46" category="sidebar">Crear recursos mediante plantillas</block>
+  <block id="70deba7f047a2bcc0d20e5ef94a2abf8" category="sidebar">Volumen para CVO, on-prem y ANF</block>
+  <block id="f8de1ec8d7766950989e3205a63d91d9" category="sidebar">Administrar recursos mediante plantillas y etiquetas</block>
+  <block id="e85920abe34a4184988f078bd1e73279" category="sidebar">Compruebe los recursos para el cumplimiento de la plantilla (drift)</block>
+  <block id="441c6d31d8063270a27b242c68cc0e6e" category="sidebar">Ejecute una plantilla que encuentre recursos existentes</block>
+  <block id="813011e2103649bb71f124adedcc10ea" category="sidebar">Blogs y comunidad</block>
+  <block id="dd490b81914dd945601e442a41cb4222" category="sidebar">Comunidad de NetApp</block>
+  <block id="bd5465eb0e8cf8f303aee7ea9420c8b1" category="sidebar">Blog de BlueXP</block>
+  <block id="ad203e818e0c9d7f42f1c260b33875f3" category="sidebar">Seminarios web sobre el cloud</block>
+  <block id="7a45e6298bb69116e2c6db653fb88884" category="sidebar">Toda la documentación de BlueXP</block>
+</blocks>

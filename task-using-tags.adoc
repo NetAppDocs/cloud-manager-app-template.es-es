@@ -1,0 +1,131 @@
+---
+sidebar: sidebar 
+permalink: task-using-tags.html 
+keywords: tags, resource tags, volume tags, add tags, delete tags, view tags 
+summary: Puede ver, agregar, modificar y eliminar las etiquetas asignadas a sus recursos existentes mediante el servicio de etiquetado BlueXP. Esto le permite organizar y simplificar la gestión de sus recursos. 
+---
+= Gestione etiquetas para sus recursos
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Puede ver, agregar, modificar y eliminar las etiquetas asignadas a sus recursos existentes mediante el servicio de etiquetado BlueXP. Esto le permite organizar y simplificar la gestión de sus recursos.
+
+
+
+== Busque recursos que tengan ciertas etiquetas
+
+Si desea ver todos los recursos que tienen una determinada etiqueta, o un determinado valor de etiqueta y clave de etiqueta, puede buscar esas etiquetas. Puede buscar entre todos los recursos o solo dentro de determinadas categorías de recursos.
+
+.Pasos
+. Seleccione *Estado > resolución* y haga clic en la ficha *Etiquetas*.
+. Si es necesario, elija las credenciales de un proveedor de cloud específico en el campo *Seleccionar credenciales*.
+. En el campo _Resource Type_, seleccione el recurso, por ejemplo, *ONTAP:CVO:VOLUME* para buscar en todos los volúmenes de Cloud Volumes ONTAP.
+. En el campo _Tag Key_, seleccione la etiqueta, por ejemplo, *Env* para restringir la búsqueda a volúmenes con la etiqueta "Env".
+. En el campo _Tag Value_, seleccione el valor clave, por ejemplo, *producción* para restringir la búsqueda a volúmenes con el nombre de etiqueta "Env" y el valor de etiqueta "Production".
++
+image:screenshot_tags_search_single_1.png["Captura de pantalla de la selección de un único conjunto de criterios de búsqueda para devolver un recurso con una clave de etiqueta específica y un valor de etiqueta."]
+
+. Haga clic en la image:screenshot_plus_icon.gif[""] Para agregar estos criterios de búsqueda al área Buscar.
++
+image:screenshot_tags_search_single_2.png["Captura de pantalla de los criterios de búsqueda de etiquetas añadidos a la línea de búsqueda."]
+
+. Si ha finalizado la búsqueda, haga clic en *Buscar* y los resultados de la búsqueda aparecerán en la sección Recursos.
++
+image:screenshot_tags_search_single_result.png["Captura de pantalla de los resultados de los recursos que cumplen los criterios de búsqueda de etiquetas."]
+
++
+Si desea agregar criterios de búsqueda adicionales, vuelva a seguir los pasos del 3 al 6 y, a continuación, haga clic en *Buscar*.
+
+
+
+
+
+=== Reglas de búsqueda
+
+Al definir la búsqueda, se aplican las siguientes reglas:
+
+* Después de elegir un tipo de recurso, puede dejar vacíos los campos clave de etiqueta y valor de etiqueta si desea mostrar todos los recursos que tienen cualquier clave y cualquier valor de clave.
+* Puede elegir una sola búsqueda o definir varias búsquedas para afinar los resultados en la sección recurso.
+* Al definir varios conjuntos de criterios de búsqueda:
++
+** Si los criterios de dos búsquedas son para tipos de recursos diferentes, se trata como una operación "O" y el resultado muestra los recursos de ambas búsquedas. Por ejemplo, la siguiente búsqueda devuelve todos los volúmenes Azure NetApp Files que tienen el valor de etiqueta "Environment:demo" y todos los volúmenes Cloud Volumes ONTAP que tienen el valor de etiqueta "Environment:demo".
++
+image:screenshot_tags_search_or.png[""]
+
+** Si los criterios para dos búsquedas son para el mismo tipo de recurso, entonces se trata como una operación "Y" y el resultado sólo muestra los recursos que coinciden *ambas* búsquedas. Por ejemplo, la siguiente búsqueda devuelve volúmenes Azure NetApp Files que tienen el valor de etiqueta "entorno:demostración" y el valor de etiqueta "Grupo:Finanzas".
++
+image:screenshot_tags_search_and.png[""]
+
+
+
+* Si ha definido varios criterios de búsqueda y, a continuación, decide eliminar uno, simplemente haga clic en el image:button_delete_tag_search.png[""] Para eliminarlo del área de búsqueda.
+
+
+
+
+== Agregue etiquetas a los recursos existentes
+
+Puede aplicar etiquetas a un único recurso o a varios recursos. Los recursos podrían tener etiquetas existentes o no tener etiquetas actuales.
+
+link:concept-tagging.html#resources-that-you-can-tag["Consulte la lista de recursos que puede etiquetar en este momento."]
+
+.Pasos
+. En la ficha *Etiquetas*, cree sus criterios de búsqueda y haga clic en *Buscar*.
+. Seleccione el recurso o los recursos que desee etiquetar.
++
+** Para seleccionar todos los recursos de la página, active la casilla de la fila de título (image:button_select_all_resources.png[""]).
+** Para seleccionar varios recursos, marque la casilla de cada recurso (image:button_backup_1_volume.png[""]).
+** Para seleccionar un solo recurso, haga clic en la image:button_select_1_resource.png["botón más"] icono para el recurso.
++
+image:screenshot_tags_how_2_select_resources.png["Captura de pantalla que muestra cómo seleccionar un solo recurso, varios recursos o todos los recursos."]
+
+
+
+. Haga clic en *Administrar etiquetas* y aparecerá el cuadro de diálogo _Resource Tags_. Aparecerá cualquier etiqueta existente en este cuadro de diálogo.
++
+image:screenshot_tags_resource_tags_dialog.png["Captura de pantalla que muestra el cuadro de diálogo de etiquetas de recursos en el que puede ver las etiquetas asignadas actualmente y agregar nuevas etiquetas."]
+
+. Haga clic en *Agregar nueva etiqueta* y aparecerá una fila en blanco clave de etiqueta y valor de etiqueta en el cuadro de diálogo.
+. Introduzca la clave de etiqueta y el valor de la etiqueta. Agregue más etiquetas en este momento si desea más etiquetas en este recurso y, a continuación, haga clic en *revisar y aplicar*.
+. Si los cambios parecen correctos en la página _revisando_, haga clic en *Guardar* y la nueva etiqueta se agregará al recurso o a todos los recursos seleccionados.
+
+
+
+
+== Cambiar los valores de etiqueta de un recurso
+
+Puede cambiar las etiquetas que están asignadas a los recursos y puede cambiar el valor de etiqueta que se aplica a una etiqueta existente.
+
+.Pasos
+. En la ficha *Etiquetas*, cree sus criterios de búsqueda y haga clic en *Buscar*.
+. Seleccione el recurso o los recursos con los que desea cambiar las etiquetas.
+. Haga clic en *Administrar etiquetas* y aparecerá el cuadro de diálogo _Resource Tags_.
++
+image:screenshot_tags_modify_tag.png["Captura de pantalla que muestra cómo modificar una etiqueta de un recurso o de varios recursos."]
+
+. Introduzca un nuevo valor para el valor de la etiqueta y haga clic en *revisar y aplicar*.
+. Si el cambio parece correcto en la página _revisando_, haga clic en *Guardar* y el valor de la etiqueta cambiará para el recurso o para todos los recursos seleccionados.
+
+
+
+
+== Eliminar etiquetas de los recursos
+
+Puede eliminar un par de clave/valor de etiqueta de un solo recurso o de varios recursos.
+
+.Pasos
+. En la ficha *Etiquetas*, cree sus criterios de búsqueda y haga clic en *Buscar*.
+. Seleccione el recurso o los recursos del que desea quitar etiquetas.
+. Haga clic en *Administrar etiquetas* y aparecerá el cuadro de diálogo _Resource Tags_.
++
+image:screenshot_tags_delete_tag.png["Captura de pantalla que muestra cómo eliminar una etiqueta de un recurso o varios recursos."]
+
+. Haga clic en la image:button_delete_tag_pair.png[""] Para el par clave/valor de etiqueta que desea eliminar y la fila se elimina y, a continuación, haga clic en *revisar y aplicar*.
+. Si el cambio parece correcto en la página _Repasando_, haga clic en *Guardar* y el par clave/valor de etiqueta se eliminará del recurso o de todos los recursos seleccionados.
+
