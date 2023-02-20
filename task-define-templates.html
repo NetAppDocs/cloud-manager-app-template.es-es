@@ -1,0 +1,2082 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head class="at-element-marker">
+  <title>Cree plantillas de aplicación para su organización | NetApp Documentation</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="Cree plantillas de aplicación para su organización | NetApp Documentation" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/es-es/cloud-manager-app-template/task-define-templates.html" />
+	<meta property="og:description" content="Seleccione una o varias de las "acciones" proporcionadas por NetApp y cree rápidamente una plantilla de aplicación que pueda utilizar su organización para em..." />
+  <meta property="og:image" content="https://docs.netapp.com/es-es/cloud-manager-app-template/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="Seleccione una o varias de las "acciones" proporcionadas por NetApp y cree rápidamente una plantilla de aplicación que pueda utilizar su organización para em...">
+  <meta name="keywords" content=" templates, resource templates, services templates, volume templates, cvo working environment template, find volumes"><!-- Icons -->
+  <link rel="icon" href="/es-es/cloud-manager-app-template/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed --><link rel="alternate" type="application/rss+xml" title="NetApp Documentation" href="/es-es/cloud-manager-app-template/feed.xml"><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+  <!-- Elastic Search -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/searchkit/0.10.0/theme.css">
+
+  <!-- Combined CSS -->
+  <link rel="stylesheet" type="text/css" href="/es-es/cloud-manager-app-template/css/netappdocs.css">
+
+  
+  <link rel="stylesheet" href="/es-es/cloud-manager-app-template/css/landing-page.css" type="text/css">
+  <link rel="stylesheet" href="/es-es/cloud-manager-app-template/css/tabbed-blocks.css" type="text/css">
+  <!-- Canonical url -->
+  <link rel='stylesheet' href='/es-es/cloud-manager-app-template/css/na-feature.css' type='text/css'><!-- Top level site integrations --><script>
+    function addAdobeLaunch(adobeId) {
+      var head = document.getElementsByTagName('head')[0];
+      var adobe = document.createElement("script");
+      adobe.type = "text/plain";
+      adobe.className = "optanon-category-C0002";
+      adobe.src = "//assets.adobedtm.com/60287eadf1ee/c284da483c83/"+adobeId+".min.js";
+      head.appendChild(adobe);
+    }
+
+    function addGoogleAnalytics(gtagId) {
+      var google = document.createElement("script");
+      google.type = "text/plain";
+      google.className = "optanon-category-C0002";
+      google.src = "https://www.googletagmanager.com/gtag/js?id="+gtagId;
+      var head = document.getElementsByTagName('head')[0];
+      head.appendChild(google);
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', gtagId);
+    }
+
+    function addConsent(consentId) {
+      var head = document.getElementsByTagName('head')[0];
+      var onetrustConsent = document.createElement("script");
+      onetrustConsent.type = "text/javascript";
+      onetrustConsent.src = "https://cdn.cookielaw.org/consent/"+consentId+"/OtAutoBlock.js";
+      head.appendChild(onetrustConsent);
+
+      var onetrustScript = document.createElement("script");
+      onetrustScript.type = "text/javascript";
+      onetrustScript.src = "https://cdn.cookielaw.org/scripttemplates/otSDKStub.js";
+      onetrustScript.charset = "UTF-8";
+      onetrustScript.dataset.documentLanguage = "true";
+      onetrustScript.dataset.domainScript = consentId;
+      head.appendChild(onetrustScript);
+    }addConsent("72570c5c-fe30-465f-b0e0-b77f7fb4ae34");
+    addAdobeLaunch("launch-e9ff3acac59f");
+    addGoogleAnalytics("UA-81697994-3");function OptanonWrapper() { }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+  <!-- Used for Product Family Page Sidebar Visibility --><!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script><script src='/es-es/cloud-manager-app-template/js/na-search.js'></script><script src='/es-es/cloud-manager-app-template/js/na-pagenav.js'></script><script src='/es-es/cloud-manager-app-template/js/na-utility.js'></script>
+  <script src='/es-es/cloud-manager-app-template/js/clouddocs.js'></script>
+  <script src='/es-es/cloud-manager-app-template/js/jquery.navgoco.min.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src='/es-es/cloud-manager-app-template/js/toc.js'></script>
+  <script src='/es-es/cloud-manager-app-template/js/customscripts.js'></script><script>
+      $(document).ready(function() {
+          
+          var collapseOnInit = true;
+          
+
+          var navSettings = {
+              "caretHtml": '',
+              "accordion": collapseOnInit,
+              "openClass": 'active', // open
+              "save": false, // leave false or nav highlighting doesn't work right
+              "cookie": {
+                  "name": 'navgoco',
+                  "expires": false,
+                  "path": '/'
+              },
+              "slide": {
+                  "duration": 400,
+                  "easing": 'swing'
+              }
+          };
+
+          // Initialize navgoco with default options
+          $("#mysidebar").navgoco(navSettings);
+          
+
+          $("#collapseAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', false);
+          });
+
+          $("#expandAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', true);
+          });
+
+          $(".sidebar-nav-container").on("scroll", function() {
+            $.cookie("sidebarScroll", $(".sidebar-nav-container").scrollTop(), {
+              path    : "/es-es/cloud-manager-app-template"  
+            });
+          });
+          $(function() {
+            if ($.cookie("sidebarScroll")) {
+              $(".sidebar-nav-container").scrollTop($.cookie("sidebarScroll"));
+            }
+          });
+
+      });
+
+  </script>
+  <script>
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+  </script>
+  <script src='/es-es/cloud-manager-app-template/js/custom-dropdown.js'></script>
+  <script src='/es-es/cloud-manager-app-template/js/FileSaver.min.js'></script>
+  <script src='/es-es/cloud-manager-app-template/js/jszip-utils.min.js'></script>
+  <script src='/es-es/cloud-manager-app-template/js/jszip.min.js'></script>
+  <script src='/es-es/cloud-manager-app-template/js/pdf-ux.js'></script>
+</head>
+
+
+  <body class role="document" data-flavor="">
+    <div id="page" class="n-off-canvas-menu">
+      <div class="n-off-canvas-menu__menu"><!--TODO: Add offcanvas code --></div>
+      <div class="n-off-canvas-menu__content-wrap">
+        <header class="site-header" id="banner">
+  
+  <!-- Start Page Toolbar -->
+  
+  <div class="page-nav-toolbar"><div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/cloud-manager-app-template/issues/new?body=Page%3A%20[Cree plantillas de aplicación para su organización](https://docs.netapp.com/es-es/cloud-manager-app-template/task-define-templates.html)&template=public-issue-template.md" class="page-nav-contribute-link" role="button"><img src="/es-es/cloud-manager-app-template/images/discuss-sm.svg" alt="" class="github-icon" />Solicitar cambios en el documento</a><a target="_blank" href="https://github.com/NetAppDocs/cloud-manager-app-template/blob/main/task-define-templates.adoc" class="page-nav-contribute-link" role="button"><img src="/es-es/cloud-manager-app-template/images/edit-sm.svg" alt="" class="github-icon" />Editar en GitHub</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/es-es/cloud-manager-app-template/images/article-sm.svg" alt="" class="github-icon" />Guía del colaborador</a></div>
+    <div class="page-nav-container">
+      <nav class="page-nav-fixed">
+        <div class="page-nav-title">EN ESTA PÁGINA</div>
+        <div class="page-nav-links">
+          <ul class="page-nav-inner" id="page-menu"></ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  
+  
+  <!-- Start top_hat -->
+  <div class="n-top-hat">
+    <div class="n-container">
+      <div class="n-top-hat__cross-property-nav">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/products-a-z/" class="n-top-hat__link">Producto y soluciones</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/support-and-training/netapp-university/" class="n-top-hat__link">Asistencia y capacitación</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://cloud.netapp.com" class="n-top-hat__link">Cloud Central</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://community.netapp.com/" class="n-top-hat__link">Comunidad</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://blog.netapp.com/" class="n-top-hat__link">Blog</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://customers.netapp.com/en/" class="n-top-hat__link">Historias de clientes</a>
+          </li>
+        </ul>
+      </div>
+      <div class="n-top-hat__utils">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/company/contact-us/" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">Contacto</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- End top_hat -->
+
+  <!-- Start property bar -->
+  <style>
+    .n-property-navigation-bar__menus--desktop-experience .n-menu--mega__default-content__heading span {
+    color: #34B0FF;
+    }
+  </style>
+  <div class="n-property-bar " data-ntap-ui="sticky-nav">
+    <div class="n-property-bar__inner-wrap">
+      <div class="n-property-bar__menu-toggle">
+        <a href="#" class="n-property-bar__menu-toggle-link">
+          <span class="n-property-bar__menu-toggle-text">Menu</span>
+          <svg class="n-icon-bars n-property-bar__menu-toggle-icon" aria-labelledby="title">
+            <title>bars</title>
+            <use xlink:href="/es-es/cloud-manager-app-template/common/svg/sprite.svg#bars"></use>
+          </svg>
+        </a>
+      </div>
+      <div class="n-property-bar__property-mark ">
+        <a href="https://www.netapp.com" class="n-property-bar__property-link">
+          <div class="n-property-bar__logo">
+            <svg class="n-icon-netapp-mark n-icon-netapp-mark n-property-bar__netapp-mark-icon" aria-labelledby="title">
+              <title>netapp-mark</title>
+              <use xlink:href="/es-es/cloud-manager-app-template/common/svg/sprite.svg#netapp-mark"></use>
+            </svg>
+            <svg class="n-icon-netapp-logo n-property-bar__logo-svg" aria-labelledby="title">
+              <title>netapp-logo</title>
+              <use xlink:href="/es-es/cloud-manager-app-template/common/svg/sprite.svg#netapp-logo"></use>
+            </svg>
+          </div>
+        </a>
+      </div>
+
+      
+      
+      
+      <div class="search-property-bar">
+        <div id="search-demo-container" class="searchbox n-property-bar__search">
+          <div id="react-search" 
+          data-search-html="/es-es/cloud-manager-app-template/search.html"
+          data-type="widget" 
+          data-placeholder="Buscar documentación"
+          data-no-results-found="No se encontraron resultados para {query}"
+          data-did-you-mean="Buscar {suggestion}."
+          data-no-results-found-did-you-mean="No se encontraron resultados para {query}. ¿Quiso decir {suggestion}?"
+          data-results-found="{hitCount} resultados encontrados"
+          data-error-message="We're sorry, an issue occurred when fetching your results. Please try again."
+          data-error-reset="Reset Search"
+          data-sk-es-pf-indexes=""
+          data-flavor=""></div>
+          <button class="n-property-bar__search-toggle-button" type="button">
+            <svg class="n-icon-search n-property-bar__search-toggle-button-icon" aria-labelledby="title">
+              <title>search</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/es-es/cloud-manager-app-template/common/svg/sprite.svg#search"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="n-property-bar__toolbar">
+    <!-- Start Language Selector --><div id="language-dropdown" class="custom-dropdown custom-dropdown-lang">
+      <div class="custom-dropdown-select custom-dropdown-select-lang">
+      <span class="lang-name">Español</span>
+          <svg class="n-globe__icon" aria-labelledby="title">
+            <title>globe</title>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/es-es/cloud-manager-app-template/common/svg/sprite.svg#globe"></use>
+          </svg>
+        </button>
+      </div>
+
+      <ul class="custom-dropdown-menu"><li>
+          <a href="https://docs.netapp.com/es-es/cloud-manager-app-template/task-define-templates.html" target="_self"><span translate="no" class="notranslate">Español</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/us-en/cloud-manager-app-template/task-define-templates.html" target="_self"><span translate="no" class="notranslate">English</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/ja-jp/cloud-manager-app-template/task-define-templates.html" target="_self"><span translate="no" class="notranslate">日本語</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/ko-kr/cloud-manager-app-template/task-define-templates.html" target="_self"><span translate="no" class="notranslate">한국어</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/zh-cn/cloud-manager-app-template/task-define-templates.html" target="_self"><span translate="no" class="notranslate">简体中文</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/zh-tw/cloud-manager-app-template/task-define-templates.html" target="_self"><span translate="no" class="notranslate">繁體中文</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/de-de/cloud-manager-app-template/task-define-templates.html" target="_self"><span translate="no" class="notranslate">Deutsch</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/fr-fr/cloud-manager-app-template/task-define-templates.html" target="_self"><span translate="no" class="notranslate">Français</span></a>
+        </li></ul>
+    </div><!-- End Language Selector -->
+
+    <div class="n-property-bar__cta"></div>
+  </div>
+  <!-- End property bar -->
+</header>
+
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+  <!-- Sidebar Column -->
+  
+  <div class="col-md-3" id="sidebar-height">
+      <button id="btn-sidebar-collapse" onclick="hideSidebar()"><img src="/es-es/cloud-manager-app-template/images/collapse.png" alt="Contraer panel de navegación"></button>
+      <div class="n-pdf-header">
+  <a id="toggleButtonPdf" class="n-pdf-button" type="button">
+    <img src="/es-es/cloud-manager-app-template/images/pdf.png" alt="" width="16" height="16"/>PDFs disponibles<span>
+    </span>
+  </a>
+</div>
+<div class="n-pdf-body-container">
+  <ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><li class="pdf-ux-container">
+        
+        
+        
+        <a target="_blank" href="/es-es/cloud-manager-app-template/pdfs/fullsite-sidebar/Documentación_de_AppTemplate.pdf" >
+          <img src="/es-es/cloud-manager-app-template/images/pdf.png" alt="" width="16" height="16"/>PDF de este sitio de documentos</a>
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/cloud-manager-app-template/pdfs/sidebar/Manos_a_la_obra.pdf" 
+            
+          >
+            <img src="/es-es/cloud-manager-app-template/images/pdf.png" alt="" width="16" height="16"/>
+            Manos a la obra
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/cloud-manager-app-template/pdfs/sidebar/Usar_AppTemplate.pdf" 
+            
+          >
+            <img src="/es-es/cloud-manager-app-template/images/pdf.png" alt="" width="16" height="16"/>
+            Usar AppTemplate
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/cloud-manager-app-template/pdfs/sidebar/Utilizar_plantillas_para_estandarizar_la_creación_de_recursos.pdf" 
+            
+          >
+            <img src="/es-es/cloud-manager-app-template/images/pdf.png" alt="" width="16" height="16"/>
+            Utilizar plantillas para estandarizar la creación de recursos
+          </a>
+          
+    <ul class="subfolders" id="pdf-remove" style="display:none;"><li class="active"></li></ul>
+  
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/cloud-manager-app-template/pdfs/sidebar/Organice_sus_recursos_con_etiquetas.pdf" 
+            
+          >
+            <img src="/es-es/cloud-manager-app-template/images/pdf.png" alt="" width="16" height="16"/>
+            Organice sus recursos con etiquetas
+          </a>
+          
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/cloud-manager-app-template/pdfs/sidebar/Conceptos.pdf" 
+            
+          >
+            <img src="/es-es/cloud-manager-app-template/images/pdf.png" alt="" width="16" height="16"/>
+            Conceptos
+          </a>
+          
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/es-es/cloud-manager-app-template/pdfs/sidebar/Conocimiento_y_apoyo.pdf" 
+            
+          >
+            <img src="/es-es/cloud-manager-app-template/images/pdf.png" alt="" width="16" height="16"/>
+            Conocimiento y apoyo
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+</li></ul>
+  <div class="zip-pdf-link-container" style="display: none;">   
+    <a href="#" id="zipPdf">
+      <img src="/es-es/cloud-manager-app-template/images/pdf-zip.png" alt="" width="16" height="16"/>
+      <pre>Colección de documentos PDF separados<span class="zip-size"></span></pre>
+    </a><div id="zip-link-popup" class="hide">
+    <div class="inner-modal">
+        <div class="downloading-progress">
+            <div class="spinner"></div>
+            <h1>Creating your file...</h1>
+            <div>This may take a few minutes. Thanks for your patience.</div>
+            <button class="cancel-download-btn" type="button">Cancel</button>
+        </div>
+        <div class="download-complete hide">
+            <div class="done-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+            </div>
+            <div>Your file is ready</div>
+            <button class="cancel-download-btn" type="button">OK</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(".cancel-download-btn").click(function(){
+        $("#zip-link-popup").addClass("hide");
+        $("#zip-link-popup .downloading-progress").removeClass("hide");
+        $("#zip-link-popup .download-complete").addClass("hide");
+    });
+</script></div>
+</div>
+<script>
+  $("#toggleContainerPdf li.active:last-child").parents('ul.subfolders').toggle('display');
+  $("#toggleButtonPdf").click(function () {
+    $("#toggleContainerPdf").toggle('display');
+    $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+  });
+</script><div class="prod-nav" id="product-nav">
+  <a target="_self" class="prod-fam-nav" href="https://docs.netapp.com/es-es/cloud-manager-family/"><img src="/es-es/cloud-manager-app-template/images/left_arrow.png" alt=""><pre>Toda la documentación de BlueXP</pre></a>
+</div><div class="sidebar-nav-container" id="mysidebardiv">
+  <ul id="mysidebar" class="nav"><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Documentos de AppTemplate"
+      data-li-level="1#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/cloud-manager-app-template/index.html">
+        Documentos de AppTemplate
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Notas de la versión"
+      data-li-level="1#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/cloud-manager-app-template/whats-new.html">
+        Notas de la versión
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Manos a la obra"
+      data-li-level="1" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Manos a la obra</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Más información sobre AppTemplate"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/cloud-manager-app-template/concept-resource-templates.html">
+        Más información sobre AppTemplate
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Más información sobre etiquetado"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/cloud-manager-app-template/concept-tagging.html">
+        Más información sobre etiquetado
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Usar AppTemplate"
+      data-li-level="1" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Usar AppTemplate</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Utilizar plantillas para estandarizar la creación de recursos"
+      data-li-level="2" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Utilizar plantillas para estandarizar la creación de recursos</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cree plantillas para su organización"
+      data-li-level="3#" 
+      class="  active "
+    ><a class="na-navbar-padding" href="/es-es/cloud-manager-app-template/task-define-templates.html">
+        Cree plantillas para su organización
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Comprobar los recursos para garantizar el cumplimiento de las plantillas"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/cloud-manager-app-template/task-check-template-compliance.html">
+        Comprobar los recursos para garantizar el cumplimiento de las plantillas
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Ejecute plantillas para crear recursos"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/cloud-manager-app-template/task-run-templates.html">
+        Ejecute plantillas para crear recursos
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Organice sus recursos con etiquetas"
+      data-li-level="2" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Organice sus recursos con etiquetas</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gestione etiquetas para sus recursos"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/cloud-manager-app-template/task-using-tags.html">
+        Gestione etiquetas para sus recursos
+      </a></li></ul></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Conceptos"
+      data-li-level="1" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Conceptos</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Bloques de creación de plantillas"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/cloud-manager-app-template/reference-template-building-blocks.html">
+        Bloques de creación de plantillas
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Conocimiento y apoyo"
+      data-li-level="1" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Conocimiento y apoyo</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Regístrese para recibir soporte"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/cloud-manager-app-template/task-support-registration.html">
+        Regístrese para recibir soporte
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Obtenga ayuda"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/cloud-manager-app-template/task-get-help.html">
+        Obtenga ayuda
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Avisos legales"
+      data-li-level="1#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/es-es/cloud-manager-app-template/legal-notices.html">
+        Avisos legales
+      </a></li></ul>
+</div>
+<script>
+  window.onscroll = () => {
+    const value = -40 - (document.body.scrollHeight - (window.innerHeight + document.scrollingElement.scrollTop));
+    
+    document.getElementById("sidebar-height").style.bottom = Math.max(0,value) + "px";
+};
+</script>
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+<script>$("#mysidebar li.active").parents('ul').css("display","block");</script>
+
+
+  </div>
+  
+
+  <div class="ie-content-pane n-doc__component-detail-content n-doc__component-detail-content--show-code">
+    <!-- Begin of page container --><article class="page-content" id="main">
+      <div class="ie-utility">
+  <button id="btn-sidebar-expand" onclick="showSidebar()"><img src="/es-es/cloud-manager-app-template/images/expand.png" alt="Expandir panel de navegación"></button>
+  <div class="ie-menu">
+    <div class="n-breadcrumb">
+      <ul class="n-breadcrumb__list">
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com">docs.netapp.com</a>
+        </li>
+        
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com/us-en/cloud/">Cloud Docs</a>
+        </li>
+        
+
+        
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com/es-es/cloud-manager-family/">BlueXP</a>
+        </li>
+        
+
+        <li class="n-breadcrumb__list-item">
+          <a href="/es-es/cloud-manager-app-template/">AppTemplate</a>
+        </li>
+
+      </ul>
+    </div>
+    <div style="clear: both"></div><!-- Main needs to have height -->
+  </div>
+</div>
+
+      <div class="ie-nmt-disclaimer">
+  <span>
+    <div class="ie-nmt-disclaimer-container">
+      <div class="ie-nmt-disclaimer-icon">
+        <svg class="luci-icon" aria-hidden="true">
+          <use xlink:href="/es-es/cloud-manager-app-template/common/svg/sprite.svg#circle-info">
+        </svg>
+      </div>
+      <div class="ie-nmt-disclaimer-content">
+        <span> Se proporciona el idioma español mediante traducción automática para su comodidad. En caso de alguna inconsistencia, el inglés precede al español. </span>
+      </div>
+      <div style="clear:both;"></div>
+    </div>
+  </span>
+</div><div class="n-doc__component-detail-heading-wrap">
+  <h1 class="n-doc__component-detail-heading">Cree plantillas de aplicación para su organización</h1>
+</div>
+
+
+<p class="page-details">
+  
+    
+    <time datetime="2023-02-20 14:09:08 +0000">02/20/2023</time>
+    
+  
+
+<span>Colaboradores
+</span>
+
+
+</p>
+
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph lead">
+<p>Seleccione una o varias de las "acciones" proporcionadas por NetApp y cree rápidamente una plantilla de aplicación que pueda utilizar su organización para empezar a optimizar la creación de recursos.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="inicio-rápido">Inicio rápido</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Empiece rápidamente siguiendo estos pasos o desplácese hacia abajo hasta las secciones restantes para obtener todos los detalles.</p>
+</div>
+<div class="ulist quick-margin-list">
+<div class="title"><span class="image"><img src="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png" alt="Uno"></span> Verifique los requisitos previos necesarios</div>
+<ul>
+<li>
+<p>Antes de que los usuarios puedan crear un volumen para un sistema Cloud Volumes ONTAP, ONTAP en las instalaciones o Azure NetApp Files con una plantilla, asegúrese de que tienen acceso a un entorno de trabajo adecuado donde se pondrá en marcha el volumen.</p>
+</li>
+</ul>
+</div>
+<div class="ulist quick-margin-list">
+<ul>
+<li>
+<p>Si tiene pensado agregar una "acción" de servicio cloud a su plantilla, por ejemplo <a href="https://docs.netapp.com/us-en/cloud-manager-backup-restore/concept-backup-to-cloud.html" target="_blank" rel="noopener">"Backup en el cloud"</a> o. <a href="https://docs.netapp.com/us-en/cloud-manager-data-sense/concept-cloud-compliance.html" target="_blank" rel="noopener">"Cloud Data SENSE"</a>, asegúrese de que el servicio esté activo y con licencia en su entorno.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph quick-margin-para">
+<div class="title"><span class="image"><img src="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png" alt="Dos"></span> Inicie el servicio Plantillas de aplicación</div>
+<p>Seleccione <strong>Estado &gt; resolución</strong>, haga clic en la ficha <strong>Editor</strong> y seleccione las acciones que utilizará en su plantilla.</p>
+</div>
+<div class="paragraph quick-margin-para">
+<div class="title"><span class="image"><img src="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png" alt="Tres"></span> Genere la plantilla seleccionando "acciones" y definiendo parámetros</div>
+<p>Siga los pasos de creación y defina las acciones que realizará la plantilla.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="requisitos">Requisitos</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Lea los siguientes requisitos para asegurarse de tener una configuración compatible.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Si aún no tiene un conector, <a href="https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-connectors.html" target="_blank" rel="noopener">"Vea cómo crear conectores"</a> Para AWS, Azure y GCP.</p>
+</li>
+<li>
+<p>Al crear una plantilla de volumen de Cloud Volumes ONTAP, asegúrese de que dispone de un entorno de trabajo Cloud Volumes ONTAP para los usuarios. Compruebe cómo se inicia un sistema Cloud Volumes ONTAP en <a href="https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-otc-aws.html" target="_blank" rel="noopener">"AWS"</a>, <a href="https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-otc-azure.html" target="_blank" rel="noopener">"Azure"</a>, o en <a href="https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-gcp.html" target="_blank" rel="noopener">"GCP"</a>.</p>
+</li>
+<li>
+<p>Al crear una plantilla de volumen ONTAP en las instalaciones, asegúrese de que tiene disponible un entorno de trabajo ONTAP en las instalaciones para sus usuarios. Descubra cómo <a href="https://docs.netapp.com/us-en/cloud-manager-ontap-onprem/task-discovering-ontap.html" target="_blank" rel="noopener">"Descubra un sistema ONTAP en las instalaciones"</a> En BlueXP.</p>
+</li>
+<li>
+<p>Al crear una plantilla de volumen Azure NetApp Files, asegúrese de que tiene un entorno de trabajo Azure NetApp Files disponible para los usuarios. Descubra cómo <a href="https://docs.netapp.com/us-en/cloud-manager-azure-netapp-files/task-quick-start.html" target="_blank" rel="noopener">"Crear un entorno de trabajo de Azure NetApp Files"</a> En BlueXP.</p>
+</li>
+<li>
+<p>Si planea utilizar Cloud Backup para realizar una copia de seguridad de un volumen en la plantilla, asegúrese de que su entorno ha activado Cloud Backup.</p>
+</li>
+<li>
+<p>Si planea utilizar Cloud Data Sense para analizar volúmenes en la plantilla, asegúrese de que su entorno ha activado Cloud Data Sense.</p>
+</li>
+<li>
+<p>Si va a habilitar la replicación en la plantilla y la plantilla es para un volumen de ONTAP en las instalaciones, el clúster de ONTAP debe tener una licencia de SnapMirror activa.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ejemplos-de-creación-de-recursos-mediante-plantillas">Ejemplos de creación de recursos mediante plantillas</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Las plantillas de recursos le permiten crear nuevos volúmenes o un nuevo entorno de trabajo de Cloud Volumes ONTAP.</p>
+</div>
+<div class="sect2">
+<h3 id="cree-una-plantilla-para-un-volumen-de-cloud-volumes-ontap">Cree una plantilla para un volumen de Cloud Volumes ONTAP</h3>
+<div class="paragraph">
+<p>Consulte <a href="https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-create-volumes.html" target="_blank" rel="noopener">"cómo aprovisionar volúmenes de Cloud Volumes ONTAP"</a> Para obtener información detallada sobre todos los parámetros que necesita completar en la plantilla de volumen Cloud Volumes ONTAP.</p>
+</div>
+<div class="paragraph">
+<p>En este ejemplo crearemos una plantilla llamada "volumen CVO para bases de datos" e incluiremos las dos acciones siguientes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Cree un volumen de Cloud Volumes ONTAP</p>
+<div class="paragraph">
+<p>Haga un volumen para el entorno AWS, configúrelo con 100 GB de almacenamiento, establezca la Política de Snapshot en "valor predeterminado" y habilite la eficiencia del almacenamiento.</p>
+</div>
+</li>
+<li>
+<p>Habilite Cloud Backup</p>
+<div class="paragraph">
+<p>Crear 30 copias de seguridad diarias, 13 semanales y 3 mensuales (utilizando la política de retención_ de _3 meses).</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Pasos</div>
+<ol class="arabic">
+<li>
+<p>Seleccione <strong>Estado &gt; resolución</strong>, haga clic en la ficha <strong>Plantillas</strong> y haga clic en <strong>Agregar nueva plantilla</strong>.</p>
+<div class="paragraph">
+<p>Se muestra la página <em>Select_a Template</em>.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_create_template_primary_action_cvo.png" alt="Una captura de pantalla que muestra cómo seleccionar la acción principal que se realizará con esta plantilla."></span></p>
+</div>
+</li>
+<li>
+<p>Seleccione <strong>volumen para Cloud Volumes ONTAP + copia de seguridad</strong> como el tipo de recurso que desea crear y haga clic en <strong>comenzar</strong>.</p>
+<div class="paragraph">
+<p>Se muestra la página <em>Create Volume in Cloud Volumes ONTAP Action Definition</em>.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_create_template_define_action_cvo.png" alt="Captura de pantalla que muestra una plantilla de CVO en blanco que necesita rellenar."></span></p>
+</div>
+</li>
+<li>
+<p><strong>Nombre de acción</strong>: De forma opcional, escriba un nombre de acción personalizado en lugar del valor predeterminado.</p>
+</li>
+<li>
+<p><strong>Contexto:</strong> Introduzca el contexto del entorno de trabajo Cloud Volumes ONTAP; si es necesario.</p>
+<div class="paragraph">
+<p>Cuando los usuarios inician la plantilla desde un entorno de trabajo existente, esta información se rellena automáticamente.</p>
+</div>
+<div class="paragraph">
+<p>Cuando los usuarios inician la plantilla desde el Panel de plantillas (no en un contexto de entorno de trabajo), deben seleccionar el entorno de trabajo y la SVM donde se creará el volumen. Por eso estos campos se marcan como "editables".</p>
+</div>
+</li>
+<li>
+<p><strong>Detalles:</strong> Introduzca el nombre y el tamaño del volumen.</p>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Campo</th>
+<th class="tableblock halign-left valign-top">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nombre del volumen</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Haga clic en el campo y seleccione una de las 5 opciones. Puede dejar que el administrador escriba cualquier nombre seleccionando <strong>texto libre</strong>, o puede especificar que el nombre del volumen debe tener un prefijo o sufijo determinado, que contiene ciertos caracteres, o que sigue las reglas de una expresión regular (regex) que introduzca. Por ejemplo, puede especificar que "dB" sea un prefijo, sufijo o contiene; requerir que el usuario agregue nombres de volumen como "dB_vol1", "vol1_dB" o "vol_dB_1".</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tamaño del volumen</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Puede especificar un rango de valores permitidos o puede especificar un tamaño fijo. Este valor se da en GB. Para nuestro ejemplo podemos agregar un valor fijo <strong>100</strong>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Etiquetas</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Introduzca un nombre y una pareja de valores para una etiqueta que desee asociar a este volumen. Por ejemplo, puede agregar "Centro de costes" como nombre de etiqueta y el código de centro de costes "6655829" como valor. Es posible asociar más de una etiqueta a un volumen. Para ello, se deben añadir más nombres de etiqueta y parejas de valores.</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>Protección:</strong> Elija si este volumen tendrá copias snapshot creadas seleccionando "predeterminado" o alguna otra directiva, o bien elija "ninguna" si no desea crear copias snapshot.</p>
+</li>
+<li>
+<p><strong>Perfil de uso:</strong> Elija si las funciones de eficiencia del almacenamiento de NetApp se aplican al volumen. Esto incluye thin provisioning, deduplicación y compresión. Para nuestro ejemplo, mantenga la eficiencia del almacenamiento habilitada.</p>
+</li>
+<li>
+<p><strong>Tipo de disco:</strong> Elija el proveedor de almacenamiento en la nube y el tipo de disco. Para algunas selecciones de disco también puede seleccionar un valor de IOPS o rendimiento (MB/s) mínimo y máximo; básicamente, defina un cierto valor de calidad de servicio (QoS).</p>
+</li>
+<li>
+<p><strong>Opciones de protocolo:</strong> Seleccione <strong>NFS</strong> o <strong>SMB</strong> para establecer el protocolo del volumen. Y, a continuación, proporcione los detalles del protocolo.</p>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Campos NFS</th>
+<th class="tableblock halign-left valign-top">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Control de accesos</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Elija si se necesitan controles de acceso para acceder al volumen.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Política de exportación</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cree una política de exportación para definir los clientes de la subred que puedan acceder al volumen.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Versión de NFS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Seleccione la versión de NFS del volumen: <em>NFSv3</em> o <em>NFSv4</em>, o puede seleccionar ambas.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Campos de SMB</th>
+<th class="tableblock halign-left valign-top">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nombre del recurso compartido</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Haga clic en el campo y seleccione una de las 5 opciones. Puede dejar que el administrador escriba cualquier nombre (texto libre) o puede especificar que el nombre del recurso compartido debe tener un prefijo o sufijo determinado, que contiene ciertos caracteres o que sigue las reglas de una expresión regular (regex) que escriba.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Permisos</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Seleccione el nivel de acceso a un recurso compartido para usuarios y grupos (también llamados listas de control de acceso o ACL).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Usuarios / grupos</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Especifique usuarios o grupos de Windows locales o de dominio, o usuarios o grupos de UNIX. Si especifica un nombre de usuario de Windows de dominio, debe incluir el dominio del usuario con el formato domain\username.</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>Segmentación:</strong> Elija la política de organización en niveles que desea aplicar al volumen o establezca esta opción en "ninguna" si no desea organizar en niveles los datos inactivos de este volumen en el almacenamiento de objetos.</p>
+<div class="paragraph">
+<p>Consulte <a href="https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/concept-data-tiering.html#volume-tiering-policies" target="_blank" rel="noopener">"políticas de organización en niveles del volumen"</a> para ver información general, consulte <a href="https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-tiering.html" target="_blank" rel="noopener">"Organización en niveles de los datos inactivos en el almacenamiento de objetos"</a> para asegurarse de que su entorno esté configurado para la organización en niveles.</p>
+</div>
+</li>
+<li>
+<p>Haga clic en <strong>aplicar</strong> después de definir los parámetros necesarios para esta acción.</p>
+<div class="paragraph">
+<p>Si los valores de la plantilla se completan correctamente, se añade una Marca de verificación verde al cuadro "Crear volumen en Cloud Volumes ONTAP".</p>
+</div>
+</li>
+<li>
+<p>Haga clic en el cuadro <strong>Activar copia de seguridad en la nube en volumen</strong> y aparecerá el cuadro de diálogo <em>Activar copia de seguridad en la nube en Definición</em> de acción de volumen para que pueda rellenar los detalles de copia de seguridad en la nube.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_create_template_add_action.png" alt="Captura de pantalla que muestra las acciones adicionales que puede añadir al volumen creado."></span></p>
+</div>
+</li>
+<li>
+<p>Seleccione la política de copias de seguridad de <strong>3 meses Retention</strong> para crear 30 copias de seguridad diarias, 13 semanales y 3 mensuales.</p>
+</li>
+<li>
+<p>Debajo de los campos entorno de trabajo y nombre de volumen hay tres selecciones que utiliza para indicar qué volumen tendrá habilitada la copia de seguridad. Consulte <a href="reference-template-building-blocks.html#pass-values-between-template-actions">"cómo completar estos campos"</a>.</p>
+</li>
+<li>
+<p>Haga clic en <strong>aplicar</strong> y se guardará el cuadro de diálogo copia de seguridad en la nube.</p>
+</li>
+<li>
+<p>Introduzca el nombre de plantilla <strong>volumen CVO para bases de datos</strong> (para este ejemplo) en la parte superior izquierda.</p>
+</li>
+<li>
+<p>Haga clic en <strong>Configuración y deriva</strong> para obtener una descripción más detallada de modo que esta plantilla pueda distinguirse de otras plantillas similares y, por lo tanto, puede activar deriva para la plantilla general y, a continuación, haga clic en <strong>aplicar</strong>.</p>
+<div class="paragraph">
+<p>Drift permite a BlueXP supervisar los valores codificados de forma rígida introducidos para los parámetros al crear esta plantilla.</p>
+</div>
+</li>
+<li>
+<p>Haga clic en <strong>Guardar plantilla</strong>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<div class="title">Resultado</div>
+<p>Se crea la plantilla y se devuelve al Panel de plantillas donde aparece la nueva plantilla.</p>
+</div>
+<div class="paragraph">
+<p>Consulte <a href="#qué-hacer-después-de-crear-la-plantilla">qué debe informar a sus usuarios acerca de las plantillas</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cree-una-plantilla-para-un-volumen-azure-netapp-files">Cree una plantilla para un volumen Azure NetApp Files</h3>
+<div class="paragraph">
+<p>La creación de una plantilla para un volumen Azure NetApp Files se realiza de la misma manera que la creación de una plantilla para un volumen Cloud Volumes ONTAP.</p>
+</div>
+<div class="paragraph">
+<p>Consulte <a href="https://docs.netapp.com/us-en/cloud-manager-azure-netapp-files/task-manage-anf-volumes.html#creating-volumes" target="_blank" rel="noopener">"cómo aprovisionar volúmenes de Azure NetApp Files"</a> Para obtener detalles acerca de todos los parámetros que necesita completar en la plantilla de volumen ANF.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Pasos</div>
+<ol class="arabic">
+<li>
+<p>Seleccione <strong>Estado &gt; resolución</strong>, haga clic en la ficha <strong>Plantillas</strong> y haga clic en <strong>Agregar nueva plantilla</strong>.</p>
+<div class="paragraph">
+<p>Se muestra la página <em>Select_a Template</em>.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_create_template_primary_action_blank.png" alt="Una captura de pantalla que muestra cómo seleccionar la acción principal que se realizará con esta plantilla."></span></p>
+</div>
+</li>
+<li>
+<p>Seleccione <strong>plantilla en blanco</strong> y haga clic en <strong>comenzar</strong>.</p>
+</li>
+<li>
+<p>Seleccione <strong>Crear volumen en Azure NetApp Files</strong> como el tipo de recurso que desea crear y haga clic en <strong>aplicar</strong>.</p>
+<div class="paragraph">
+<p>Se muestra la página <em>Create Volume in Azure NetApp Files Action Definition</em>.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_create_template_define_action_anf.png" alt="Captura de pantalla que muestra una plantilla ANF en blanco que necesita rellenar."></span></p>
+</div>
+</li>
+<li>
+<p><strong>Nombre de acción</strong>: De forma opcional, escriba un nombre de acción personalizado en lugar del valor predeterminado.</p>
+</li>
+<li>
+<p><strong>Detalles del volumen:</strong> Introduzca un nombre y tamaño de volumen y, opcionalmente, especifique etiquetas para el volumen.</p>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Campo</th>
+<th class="tableblock halign-left valign-top">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nombre del volumen</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Haga clic en el campo y seleccione una de las 5 opciones. Puede dejar que el administrador escriba cualquier nombre seleccionando <strong>texto libre</strong>, o puede especificar que el nombre del volumen debe tener un prefijo o sufijo determinado, que contiene ciertos caracteres, o que sigue las reglas de una expresión regular (regex) que introduzca. Por ejemplo, puede especificar que "dB" sea un prefijo, sufijo o contiene; requerir que el usuario agregue nombres de volumen como "dB_vol1", "vol1_dB" o "vol_dB_1".</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tamaño del volumen</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Puede especificar un rango de valores permitidos o puede especificar un tamaño fijo. Este valor se da en GB.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Etiquetas</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Introduzca un nombre y una pareja de valores para una etiqueta que desee asociar a este volumen. Por ejemplo, puede agregar "Centro de costes" como nombre de etiqueta y el código de centro de costes "6655829" como valor. Es posible asociar más de una etiqueta a un volumen. Para ello, se deben añadir más nombres de etiqueta y parejas de valores.</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>Protocolo:</strong> Seleccione <strong>NFSv3</strong>, <strong>NFSv4.1</strong> o <strong>SMB</strong> para establecer el protocolo del volumen. Y, a continuación, proporcione los detalles del protocolo.</p>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Campos NFS</th>
+<th class="tableblock halign-left valign-top">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ruta del volumen</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Seleccione una de las 5 opciones. Puede permitir que el administrador escriba cualquier ruta de acceso seleccionando <strong>texto libre</strong>, o puede especificar que el nombre de la ruta de acceso debe tener un prefijo o sufijo determinado, que <em>contenga</em> determinados caracteres o que siga las reglas de una expresión regular (regex) que introduzca.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reglas de la política de exportación</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cree una política de exportación para definir los clientes de la subred que puedan acceder al volumen.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Campos de SMB</th>
+<th class="tableblock halign-left valign-top">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ruta del volumen</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Seleccione una de las 5 opciones. Puede permitir que el administrador escriba cualquier ruta de acceso seleccionando <strong>texto libre</strong>, o puede especificar que el nombre de la ruta de acceso debe tener un prefijo o sufijo determinado, que <em>contenga</em> determinados caracteres o que siga las reglas de una expresión regular (regex) que introduzca.</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>Contexto:</strong> Introduzca el entorno de trabajo Azure NetApp Files, los detalles de una cuenta Azure NetApp Files nueva o existente y otros detalles.</p>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Campo</th>
+<th class="tableblock halign-left valign-top">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Entorno de trabajo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cuando los usuarios del administrador del almacenamiento inician la plantilla desde un entorno de trabajo existente, esta información se rellena automáticamente. Cuando los usuarios inician la plantilla desde el Panel de plantillas (no en un contexto de entorno de trabajo), deben seleccionar el entorno de trabajo donde se creará el volumen.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nombre de cuenta de NetApp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Introduzca el nombre que desee usar para la cuenta.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ID de suscripción de Azure</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Introduzca el ID de suscripción de Azure. Este es el ID completo en un formato similar a "2b04f26-7de6-42eb-9234-e2903d7s327".</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Región</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Introduzca la región mediante <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.documents.locationnames?view=azure-dotnet#fields" target="_blank" rel="noopener">"nombre de región interna"</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nombre del grupo de recursos</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Introduzca el nombre del grupo de recursos que desee usar.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nombre del pool de capacidad</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Introduzca el nombre de un pool de capacidad existente.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Subred</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Introduzca el vnet y la subred. Este valor incluye la ruta completa, en un formato similar a "/subscriptions/&lt;subscription_id&gt;/ResourceGroups/&lt;resource_group&gt;/ providers/Microsoft.Network/virtualNetworks/&lt;vpc_name&gt;/Subnets/&lt;subhet_name&gt;".</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>Copia snapshot:</strong> Introduzca el ID de instantánea para una instantánea de volumen existente si desea que este nuevo volumen se cree utilizando características de un volumen existente.</p>
+</li>
+<li>
+<p>Haga clic en <strong>aplicar</strong> después de definir los parámetros necesarios para esta acción.</p>
+</li>
+<li>
+<p>Introduzca el nombre que desea utilizar para la plantilla en la parte superior izquierda.</p>
+</li>
+<li>
+<p>Haga clic en <strong>Configuración y deriva</strong> para obtener una descripción más detallada de modo que esta plantilla pueda distinguirse de otras plantillas similares y, por lo tanto, puede activar deriva para la plantilla general y, a continuación, haga clic en <strong>aplicar</strong>.</p>
+<div class="paragraph">
+<p>Drift permite a BlueXP supervisar los valores codificados de forma rígida introducidos para los parámetros al crear esta plantilla.</p>
+</div>
+</li>
+<li>
+<p>Haga clic en <strong>Guardar plantilla</strong>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<div class="title">Resultado</div>
+<p>Se crea la plantilla y se devuelve al Panel de plantillas donde aparece la nueva plantilla.</p>
+</div>
+<div class="paragraph">
+<p>Consulte <a href="#qué-hacer-después-de-crear-la-plantilla">qué debe informar a sus usuarios acerca de las plantillas</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cree-una-plantilla-para-un-volumen-de-ontap-en-las-instalaciones">Cree una plantilla para un volumen de ONTAP en las instalaciones</h3>
+<div class="paragraph">
+<p>Consulte <a href="https://docs.netapp.com/us-en/cloud-manager-ontap-onprem/task-provisioning-ontap.html#creating-volumes-for-ontap-clusters" target="_blank" rel="noopener">"cómo aprovisionar volúmenes de ONTAP en las instalaciones"</a> Si desea obtener información detallada sobre todos los parámetros necesarios para completar en la plantilla de volumen de ONTAP en las instalaciones.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Pasos</div>
+<ol class="arabic">
+<li>
+<p>Seleccione <strong>Estado &gt; resolución</strong>, haga clic en la ficha <strong>Plantillas</strong> y haga clic en <strong>Agregar nueva plantilla</strong>.</p>
+<div class="paragraph">
+<p>Se muestra la página <em>Select_a Template</em>.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_create_template_primary_action_blank.png" alt="Una captura de pantalla que muestra cómo seleccionar la acción principal que se realizará con esta plantilla."></span></p>
+</div>
+</li>
+<li>
+<p>Seleccione <strong>plantilla en blanco</strong> y haga clic en <strong>comenzar</strong>.</p>
+<div class="paragraph">
+<p>Aparecerá la página <em>Add New Action</em>.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_create_template_primary_action_onprem.png" alt="Una captura de pantalla que muestra cómo seleccionar la acción principal de la página Agregar nueva acción."></span></p>
+</div>
+</li>
+<li>
+<p>Seleccione <strong>Crear volumen en ONTAP</strong> local como el tipo de recurso que desea crear y haga clic en <strong>aplicar</strong>.</p>
+<div class="paragraph">
+<p>Se muestra la página <em>Create Volume in on-local ONTAP Action Definition</em>.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_create_template_define_action_onprem.png" alt="Captura de pantalla que muestra una plantilla de ONTAP onprem en blanco que necesita rellenar."></span></p>
+</div>
+</li>
+<li>
+<p><strong>Nombre de acción</strong>: De forma opcional, escriba un nombre de acción personalizado en lugar del valor predeterminado.</p>
+</li>
+<li>
+<p><strong>Context:</strong> Introduzca el contexto de entorno de trabajo de ONTAP en las instalaciones; si es necesario.</p>
+<div class="paragraph">
+<p>Cuando los usuarios inician la plantilla desde un entorno de trabajo existente, esta información se rellena automáticamente.</p>
+</div>
+<div class="paragraph">
+<p>Cuando los usuarios inician la plantilla desde el Panel de plantillas (no en un contexto de entorno de trabajo), deben seleccionar el entorno de trabajo, la SVM y el agregado donde se creará el volumen.</p>
+</div>
+</li>
+<li>
+<p><strong>Detalles:</strong> Introduzca el nombre y el tamaño del volumen.</p>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Campo</th>
+<th class="tableblock halign-left valign-top">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nombre del volumen</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Haga clic en el campo y seleccione una de las 5 opciones. Puede dejar que el administrador escriba cualquier nombre seleccionando <strong>texto libre</strong>, o puede especificar que el nombre del volumen debe tener un prefijo o sufijo determinado, que contiene ciertos caracteres, o que sigue las reglas de una expresión regular (regex) que introduzca. Por ejemplo, puede especificar que "dB" sea un prefijo, sufijo o contiene; requerir que el usuario agregue nombres de volumen como "dB_vol1", "vol1_dB" o "vol_dB_1".</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tamaño del volumen</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Puede especificar un rango de valores permitidos o puede especificar un tamaño fijo. Este valor se da en GB. Para nuestro ejemplo podemos agregar un valor fijo <strong>100</strong>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Etiquetas</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Introduzca un nombre y una pareja de valores para una etiqueta que desee asociar a este volumen. Por ejemplo, puede agregar "Centro de costes" como nombre de etiqueta y el código de centro de costes "6655829" como valor. Es posible asociar más de una etiqueta a un volumen. Para ello, se deben añadir más nombres de etiqueta y parejas de valores.</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>Protección:</strong> Elija si este volumen tendrá copias snapshot creadas seleccionando "predeterminado" o alguna otra directiva, o bien elija "ninguna" si no desea crear copias snapshot.</p>
+</li>
+<li>
+<p><strong>Perfil de uso:</strong> Elija si las funciones de eficiencia del almacenamiento de NetApp se aplican al volumen. Esto incluye thin provisioning, deduplicación y compresión.</p>
+</li>
+<li>
+<p><strong>Opciones de protocolo:</strong> Seleccione <strong>NFS</strong> o <strong>SMB</strong> para establecer el protocolo del volumen. Y, a continuación, proporcione los detalles del protocolo.</p>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Campos NFS</th>
+<th class="tableblock halign-left valign-top">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Control de accesos</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Elija si se necesitan controles de acceso para acceder al volumen.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Política de exportación</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cree una política de exportación para definir los clientes de la subred que puedan acceder al volumen.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Versión de NFS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Seleccione la versión de NFS del volumen: <em>NFSv3</em> o <em>NFSv4</em>, o puede seleccionar ambas.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Campos de SMB</th>
+<th class="tableblock halign-left valign-top">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nombre del recurso compartido</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Haga clic en el campo y seleccione una de las 5 opciones. Puede dejar que el administrador escriba cualquier nombre (texto libre) o puede especificar que el nombre del recurso compartido debe tener un prefijo o sufijo determinado, que contiene ciertos caracteres o que sigue las reglas de una expresión regular (regex) que escriba.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Permisos</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Seleccione el nivel de acceso a un recurso compartido para usuarios y grupos (también llamados listas de control de acceso o ACL).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Usuarios / grupos</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Especifique usuarios o grupos de Windows locales o de dominio, o usuarios o grupos de UNIX. Si especifica un nombre de usuario de Windows de dominio, debe incluir el dominio del usuario con el formato domain\username.</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>Haga clic en <strong>aplicar</strong> después de definir los parámetros necesarios para esta acción.</p>
+<div class="paragraph">
+<p>Si los valores de la plantilla se completan correctamente, se añade una Marca de verificación verde al cuadro "Crear volumen en ONTAP local".</p>
+</div>
+</li>
+<li>
+<p>Introduzca el nombre de la plantilla en la parte superior izquierda.</p>
+</li>
+<li>
+<p>Haga clic en <strong>Configuración y deriva</strong> para obtener una descripción más detallada de modo que esta plantilla pueda distinguirse de otras plantillas similares y, por lo tanto, puede activar deriva para la plantilla general y, a continuación, haga clic en <strong>aplicar</strong>.</p>
+<div class="paragraph">
+<p>Drift permite a BlueXP supervisar los valores codificados de forma rígida introducidos para los parámetros al crear esta plantilla.</p>
+</div>
+</li>
+<li>
+<p>Haga clic en <strong>Guardar plantilla</strong>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<div class="title">Resultado</div>
+<p>Se crea la plantilla y se devuelve al Panel de plantillas donde aparece la nueva plantilla.</p>
+</div>
+<div class="paragraph">
+<p>Consulte <a href="#qué-hacer-después-de-crear-la-plantilla">qué debe informar a sus usuarios acerca de las plantillas</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cree-una-plantilla-para-un-entorno-de-trabajo-de-cloud-volumes-ontap">Cree una plantilla para un entorno de trabajo de Cloud Volumes ONTAP</h3>
+<div class="paragraph">
+<p>Puede crear un entorno de trabajo Cloud Volumes ONTAP de un solo nodo o de alta disponibilidad mediante plantillas.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/cloud-manager-app-template/images/note.svg" alt="Nota">
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>En este momento, solo se ofrece compatibilidad para entornos AWS.</p>
+</li>
+<li>
+<p>Esta plantilla no crea el primer volumen en el entorno de trabajo. Debe añadir una acción "Crear volumen en Cloud Volumes ONTAP" en la plantilla para crear el volumen.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Consulte <a href="https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-otc-aws.html#launching-a-single-node-cloud-volumes-ontap-system-in-aws" target="_blank" rel="noopener">"cómo iniciar el sistema Cloud Volumes ONTAP de un único nodo en AWS"</a> o a <a href="https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-otc-aws.html#launching-a-cloud-volumes-ontap-ha-pair-in-aws" target="_blank" rel="noopener">"Par de alta disponibilidad de Cloud Volumes ONTAP en AWS"</a> para los requisitos previos que deben estar vigentes y para obtener detalles sobre todos los parámetros que deberá definir en esta plantilla.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Pasos</div>
+<ol class="arabic">
+<li>
+<p>Seleccione <strong>Estado &gt; resolución</strong>, haga clic en la ficha <strong>Plantillas</strong> y haga clic en <strong>Agregar nueva plantilla</strong>.</p>
+<div class="paragraph">
+<p>Se muestra la página <em>Select_a Template</em>.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_create_template_primary_action_blank.png" alt="Una captura de pantalla que muestra cómo seleccionar la acción principal que se realizará con esta plantilla."></span></p>
+</div>
+</li>
+<li>
+<p>Seleccione <strong>plantilla en blanco</strong> y haga clic en <strong>comenzar</strong>.</p>
+<div class="paragraph">
+<p>Aparecerá la página <em>Add New Action</em>.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_create_template_cvo_env_aws.png" alt="Una captura de pantalla que muestra cómo seleccionar la acción principal de la página Agregar nueva acción."></span></p>
+</div>
+</li>
+<li>
+<p>Seleccione <strong>Crear entorno de trabajo en AWS (nodo único)</strong> o <strong>Crear entorno de trabajo en AWS (alta disponibilidad)</strong> como el tipo de recurso que desea crear y haga clic en <strong>aplicar</strong>.</p>
+<div class="paragraph">
+<p>Para este ejemplo, se muestra la página <em>Create Working Environment in AWS (un solo nodo)</em>.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_create_template_cvo_env_aws1.png" alt="Captura de pantalla que muestra una plantilla de entorno de trabajo de Cloud Volumes ONTAP en blanco que debe rellenar."></span></p>
+</div>
+</li>
+<li>
+<p><strong>Nombre de acción</strong>: De forma opcional, escriba un nombre de acción personalizado en lugar del valor predeterminado.</p>
+</li>
+<li>
+<p><strong>Detalles y credenciales</strong>: Seleccione las credenciales de AWS que desea utilizar, introduzca un nombre de entorno de trabajo y agregue etiquetas, si es necesario.</p>
+<div class="paragraph">
+<p>Algunos de los campos en esta página son claros y explicativos. En la siguiente tabla se describen los campos que podrían presentar dificultades:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Campo</th>
+<th class="tableblock halign-left valign-top">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Credenciales</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Estas son las credenciales de la cuenta de administrador del clúster de Cloud Volumes ONTAP. Puede usar estas credenciales para conectarse a Cloud Volumes ONTAP a través de ONTAP System Manager o de su CLI.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nombre del entorno de trabajo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BlueXP usa el nombre del entorno de trabajo para asignar un nombre tanto al sistema Cloud Volumes ONTAP como a la instancia de Amazon EC2. También utiliza el nombre como prefijo para el grupo de seguridad predefinido si selecciona esa opción. Haga clic en el campo y seleccione una de las 5 opciones. Puede permitir que el administrador escriba cualquier nombre seleccionando <strong>texto libre</strong>, o puede especificar que el nombre del entorno de trabajo debe tener un prefijo o sufijo determinado, que _contiene ciertos caracteres o que sigue las reglas de una expresión regular (regex) que introduzca.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Etiquetas</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Las etiquetas de AWS son metadatos para sus recursos de AWS. BlueXP agrega las etiquetas a la instancia de Cloud Volumes ONTAP y cada recurso de AWS asociado a la instancia. Para obtener información sobre etiquetas, consulte <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html" target="_blank" rel="noopener">"Documentación de AWS: Etiquetado de los recursos de Amazon EC2"</a>.</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>Ubicación y conectividad</strong>: Introduzca la información de red que grabó en <a href="https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-planning-your-config.html#aws-network-information-worksheet" target="_blank" rel="noopener">"Hoja de cálculo de AWS"</a>. Esto incluye la región, VPC, subred y grupo de seguridad de AWS.</p>
+<div class="paragraph">
+<p>Si tiene una publicación externa de AWS, puede implementar un sistema Cloud Volumes ONTAP de un solo nodo en esa publicación seleccionando el VPC de salida. La experiencia es la misma que cualquier otro VPC que resida en AWS.</p>
+</div>
+</li>
+<li>
+<p><strong>Método de autenticación</strong>: Seleccione el método de autenticación SSH que desea utilizar; una contraseña o un par de claves.</p>
+</li>
+<li>
+<p><strong>cifrado de datos</strong>: Elija sin cifrado de datos o cifrado gestionado por AWS.</p>
+<div class="paragraph">
+<p>Para el cifrado gestionado por AWS, puede elegir una clave maestra de cliente (CMK) diferente de su cuenta u otra cuenta de AWS.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-setting-up-kms.html" target="_blank" rel="noopener">"Aprenda a configurar AWS KMS para el cloud Volumes ONTAP"</a>.</p>
+</div>
+</li>
+<li>
+<p><strong>Método de carga</strong>: Especifique la opción de carga que desea utilizar con este sistema.</p>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/concept-licensing.html" target="_blank" rel="noopener">"Conozca estos métodos de carga"</a>.</p>
+</div>
+</li>
+<li>
+<p><strong>Cuenta en la página de soporte de NetApp</strong>: Seleccione una cuenta en la página de soporte de NetApp.</p>
+</li>
+<li>
+<p><strong>Paquetes preconfigurados</strong>: Seleccione uno de los cuatro paquetes preconfigurados que determinarán varios factores para volúmenes creados en el entorno de trabajo.</p>
+</li>
+<li>
+<p><strong>Configuración de SMB</strong>: Si planea implementar volúmenes mediante SMB en este entorno de trabajo, puede configurar un servidor CIFS y elementos de configuración relacionados.</p>
+</li>
+<li>
+<p>Haga clic en <strong>aplicar</strong> después de definir los parámetros necesarios para esta acción.</p>
+<div class="paragraph">
+<p>Si los valores de la plantilla se completan correctamente, se agrega una Marca de verificación verde al cuadro "Crear entorno de trabajo en AWS (nodo único)".</p>
+</div>
+</li>
+<li>
+<p>Puede que desee agregar otra acción en esta plantilla para crear un volumen para este entorno de trabajo. Si es así, haga clic en <span class="image"><img src="./media/button_plus_sign_round.png" alt="botón más"></span> y agregue esa acción. Descubra cómo <a href="#cree-una-plantilla-para-un-volumen-de-cloud-volumes-ontap">Cree una plantilla para un volumen de Cloud Volumes ONTAP</a> para obtener más detalles.</p>
+</li>
+<li>
+<p>Introduzca el nombre de la plantilla en la parte superior izquierda.</p>
+</li>
+<li>
+<p>Haga clic en <strong>Configuración y deriva</strong> para obtener una descripción más detallada de modo que esta plantilla pueda distinguirse de otras plantillas similares y, por lo tanto, puede activar deriva para la plantilla general y, a continuación, haga clic en <strong>aplicar</strong>.</p>
+<div class="paragraph">
+<p>Drift permite a BlueXP supervisar los valores codificados de forma rígida introducidos para los parámetros al crear esta plantilla.</p>
+</div>
+</li>
+<li>
+<p>Haga clic en <strong>Guardar plantilla</strong>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<div class="title">Resultado</div>
+<p>Se crea la plantilla y se devuelve al Panel de plantillas donde aparece la nueva plantilla.</p>
+</div>
+<div class="paragraph">
+<p>Consulte <a href="#qué-hacer-después-de-crear-la-plantilla">qué debe informar a sus usuarios acerca de las plantillas</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ejemplos-de-búsqueda-de-recursos-existentes-mediante-plantillas">Ejemplos de búsqueda de recursos existentes mediante plantillas</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Con la acción <em>Find existing Resources</em> puede encontrar entornos de trabajo específicos o encontrar volúmenes existentes proporcionando una variedad de filtros para limitar la búsqueda sólo a los recursos que le interesan. Después de encontrar los recursos correctos, podrá añadir volúmenes a un entorno de trabajo o habilitar un servicio cloud en los volúmenes resultantes.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/cloud-manager-app-template/images/note.svg" alt="Nota">
+</td>
+<td class="content">
+En este momento puede encontrar volúmenes en sistemas Cloud Volumes ONTAP, ONTAP en las instalaciones y Azure NetApp Files. Además, puede habilitar Cloud Backup en Cloud Volumes ONTAP y ONTAP Volumes en las instalaciones. Los recursos y servicios adicionales estarán disponibles más adelante.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="busque-los-volúmenes-existentes-y-active-un-servicio-cloud">Busque los volúmenes existentes y active un servicio cloud</h3>
+<div class="paragraph">
+<p>La funcionalidad de acción actual <em>Find existing Resources</em> permite encontrar volúmenes en entornos de trabajo de Cloud Volumes ONTAP y ONTAP en las instalaciones que no tienen habilitado Cloud Backup ni Cloud Data Sense. Al habilitar Cloud Backup en volúmenes específicos, esta acción también establece la política de backup que configuró como política predeterminada para ese entorno de trabajo, de modo que todos los volúmenes futuros de dichos entornos puedan usar la misma normativa de backup.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Pasos</div>
+<ol class="arabic">
+<li>
+<p>Seleccione <strong>Estado &gt; resolución</strong>, haga clic en la ficha <strong>Plantillas</strong> y haga clic en <strong>Agregar nueva plantilla</strong>.</p>
+<div class="paragraph">
+<p>Se muestra la página <em>Select_a Template</em>.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_create_template_primary_action_blank.png" alt="Una captura de pantalla que muestra cómo seleccionar la acción principal que se realizará con esta plantilla."></span></p>
+</div>
+</li>
+<li>
+<p>Seleccione <strong>plantilla en blanco</strong> y haga clic en <strong>comenzar</strong>.</p>
+<div class="paragraph">
+<p>Aparecerá la página <em>Add New Action</em>.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_create_template_find_resource_action.png" alt="Una captura de pantalla que muestra cómo seleccionar la acción Buscar recursos existentes en la página Agregar nueva acción."></span></p>
+</div>
+</li>
+<li>
+<p>Seleccione <strong>Buscar recursos existentes</strong> como el tipo de acción que desea definir y haga clic en <strong>aplicar</strong>.</p>
+<div class="paragraph">
+<p>Se muestra la página <em>Find existing Resources Action Definition</em>.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_define_find_resource_action1.png" alt="Una captura de pantalla que muestra una plantilla de recursos existentes de búsqueda en blanco que necesita rellenar."></span></p>
+</div>
+</li>
+<li>
+<p><strong>Nombre de acción</strong>: Introduzca un nombre de acción personalizado en lugar del valor predeterminado. Por ejemplo, "Find large Volumes on cluster ABC and enable Backup".</p>
+</li>
+<li>
+<p><strong>Tipo de recurso:</strong> Seleccione el tipo de recurso que desea encontrar. En este caso, puede seleccionar <strong>volúmenes en Cloud Volumes ONTAP</strong>.</p>
+<div class="paragraph">
+<p>Esta es la única entrada necesaria para esta acción. Puede hacer clic en <strong>continuar</strong> ahora y recibirá una lista de todos los volúmenes de todos los sistemas Cloud Volumes ONTAP de su entorno.</p>
+</div>
+<div class="paragraph">
+<p>En su lugar, se recomienda rellenar algunos filtros para reducir el número de resultados (en este caso, volúmenes) a los que aplicará la acción de backup en el cloud.</p>
+</div>
+</li>
+<li>
+<p>En el área <em>context</em> puede seleccionar un entorno de trabajo específico y otros detalles acerca de ese entorno de trabajo.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_define_find_resource_filter_context.png" alt="Una captura de pantalla que muestra los filtros de contexto que puede aplicar a la plantilla Buscar recursos existentes."></span></p>
+</div>
+</li>
+<li>
+<p>En el área <em>Details</em> puede seleccionar el nombre del volumen, el rango de tamaño de volumen y las etiquetas asignadas a los volúmenes.</p>
+<div class="paragraph">
+<p>Para el nombre del volumen, haga clic en el campo y seleccione una de las 5 opciones. Puede dejar que el administrador escriba cualquier nombre seleccionando <strong>texto libre</strong>, o puede especificar que el nombre del volumen debe tener un prefijo o sufijo determinado, que contiene ciertos caracteres, o que sigue las reglas de una expresión regular (regex) que introduzca.</p>
+</div>
+<div class="paragraph">
+<p>Para el tamaño del volumen, puede especificar un rango; por ejemplo, todos los volúmenes entre 100 GIB y 500 GIB.</p>
+</div>
+<div class="paragraph">
+<p>En el caso de las etiquetas, puede restringir aún más la búsqueda para que los resultados muestren solo volúmenes con ciertas parejas de clave de etiqueta/valor.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_define_find_resource_filter_details.png" alt="Una captura de pantalla que muestra los filtros Detalles que puede aplicar a la plantilla Buscar recursos existentes."></span></p>
+</div>
+</li>
+<li>
+<p>Haga clic en <strong>continuar</strong> y la página se actualizará para mostrar los criterios de búsqueda definidos en la plantilla.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_define_find_resource_search_criteria.png" alt="Captura de pantalla que muestra los criterios de búsqueda definidos para la plantilla de búsqueda de recursos existentes."></span></p>
+</div>
+</li>
+<li>
+<p>Haga clic en <strong>probar ahora los criterios de búsqueda</strong> para ver los resultados actuales.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Si los resultados no son los esperados, haga clic en <span class="image"><img src="./media/screenshot_edit_icon.gif" alt="editar icono de lápiz"></span> Junto a <em>Search Criteria</em> y afine aún más su búsqueda.</p>
+</li>
+<li>
+<p>Cuando los resultados sean buenos, haga clic en <strong>hecho</strong>.</p>
+<div class="paragraph">
+<p>La acción completada <em>Find Existing Resources</em> aparece en la ventana del editor.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Haga clic en el signo más para añadir otra acción, seleccione <strong>Activar Cloud Backup en volumen</strong> y haga clic en <strong>aplicar</strong>.</p>
+<div class="paragraph">
+<p>La acción <em>Enable Cloud Backup on Volume</em> se agrega a la ventana.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_template_add_backup_action.png" alt="Una captura de pantalla que muestra los pasos para añadir una acción de Cloud Backup a la plantilla."></span></p>
+</div>
+</li>
+<li>
+<p>Ahora puede definir los criterios de copia de seguridad tal como se describe en <a href="#añada-la-funcionalidad-de-backup-a-un-volumen">Agregar la funcionalidad de backup a un volumen</a> De forma que la plantilla aplique la política de copia de seguridad correcta a los volúmenes que seleccione de la acción <em>Find Existing Resources</em> (Buscar recursos existentes).</p>
+</li>
+<li>
+<p>Haga clic en <strong>aplicar</strong> para guardar la personalización que realizó en la acción copia de seguridad y, a continuación, haga clic en <strong>Guardar plantilla</strong> cuando haya terminado.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<div class="title">Resultado</div>
+<p>Se crea la plantilla y se devuelve al Panel de plantillas donde aparece la nueva plantilla.</p>
+</div>
+<div class="paragraph">
+<p>Consulte <a href="#qué-hacer-después-de-crear-la-plantilla">qué debe informar a sus usuarios acerca de las plantillas</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="buscar-entornos-de-trabajo-existentes">Buscar entornos de trabajo existentes</h3>
+<div class="paragraph">
+<p>Mediante la acción <em>Find existing Resources</em> puede buscar el entorno de trabajo y, a continuación, utilizar otras acciones de plantilla, como la creación de un volumen, para realizar fácilmente acciones en el entorno de trabajo existente.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Pasos</div>
+<ol class="arabic">
+<li>
+<p>Seleccione <strong>Estado &gt; resolución</strong>, haga clic en la ficha <strong>Plantillas</strong> y haga clic en <strong>Agregar nueva plantilla</strong>.</p>
+<div class="paragraph">
+<p>Se muestra la página <em>Select_a Template</em>.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_create_template_primary_action_blank.png" alt="Una captura de pantalla que muestra cómo seleccionar la acción principal que se realizará con esta plantilla."></span></p>
+</div>
+</li>
+<li>
+<p>Seleccione <strong>plantilla en blanco</strong> y haga clic en <strong>comenzar</strong>.</p>
+<div class="paragraph">
+<p>Aparecerá la página <em>Add New Action</em>.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_create_template_find_resource_action.png" alt="Una captura de pantalla que muestra cómo seleccionar la acción Buscar recursos existentes en la página Agregar nueva acción."></span></p>
+</div>
+</li>
+<li>
+<p>Seleccione <strong>Buscar recursos existentes</strong> como el tipo de acción que desea definir y haga clic en <strong>aplicar</strong>.</p>
+<div class="paragraph">
+<p>Se muestra la página <em>Find existing Resources Action Definition</em>.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_define_find_work_env.png" alt="Una captura de pantalla que muestra una plantilla de recursos existentes de búsqueda en blanco que necesita rellenar."></span></p>
+</div>
+</li>
+<li>
+<p><strong>Nombre de acción</strong>: Introduzca un nombre de acción personalizado en lugar del valor predeterminado. Por ejemplo, "Buscar entornos de trabajo que incluyan Dallas".</p>
+</li>
+<li>
+<p><strong>Tipo de recurso:</strong> Seleccione el tipo de recurso que desea encontrar. En este caso, seleccione <strong>entornos de trabajo</strong>.</p>
+<div class="paragraph">
+<p>Esta es la única entrada necesaria para esta acción. Puede hacer clic en <strong>continuar</strong> ahora y recibirá una lista de todos los entornos de trabajo de su entorno.</p>
+</div>
+<div class="paragraph">
+<p>En su lugar, se recomienda rellenar algunos filtros para reducir el número de resultados (en este caso, entornos de trabajo).</p>
+</div>
+</li>
+<li>
+<p>Después de definir algunos filtros en el área <em>Details</em>, puede seleccionar un entorno de trabajo específico.</p>
+</li>
+<li>
+<p>Haga clic en <strong>continuar</strong> para guardar la configuración y, a continuación, haga clic en <strong>hecho</strong>.</p>
+</li>
+<li>
+<p>Introduzca el nombre de la plantilla en la parte superior izquierda y, a continuación, haga clic en <strong>Guardar plantilla</strong></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<div class="title">Resultado</div>
+<p>Se crea la plantilla y se devuelve al Panel de plantillas donde aparece la nueva plantilla.</p>
+</div>
+<div class="paragraph">
+<p>Consulte <a href="#qué-hacer-después-de-crear-la-plantilla">qué debe informar a sus usuarios acerca de las plantillas</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ejemplos-de-habilitación-de-servicios-mediante-plantillas">Ejemplos de habilitación de servicios mediante plantillas</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Las plantillas de servicios permiten activar los servicios Cloud Backup, Cloud Data Sense o Replication (SnapMirror) en un volumen recién creado.</p>
+</div>
+<div class="sect2">
+<h3 id="añada-la-funcionalidad-de-backup-a-un-volumen">Añada la funcionalidad de backup a un volumen</h3>
+<div class="paragraph">
+<p>Al crear una plantilla de volumen, puede agregar en la plantilla que desea crear copias de seguridad del volumen periódicamente con el <a href="https://docs.netapp.com/us-en/cloud-manager-backup-restore/concept-backup-to-cloud.html" target="_blank" rel="noopener">"Backup en el cloud"</a> servicio.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/cloud-manager-app-template/images/tip.svg" alt="Sugerencia">
+</td>
+<td class="content">
+Esta acción no es aplicable para volúmenes de Azure NetApp Files.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_template_backup.png" alt="Captura de pantalla de la página para activar la funcionalidad de backup para sus volúmenes."></span></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Política</strong>: Seleccione la política de copia de seguridad que desea utilizar.</p>
+</li>
+<li>
+<p><strong>Contexto</strong>: De forma predeterminada, las variables se llenan para el entorno de trabajo, el equipo virtual de almacenamiento y el volumen para indicar que creará copias de seguridad para el volumen creado previamente en esta misma plantilla. Así que si eso es lo que quieres hacer, todo está listo.</p>
+<div class="paragraph">
+<p>Si desea crear backups para otro volumen, es posible introducir estos detalles manualmente. Descubra cómo <a href="reference-template-building-blocks.html#pass-values-between-template-actions">"Complete los campos de contexto"</a> para indicar un volumen diferente.</p>
+</div>
+</li>
+<li>
+<p>Haga clic en <strong>aplicar</strong> para guardar los cambios.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="añada-la-funcionalidad-de-detección-de-datos-a-un-volumen">Añada la funcionalidad de detección de datos a un volumen</h3>
+<div class="paragraph">
+<p>Al crear una plantilla de volumen, puede agregar en la plantilla que desea analizar el volumen para su cumplimiento y clasificación mediante la <a href="https://docs.netapp.com/us-en/cloud-manager-data-sense/concept-cloud-compliance.html" target="_blank" rel="noopener">"Cloud Data SENSE"</a> servicio.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_template_data_sense.png" alt="Captura de pantalla de la página para activar la funcionalidad de análisis para sus volúmenes."></span></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Contexto</strong>: De forma predeterminada, las variables se rellenan para el entorno de trabajo, el nombre del volumen, el UUID del volumen, la ruta del volumen y el protocolo para indicar que va a analizar los datos del volumen creado previamente en esta misma plantilla. Así que si eso es lo que quieres hacer, todo está listo.</p>
+<div class="paragraph">
+<p>Si desea analizar datos para otro volumen, puede introducir estos detalles manualmente. Descubra cómo <a href="reference-template-building-blocks.html#pass-values-between-template-actions">"Complete los campos de contexto"</a> para indicar un volumen diferente.</p>
+</div>
+</li>
+<li>
+<p>Haga clic en <strong>aplicar</strong> para guardar los cambios.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="añada-la-funcionalidad-de-replicación-a-un-volumen">Añada la funcionalidad de replicación a un volumen</h3>
+<div class="paragraph">
+<p>Al crear una plantilla de volumen, puede agregar la plantilla que desea replicar los datos del volumen a otro volumen mediante el <a href="https://docs.netapp.com/us-en/cloud-manager-replication/concept-replication.html" target="_blank" rel="noopener">"Replicación"</a> servicio. Puede replicar datos en un clúster de Cloud Volumes ONTAP o en un clúster de ONTAP en las instalaciones.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/cloud-manager-app-template/images/tip.svg" alt="Sugerencia">
+</td>
+<td class="content">
+Esta acción no es aplicable para volúmenes de Azure NetApp Files.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>La funcionalidad de replicación consta de tres partes: Seleccionar el volumen de origen, seleccionar el volumen de destino y definir la configuración de replicación. Cada sección se describe a continuación.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Detalles del origen</strong>: Introduzca los detalles sobre el volumen de origen que desea replicar:</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_template_replication_source.png" alt="Captura de pantalla de la página para definir la ubicación del volumen de origen de la replicación."></span></p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>De forma predeterminada, las tres primeras variables se llenan en el entorno de trabajo, la máquina virtual de almacenamiento y el volumen para indicar que va a replicar el volumen creado anteriormente en esta misma plantilla. Así que si eso es lo que quieres hacer, todo está listo.</p>
+<div class="paragraph">
+<p>Si desea replicar un volumen diferente, puede introducir esos detalles manualmente. Descubra cómo <a href="reference-template-building-blocks.html#pass-values-between-template-actions">"Complete los campos de contexto"</a> para indicar un volumen diferente.</p>
+</div>
+</li>
+<li>
+<p>La replicación requiere que los entornos de trabajo de origen y destino estén conectados mediante las LIF de interconexión de clústeres. Introduzca la dirección IP de la LIF entre clústeres para el entorno de trabajo de origen.</p>
+<div class="paragraph">
+<p>Para obtener esta información: Haga doble clic en el entorno de trabajo, haga clic en el icono de menú y haga clic en Información.</p>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><strong>Detalles de destino</strong>: Introduzca los detalles sobre el volumen de destino que creará la operación de replicación:</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_template_replication_dest.png" alt="Captura de pantalla de la página para definir la ubicación del volumen de destino de la replicación."></span></p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Seleccione el entorno de trabajo donde se creará el volumen.</p>
+</li>
+<li>
+<p>Seleccione la máquina virtual de almacenamiento donde reside el volumen.</p>
+</li>
+<li>
+<p>Al replicar un volumen a un clúster de Cloud Volumes ONTAP (no a un clúster ONTAP en las instalaciones), debe especificar el proveedor de destino (AWS, Azure o GCP).</p>
+</li>
+<li>
+<p>Al replicar un volumen en un clúster de Cloud Volumes ONTAP, puede especificar si la organización en niveles de volúmenes está habilitada en el volumen de destino.</p>
+</li>
+<li>
+<p>Para el nombre del volumen de destino, haga clic en el campo y seleccione una de las 5 opciones. Puede dejar que el administrador escriba cualquier nombre seleccionando <strong>texto libre</strong>, o puede especificar que el nombre del volumen debe tener un prefijo o sufijo determinado, que contiene ciertos caracteres, o que sigue las reglas de una expresión regular (regex) que introduzca.</p>
+</li>
+<li>
+<p>La replicación requiere que los entornos de trabajo de origen y destino estén conectados mediante las LIF de interconexión de clústeres. Introduzca la dirección IP de la LIF entre clústeres para el entorno de trabajo de destino.</p>
+</li>
+<li>
+<p>Seleccione el agregado en el que residirá el volumen.</p>
+</li>
+<li>
+<p>Al replicar un volumen a un clúster de Cloud Volumes ONTAP (no a un clúster de ONTAP en las instalaciones), debe especificar el tipo de disco que se usará para el nuevo volumen.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><strong>Detalles de la replicación</strong>: Introduzca los detalles sobre el tipo y la frecuencia de la operación de replicación:</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_template_replication_policy.png" alt="Captura de pantalla de la página para definir la configuración de replicación de la relación."></span></p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Seleccione la <a href="https://docs.netapp.com/us-en/cloud-manager-replication/concept-replication-policies.html#types-of-replication-policies" target="_blank" rel="noopener">"política de replicación"</a> que usted desea utilizar.</p>
+</li>
+<li>
+<p>Seleccione una copia puntual o una programación de replicación recurrente.</p>
+</li>
+<li>
+<p>Habilite la supervisión del estado de la replicación si desea que el informe drift incluya el estado de la replicación de la relación de SnapMirror junto con el tiempo de retraso, el estado y el momento de la última transferencia. <a href="task-check-template-compliance.html#replication-health-details-in-the-drift-report">"Vea cómo se ve esto en el informe sobre la deriva"</a>.</p>
+</li>
+<li>
+<p>Seleccione si desea establecer un límite de velocidad de transferencia y, a continuación, introduzca la tasa máxima (en kilobytes por segundo) a la que se pueden transferir los datos. Se puede introducir un valor fijo, o bien se puede proporcionar un valor mínimo y máximo para permitir que el administrador de almacenamiento seleccione un valor en ese rango.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Haga clic en <strong>aplicar</strong> para guardar los cambios.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="qué-hacer-después-de-crear-la-plantilla">Qué hacer después de crear la plantilla</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Después de crear una plantilla, debe informar a los administradores de almacenamiento de que la utilicen al crear nuevos entornos y volúmenes de trabajo.</p>
+</div>
+<div class="paragraph">
+<p>Usted puede señalarlos <a href="task-run-templates.html">"Creación de recursos mediante plantillas"</a> para obtener más detalles.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="edite-o-elimine-una-plantilla">Edite o elimine una plantilla</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Puede modificar una plantilla si necesita cambiar cualquiera de los parámetros. Después de guardar los cambios, todos los recursos futuros creados a partir de la plantilla utilizarán los nuevos valores de parámetro.</p>
+</div>
+<div class="paragraph">
+<p>También puede eliminar una plantilla si ya no la necesita. La eliminación de una plantilla no afecta a ninguno de los recursos que se crearon con la plantilla. Sin embargo, no se puede realizar ninguna comprobación de cumplimiento de desviación una vez eliminada la plantilla.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_template_edit_remove.png" alt="Captura de pantalla que muestra cómo modificar una plantilla o eliminarla."></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="haga-una-copia-de-una-plantilla">Haga una copia de una plantilla</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Puede crear una copia de una plantilla existente. Esto puede ahorrar mucho tiempo si desea crear una plantilla nueva que sea muy similar a una plantilla existente. Simplemente cree el duplicado con un nuevo nombre y, a continuación, puede editar la plantilla para cambiar los elementos de parejas que hacen única la plantilla.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_template_duplicate.png" alt="Captura de pantalla que muestra cómo duplicar una plantilla."></span></p>
+</div>
+</div>
+</div>
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  <div style="clear: both"></div><!-- Main needs to have height --></div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+      <div class="n-footer__bottom-left">
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/copyright/">© 2023 NetApp, Inc.</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/terms-of-use/">Términos y condiciones</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/privacy-policy/">Política de privacidad</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/cookie-policy/">Política de Cookies</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a class="ot-sdk-show-settings">Configuración de cookies</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="n-footer__bottom-right">
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <a target="_self" href="javascript:netapp_mailto()">Enviar comentarios sobre esta página</a>
+            </li>
+          </ul>
+        </div>
+        <div class="n-footer__social-links">
+          <ul class="n-footer__social-link-list">
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-blog" href="https://blog.netapp.com"
+                target="_blank" title="blog" alt="blog">
+                <span class="n-footer__social-link-text">blog</span>
+                <svg class="n-icon-blog n-footer__social-link-icon" aria-labelledby="title">
+                  <title>blog@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/es-es/cloud-manager-app-template/common/svg/sprite.svg#blog"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-community" href="https://community.netapp.com/"
+                target="_blank" title="community" alt="community">
+                <span class="n-footer__social-link-text">community</span>
+                <svg class="n-icon-community n-footer__social-link-icon" aria-labelledby="title">
+                  <title>community@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/es-es/cloud-manager-app-template/common/svg/sprite.svg#comments"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-twitter" href="https://twitter.com/netapp"
+                target="_blank" title="twitter" alt="twitter">
+                <span class="n-footer__social-link-text">twitter</span>
+                <svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
+                  <title>twitter@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/es-es/cloud-manager-app-template/common/svg/sprite.svg#twitter"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-facebook" href="https://www.facebook.com/NetApp"
+                target="_blank" title="facebook" alt="facebook">
+                <span class="n-footer__social-link-text">facebook</span>
+                <svg class="n-icon-facebook n-footer__social-link-icon" aria-labelledby="title">
+                  <title>facebook@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/es-es/cloud-manager-app-template/common/svg/sprite.svg#facebook"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-linkedin"
+                href="https://www.linkedin.com/company/netapp" target="_blank" title="linkedin" alt="linkedin">
+                <span class="n-footer__social-link-text">linkedin</span>
+                <svg class="n-icon-linkedin n-footer__social-link-icon" aria-labelledby="title">
+                  <title>linkedin@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/es-es/cloud-manager-app-template/common/svg/sprite.svg#linkedin"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-youtube"
+                href="https://www.youtube.com/user/NetAppTV" target="_blank" title="youtube" alt="youtube">
+                <span class="n-footer__social-link-text">youtube</span>
+                <svg class="n-icon-youtube n-footer__social-link-icon" aria-labelledby="title">
+                  <title>youtube@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/es-es/cloud-manager-app-template/common/svg/sprite.svg#youtube"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-slideshare"
+                href="https://www.slideshare.net/NetApp" target="_blank" title="slideshare" alt="slideshare">
+                <span class="n-footer__social-link-text">slideshare</span>
+                <svg class="n-icon-slideshare n-footer__social-link-icon" aria-labelledby="title">
+                  <title>slideshare@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/es-es/cloud-manager-app-template/common/svg/sprite.svg#slideshare"></use>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+      </div><!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/es-es/cloud-manager-app-template/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/es-es/cloud-manager-app-template/js/prism.js'></script>
+      <script type="text/javascript" src='/es-es/cloud-manager-app-template/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/es-es/cloud-manager-app-template/js/www-ntap.js'></script>
+    <script src='/es-es/cloud-manager-app-template/js/tabbed-blocks.js'></script>
+    <script src='/es-es/cloud-manager-app-template/js/sidebar.js'></script>
+  </body></html>
